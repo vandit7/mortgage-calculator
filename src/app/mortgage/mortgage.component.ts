@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-mortgage',
-  templateUrl: './mortgage.component.html',
-  styleUrls: ['./mortgage.component.scss']
+    selector: 'app-mortgage',
+    templateUrl: './mortgage.component.html',
+    styleUrls: ['./mortgage.component.scss'],
+    standalone: false
 })
 export class MortgageComponent implements OnInit {
 
