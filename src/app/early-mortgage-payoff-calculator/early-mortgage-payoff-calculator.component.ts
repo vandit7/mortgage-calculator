@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Meta, Title } from '@angular/platform-browser';
+import { Title, Meta } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-    selector: 'app-mortgage',
-    templateUrl: './mortgage.component.html',
-    styleUrls: ['./mortgage.component.scss'],
-    standalone: false
+  selector: 'app-early-mortgage-payoff-calculator',
+  imports: [FormsModule, CommonModule],
+  templateUrl: './early-mortgage-payoff-calculator.component.html',
+  styleUrl: './early-mortgage-payoff-calculator.component.scss',
 })
-export class MortgageComponent implements OnInit {
-
-  constructor(private title: Title,
-    private meta: Meta) { }
+export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
+ constructor(private title: Title,
+    private meta: Meta) {
+    this.title.setTitle('Early Mortgage Payoff Calculator – Save Interest');
+    this.meta.updateTag({
+      name: 'description',
+      content: 'Calculate how much interest you can save by paying off your mortgage early.'
+    });
+  }
 
   ngOnChanges() {
     if (this.downPayment > this.homePrice) {
@@ -110,5 +117,4 @@ export class MortgageComponent implements OnInit {
     // left = filled color, right = track color
     return `linear-gradient(90deg, #2b90ff ${pct}%, #e6eef8 ${pct}%)`;
   }
-
 }
