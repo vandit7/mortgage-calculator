@@ -1,0 +1,49 @@
+<!-- <header class="header">
+  <div class="header-hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <h2>Mortgage Calculator</h2>
+        <p>Smart monthly estimates with PMI, taxes & insurance. Get tips to lower payments.</p>
+        <nav class="nav">
+      <ul [class.active]="isMenuOpen">
+        <li><a routerLink="/mortgage-calculator" routerLinkActive="active" (click)="closeMenu()">Mortgage Calculator</a></li>
+        <li><a routerLink="/early-mortgage-payoff-calculator" routerLinkActive="active" (click)="closeMenu()">Early Payoff</a></li>
+        <li><a routerLink="/mortgage-payoff-with-extra-payments" routerLinkActive="active" (click)="closeMenu()">Extra Payments</a></li>
+        <li><a routerLink="/refinance-calculator" routerLinkActive="active" (click)="closeMenu()">Refinance</a></li>
+      </ul>
+    </nav>
+      </div>
+      <div class="hero-graphic" aria-hidden="true"></div>
+    </div>
+  </div>
+</header> -->
+  <header class="hero">
+    <div class="hero-bg-blob" aria-hidden="true">
+      <svg viewBox="0 0 600 400" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="g1" x1="0" x2="1">
+            <stop offset="0" stop-color="#6ee7b7"/>
+            <stop offset="1" stop-color="#60a5fa"/>
+          </linearGradient>
+        </defs>
+        <path d="M421.5,56.2C478.3,99.5,488,184.9,455.8,238.9C423.6,292.9,350.4,315.4,290.6,344.5C230.7,373.7,183.2,409.4,121.4,392.9C59.6,376.4,23.5,307.6,12.5,243.9C1.6,180.2,15.9,121.5,67.7,83.9C119.5,46.4,209.7,30.1,281.6,32.4C353.4,34.7,364.8,12.9,421.5,56.2Z" fill="url(#g1)"/>
+      </svg>
+    </div>
+
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-left">
+          <h1 class="title">Mortgage Calculator</h1>
+          <p class="subtitle">Smart monthly estimates with PMI, taxes & insurance. Get tips to lower payments.</p>
+        </div>
+        <nav class="hero-nav">
+          <ul>
+            <li><a routerLink="/early-mortgage-payoff-calculator" routerLinkActive="active" (click)="closeMenu()">Early Payoff</a></li>
+            <li><a routerLink="/mortgage-calculator" routerLinkActive="active" (click)="closeMenu()">Mortgage Calculator</a></li>
+            <li><a routerLink="/mortgage-payoff-with-extra-payments" routerLinkActive="active" (click)="closeMenu()">Extra Payments</a></li>
+            <li><a routerLink="/refinance-calculator" routerLinkActive="active" (click)="closeMenu()">Refinance</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
