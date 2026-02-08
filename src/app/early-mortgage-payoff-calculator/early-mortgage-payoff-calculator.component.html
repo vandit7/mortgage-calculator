@@ -1,34 +1,6 @@
-<div class="page ai-style">
-  <!-- <header class="hero">
-    <div class="hero-bg-blob" aria-hidden="true">
-      <svg viewBox="0 0 600 400" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="g1" x1="0" x2="1">
-            <stop offset="0" stop-color="#6ee7b7"/>
-            <stop offset="1" stop-color="#60a5fa"/>
-          </linearGradient>
-        </defs>
-        <path d="M421.5,56.2C478.3,99.5,488,184.9,455.8,238.9C423.6,292.9,350.4,315.4,290.6,344.5C230.7,373.7,183.2,409.4,121.4,392.9C59.6,376.4,23.5,307.6,12.5,243.9C1.6,180.2,15.9,121.5,67.7,83.9C119.5,46.4,209.7,30.1,281.6,32.4C353.4,34.7,364.8,12.9,421.5,56.2Z" fill="url(#g1)"/>
-      </svg>
-    </div>
-
-    <div class="hero-content">
-      <div class="hero-left">
-        <h1 class="title">Mortgage Calculator</h1>
-        <p class="subtitle">
-          Smart monthly estimates with PMI, taxes & insurance. Get tips to lower payments.
-        </p>
-
-        <div class="hero-actions">
-          <button class="cta" (click)="calculateMortgage()">Calculate now</button>
-          <button class="ghost" (click)="homePrice = 500000">Try sample $500k</button>
-        </div>
-      </div>
-    </div>
-  </header> -->
-
+<div class="page ai-style early-payoff">
   <div class="layout">
-    <!-- INPUT CARD -->
+    <!-- LEFT SIDE: Loan Details + Extra Payment -->
     <div class="card inputs">
       <h2>Loan Details</h2>
 
@@ -49,7 +21,7 @@
       <div class="field">
         <label>Down Payment ($)</label>
         <div class="control">
-          <input class="text" type="number" [(ngModel)]="downPayment" [disabled]="downPayment > homePrice" title="Enter down payment">
+          <input class="text" type="number" [(ngModel)]="downPayment" [disabled]="downPayment > homePrice">
           <input class="range"
             type="range"
             min="0"
@@ -59,9 +31,6 @@
             [style.background]="getRangeBackground(downPayment, 0, (homePrice || 1))"
             [disabled]="downPayment > homePrice">
         </div>
-        @if (downPayment > homePrice) {
-          <small class="error">Down payment must be less than home price</small>
-        }
       </div>
 
       <div class="row">
@@ -106,22 +75,83 @@
         </div>
       </div>
 
+      <!-- NEW SECTION: Extra Payments -->
+      <div class="extra-payment-section">
+        <div class="section-header">
+          <h3>
+            <svg class="icon-rocket" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+              <path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33 1.26zm11.49-2.03C20.1 3.74 19.21 2 17.5 2c-1.71 0-2.6 1.74-3.18 2.32L3.27 15.37c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L15.73 5.73c.58-.58 2.32-1.47 2.32-3.18 0-1.71-1.74-2.6-2.32-3.18zM4.5 21.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S3 19.17 3 20s.67 1.5 1.5 1.5z" fill="currentColor"/>
+            </svg>
+            Accelerate Your Payoff
+          </h3>
+          <small class="muted">See how much you can save</small>
+        </div>
+
+        <div class="field extra-payment-field">
+          <label>Extra Monthly Payment ($)</label>
+          <div class="control">
+            <input class="text large-input" 
+                   type="number" 
+                   [(ngModel)]="extraMonthlyPayment" 
+                   placeholder="0"
+                   (ngModelChange)="calculateMortgage()">
+            <input class="range"
+              type="range"
+              min="0"
+              max="2000"
+              step="50"
+              [(ngModel)]="extraMonthlyPayment"
+              (ngModelChange)="calculateMortgage()"
+              [style.background]="getRangeBackground(extraMonthlyPayment, 0, 2000)">
+          </div>
+        </div>
+
+        <!-- Quick preset buttons for extra payments -->
+        <div class="extra-presets">
+          <small>Quick add:</small>
+          <div class="chips">
+            <button class="chip chip-sm" type="button" (click)="extraMonthlyPayment = 100; calculateMortgage()">
+              +$100
+            </button>
+            <button class="chip chip-sm" type="button" (click)="extraMonthlyPayment = 250; calculateMortgage()">
+              +$250
+            </button>
+            <button class="chip chip-sm" type="button" (click)="extraMonthlyPayment = 500; calculateMortgage()">
+              +$500
+            </button>
+            <button class="chip chip-sm" type="button" (click)="extraMonthlyPayment = 1000; calculateMortgage()">
+              +$1000
+            </button>
+          </div>
+        </div>
+
+        <!-- Optional: One-time payment -->
+        <div class="field">
+          <label>One-Time Extra Payment ($) <span class="optional">(optional)</span></label>
+          <input class="text" 
+                 type="number" 
+                 [(ngModel)]="oneTimePayment" 
+                 placeholder="0"
+                 (ngModelChange)="calculateMortgage()">
+        </div>
+      </div>
+
       <div class="presets">
-        <small>Quick presets</small>
+        <small>Loan presets</small>
         <div class="chips">
-          <button class="chip" type="button" (click)="homePrice = 250000">
+          <button class="chip" type="button" (click)="setPreset(250000)">
             <svg class="chip-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
               <path d="M3 13h2v8H3zm4-8h2v16H7zm4-2h2v18h-2zm4 4h2v14h-2zm4-4h2v18h-2z" fill="currentColor"/>
             </svg>
             Starter $250k
           </button>
-          <button class="chip" type="button" (click)="homePrice = 500000">
+          <button class="chip" type="button" (click)="setPreset(500000)">
             <svg class="chip-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
             </svg>
             Family $500k
           </button>
-          <button class="chip" type="button" (click)="homePrice = 1000000">
+          <button class="chip" type="button" (click)="setPreset(1000000)">
             <svg class="chip-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
             </svg>
@@ -131,59 +161,205 @@
       </div>
 
       <button class="primary-btn" (click)="calculateMortgage()">
-        Calculate Mortgage
+        Calculate Savings
       </button>
     </div>
 
-    <!-- RESULTS CARD -->
+    <!-- RIGHT SIDE: Savings Dashboard -->
     @if (totalMonthlyCost) {
-      <div class="card result">
-        <div class="result-top">
-          <h2>Your Monthly Cost</h2>
-          <div class="ai-signal">AI insight: <span class="muted">PMI included if down payment &lt; 20%</span></div>
-        </div>
-        <div class="big-number">
-          ${{ totalMonthlyCost | number:'1.0-0' }}
-        </div>
-        <div class="breakdown">
-          <div class="mortgage">
-            <span>Mortgage</span>
-            <span class="value">${{ monthlyPayment | number:'1.0-0' }}</span>
-          </div>
-          <div class="mortgage">
-            <span>Property Tax</span>
-            <span class="value">${{ (homePrice * propertyTaxRate / 100 / 12) | number:'1.0-0' }}</span>
-          </div>
-          <div class="mortgage">
-            <span>Insurance</span>
-            <span class="value">${{ insurancePerYear / 12 | number:'1.0-0' }}</span>
-          </div>
-          <!-- NEW: total interest over selected years -->
-          <div class="interest-highlight">
-            <div class="interest-label">
-              <svg class="warning-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="currentColor"/>
-              </svg>
-              <span>Total interest ({{ loanTerm }} yrs)</span>
+      <div class="results-area">
+        
+        @if (extraMonthlyPayment > 0 || oneTimePayment > 0) {
+          <!-- Top row: Savings + Monthly Payment side by side -->
+          <div class="top-results-row">
+            <!-- HERO SAVINGS CARD -->
+            <div class="card savings-hero">
+              <div class="savings-badge">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path d="M9 11.24V7.5C9 6.12 10.12 5 11.5 5S14 6.12 14 7.5v3.74c1.21-.81 2-2.18 2-3.74C16 5.01 13.99 3 11.5 3S7 5.01 7 7.5c0 1.56.79 2.93 2 3.74zm9.84 4.63l-4.54-2.26c-.17-.07-.35-.11-.54-.11H13v-6c0-.83-.67-1.5-1.5-1.5S10 6.67 10 7.5v10.74l-3.43-.72c-.08-.01-.15-.03-.24-.03-.31 0-.59.13-.79.33l-.79.8 4.94 4.94c.27.27.65.44 1.06.44h6.79c.75 0 1.33-.55 1.44-1.28l.75-5.27c.01-.07.02-.14.02-.2 0-.62-.38-1.16-.91-1.38z" fill="currentColor"/>
+                </svg>
+                <span>Your Savings Potential</span>
+              </div>
+              
+              <div class="savings-amount">
+                <div class="label">Total Interest Saved</div>
+                <div class="big-savings">
+                  ${{ interestSaved | number:'1.0-0' }}
+                </div>
+              </div>
+
+              <div class="savings-grid">
+                <div class="savings-metric">
+                  <div class="metric-value">{{ yearsSaved | number:'1.1-1' }}</div>
+                  <div class="metric-label">Years Earlier</div>
+                </div>
+                <div class="savings-metric">
+                  <div class="metric-value">{{ newLoanTerm | number:'1.0-0' }}</div>
+                  <div class="metric-label">New Term (yrs)</div>
+                </div>
+                <div class="savings-metric">
+                  <div class="metric-value">{{ originalPayoffDate }}</div>
+                  <div class="metric-label">Original Date</div>
+                </div>
+                <div class="savings-metric">
+                  <div class="metric-value">{{ newPayoffDate }}</div>
+                  <div class="metric-label">New Date</div>
+                </div>
+              </div>
             </div>
-            <span class="value interest-value">${{ totalInterest | number:'1.0-0' }}</span>
+
+            <!-- MONTHLY COST CARD -->
+            <div class="card result">
+              <div class="result-top">
+                <h2>Monthly Payment</h2>
+                <div class="payment-badge">
+                  +${{ extraMonthlyPayment | number:'1.0-0' }} extra
+                </div>
+              </div>
+              
+              <div class="payment-comparison">
+                <div class="payment-item">
+                  <small>Base Payment</small>
+                  <div class="amount base">${{ totalMonthlyCost | number:'1.0-0' }}</div>
+                </div>
+                <div class="plus-sign">+</div>
+                <div class="payment-item">
+                  <small>Extra</small>
+                  <div class="amount extra">${{ extraMonthlyPayment | number:'1.0-0' }}</div>
+                </div>
+                <div class="equals-sign">=</div>
+                <div class="payment-item total">
+                  <small>New Total</small>
+                  <div class="amount total-amount">${{ (totalMonthlyCost + extraMonthlyPayment) | number:'1.0-0' }}</div>
+                </div>
+              </div>
+
+              <div class="breakdown">
+                <div class="mortgage">
+                  <span>Principal & Interest</span>
+                  <span class="value">${{ monthlyPayment | number:'1.0-0' }}</span>
+                </div>
+                <div class="mortgage">
+                  <span>Property Tax</span>
+                  <span class="value">${{ (homePrice * propertyTaxRate / 100 / 12) | number:'1.0-0' }}</span>
+                </div>
+                <div class="mortgage">
+                  <span>Insurance</span>
+                  <span class="value">${{ insurancePerYear / 12 | number:'1.0-0' }}</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-        <p class="note">
-          * PMI included automatically if down payment is below 20%.
-        </p>
+        } @else {
+          <!-- When no extra payment: Show only Monthly Payment card -->
+          <div class="card result">
+            <div class="result-top">
+              <h2>Monthly Payment</h2>
+            </div>
+            
+            <div class="payment-comparison">
+              <div class="payment-item">
+                <small>Base Payment</small>
+                <div class="amount base">${{ totalMonthlyCost | number:'1.0-0' }}</div>
+              </div>
+            </div>
+
+            <div class="breakdown">
+              <div class="mortgage">
+                <span>Principal & Interest</span>
+                <span class="value">${{ monthlyPayment | number:'1.0-0' }}</span>
+              </div>
+              <div class="mortgage">
+                <span>Property Tax</span>
+                <span class="value">${{ (homePrice * propertyTaxRate / 100 / 12) | number:'1.0-0' }}</span>
+              </div>
+              <div class="mortgage">
+                <span>Insurance</span>
+                <span class="value">${{ insurancePerYear / 12 | number:'1.0-0' }}</span>
+              </div>
+            </div>
+          </div>
+        }
+
+        <!-- COMPARISON CHART -->
+        @if (extraMonthlyPayment > 0 || oneTimePayment > 0) {
+          <div class="card comparison-chart">
+            <h3>Interest Comparison</h3>
+            <div class="chart-bars">
+              <div class="bar-item">
+                <div class="bar-label">Without Extra Payments</div>
+                <div class="bar-container">
+                  <div class="bar original-bar" [style.width.%]="100">
+                    ${{ totalInterest | number:'1.0-0' }}
+                  </div>
+                </div>
+              </div>
+              <div class="bar-item">
+                <div class="bar-label">With Extra Payments</div>
+                <div class="bar-container">
+                  <div class="bar new-bar" [style.width.%]="(totalInterestWithExtra / totalInterest) * 100">
+                    ${{ totalInterestWithExtra | number:'1.0-0' }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="chart-footer">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                <path d="M7 10l5 5 5-5z" fill="currentColor"/>
+              </svg>
+              <span>You'll pay <strong>${{ interestSaved | number:'1.0-0' }} less</strong> in interest</span>
+            </div>
+          </div>
+        }
+
+        <!-- AMORTIZATION PREVIEW -->
+        @if (extraMonthlyPayment === 0 && oneTimePayment === 0) {
+          <div class="card cta-card">
+            <div class="cta-icon">
+              <svg viewBox="0 0 24 24" width="48" height="48" aria-hidden="true">
+                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" fill="currentColor"/>
+              </svg>
+            </div>
+            <h3>Start Saving Today</h3>
+            <p>Add an extra monthly payment above to see how much you could save in interest and how many years you could shave off your mortgage.</p>
+            <div class="example-chips">
+              <span class="example-label">Try:</span>
+              <button class="chip chip-outline" (click)="extraMonthlyPayment = 200; calculateMortgage()">
+                $200/month
+              </button>
+              <button class="chip chip-outline" (click)="extraMonthlyPayment = 500; calculateMortgage()">
+                $500/month
+              </button>
+            </div>
+          </div>
+        }
       </div>
     }
   </div>
 
+  <!-- FOOTER WITH INSIGHTS -->
   <footer class="footer-section">
     <div class="footer-content">
       <div class="ai-tip-footer">
-        <h3>AI Tip</h3>
-        <p><strong>Boosting your down payment to 20%</strong> often removes PMI — try the preset to see impact instantly.</p>
-        <div class="tip-stats">
-          <div><strong>20%</strong><span>Equity</span></div>
-          <div><strong>{{ loanTerm }}</strong><span>Years</span></div>
+        <h3>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" fill="currentColor"/>
+          </svg>
+          Smart Payoff Strategies
+        </h3>
+        <div class="tip-grid">
+          <div class="tip-item">
+            <strong>Make 13 payments per year</strong>
+            <p>Split your monthly payment in half and pay bi-weekly. You'll make one extra payment annually.</p>
+          </div>
+          <div class="tip-item">
+            <strong>Round up your payment</strong>
+            <p>If your payment is $1,847, round to $2,000. Small extras add up to big savings.</p>
+          </div>
+          <div class="tip-item">
+            <strong>Apply windfalls directly</strong>
+            <p>Tax refunds, bonuses, or raises? Put them toward principal for maximum impact.</p>
+          </div>
         </div>
       </div>
     </div>
