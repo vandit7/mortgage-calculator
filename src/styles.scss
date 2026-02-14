@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+/* 1. Check Angular component wrapper */
+app-header {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* 2. Check if using Angular Material */
+.mat-toolbar {
+  padding: 0 !important;
+}
+
+/* 3. Check body/html reset */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}

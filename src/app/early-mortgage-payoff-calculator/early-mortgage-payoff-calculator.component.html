@@ -172,6 +172,49 @@
         @if (extraMonthlyPayment > 0 || oneTimePayment > 0) {
           <!-- Top row: Savings + Monthly Payment side by side -->
           <div class="top-results-row">
+             <!-- MONTHLY COST CARD -->
+            <div class="card result">
+              <div class="result-top">
+                <h2>Monthly Payment</h2>
+                <div class="payment-badge">
+                  +${{ extraMonthlyPayment | number:'1.0-0' }} extra
+                </div>
+              </div>
+              
+              <div class="payment-comparison">
+                <div class="payment-item">
+                  <small>Base Payment</small>
+                  <div class="amount base">${{ totalMonthlyCost | number:'1.0-0' }}</div>
+                </div>
+                <div class="plus-sign">+</div>
+                <div class="payment-item">
+                  <small>Extra</small>
+                  <div class="amount extra">${{ extraMonthlyPayment | number:'1.0-0' }}</div>
+                </div>
+                <div class="equals-sign">=</div>
+                <div class="payment-item total">
+                  <small>New Total</small>
+                  <div class="amount total-amount"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
+</svg>{{ (totalMonthlyCost + extraMonthlyPayment) | number:'1.0-0' }}</div>
+                </div>
+              </div>
+
+              <div class="breakdown">
+                <div class="mortgage">
+                  <span>Principal & Interest</span>
+                  <span class="value">${{ monthlyPayment | number:'1.0-0' }}</span>
+                </div>
+                <div class="mortgage">
+                  <span>Property Tax</span>
+                  <span class="value">${{ (homePrice * propertyTaxRate / 100 / 12) | number:'1.0-0' }}</span>
+                </div>
+                <div class="mortgage">
+                  <span>Insurance</span>
+                  <span class="value">${{ insurancePerYear / 12 | number:'1.0-0' }}</span>
+                </div>
+              </div>
+            </div>
             <!-- HERO SAVINGS CARD -->
             <div class="card savings-hero">
               <div class="savings-badge">
@@ -184,7 +227,9 @@
               <div class="savings-amount">
                 <div class="label">Total Interest Saved</div>
                 <div class="big-savings">
-                  ${{ interestSaved | number:'1.0-0' }}
+                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
+</svg>{{ interestSaved | number:'1.0-0' }}
                 </div>
               </div>
 
@@ -208,47 +253,7 @@
               </div>
             </div>
 
-            <!-- MONTHLY COST CARD -->
-            <div class="card result">
-              <div class="result-top">
-                <h2>Monthly Payment</h2>
-                <div class="payment-badge">
-                  +${{ extraMonthlyPayment | number:'1.0-0' }} extra
-                </div>
-              </div>
-              
-              <div class="payment-comparison">
-                <div class="payment-item">
-                  <small>Base Payment</small>
-                  <div class="amount base">${{ totalMonthlyCost | number:'1.0-0' }}</div>
-                </div>
-                <div class="plus-sign">+</div>
-                <div class="payment-item">
-                  <small>Extra</small>
-                  <div class="amount extra">${{ extraMonthlyPayment | number:'1.0-0' }}</div>
-                </div>
-                <div class="equals-sign">=</div>
-                <div class="payment-item total">
-                  <small>New Total</small>
-                  <div class="amount total-amount">${{ (totalMonthlyCost + extraMonthlyPayment) | number:'1.0-0' }}</div>
-                </div>
-              </div>
-
-              <div class="breakdown">
-                <div class="mortgage">
-                  <span>Principal & Interest</span>
-                  <span class="value">${{ monthlyPayment | number:'1.0-0' }}</span>
-                </div>
-                <div class="mortgage">
-                  <span>Property Tax</span>
-                  <span class="value">${{ (homePrice * propertyTaxRate / 100 / 12) | number:'1.0-0' }}</span>
-                </div>
-                <div class="mortgage">
-                  <span>Insurance</span>
-                  <span class="value">${{ insurancePerYear / 12 | number:'1.0-0' }}</span>
-                </div>
-              </div>
-            </div>
+           
           </div>
         } @else {
           <!-- When no extra payment: Show only Monthly Payment card -->
@@ -285,22 +290,22 @@
         @if (extraMonthlyPayment > 0 || oneTimePayment > 0) {
           <div class="card comparison-chart">
             <h3>Interest Comparison</h3>
-            <div class="chart-bars">
-              <div class="bar-item">
-                <div class="bar-label">Without Extra Payments</div>
-                <div class="bar-container">
-                  <div class="bar original-bar" [style.width.%]="100">
+            <div class="chart-bars" style="display: flex; flex-wrap: nowrap; gap: 4rem; align-items: flex-end; justify-content: center; height: 350px; padding: 2rem 0; width: 100%; min-width: 400px;">
+              <div class="bar-item" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; flex-shrink: 0;">
+                <div class="bar-container" style="width: 80px; height: 280px; display: flex; align-items: flex-end;">
+                  <div class="bar original-bar" [style.height.%]="100" style="width: 100%; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; padding: 8px;">
                     ${{ totalInterest | number:'1.0-0' }}
                   </div>
                 </div>
+                <div class="bar-label">Without Extra Payments</div>
               </div>
-              <div class="bar-item">
-                <div class="bar-label">With Extra Payments</div>
-                <div class="bar-container">
-                  <div class="bar new-bar" [style.width.%]="(totalInterestWithExtra / totalInterest) * 100">
+              <div class="bar-item" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; flex-shrink: 0;">
+                <div class="bar-container" style="width: 80px; height: 280px; display: flex; align-items: flex-end;">
+                  <div class="bar new-bar" [style.height.%]="(totalInterestWithExtra / totalInterest) * 100" style="width: 100%; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; padding: 8px;">
                     ${{ totalInterestWithExtra | number:'1.0-0' }}
                   </div>
                 </div>
+                <div class="bar-label">With Extra Payments</div>
               </div>
             </div>
             <div class="chart-footer">

@@ -6,8 +6,12 @@
   --success-green: #10b981;
   --success-light: #d1fae5;
   --success-dark: #059669;
-  --accent-teal: #20b2aa;
-  --accent-light: #e0f7f6;
+  --accent-blue: #3b82f6;
+  --accent-blue-light: #dbeafe;
+  --accent-blue-medium: #93c5fd;
+  --accent-blue-dark: #1e40af;
+  --accent-sky: #0ea5e9;
+  --accent-sky-light: #e0f2fe;
   --warning-orange: #f59e0b;
   --warning-light: #fef3c7;
   --danger-red: #ef4444;
@@ -154,11 +158,11 @@ input.range::-moz-range-thumb {
 
 /* === EXTRA PAYMENT SECTION === */
 .extra-payment-section {
-  background: linear-gradient(135deg, #e0f7f6 0%, #b3ebe7 100%);
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
   border-radius: 12px;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  border: 2px solid var(--accent-teal);
+  border: 2px solid var(--accent-blue);
 }
 
 .section-header {
@@ -176,7 +180,7 @@ input.range::-moz-range-thumb {
 }
 
 .icon-rocket {
-  color: var(--accent-teal);
+  color: var(--accent-blue);
 }
 
 .section-header small {
@@ -308,11 +312,37 @@ input.range::-moz-range-thumb {
 
 /* === SAVINGS HERO CARD === */
 .card.savings-hero {
-  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  color: white;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e40af;
   padding: 1.75rem;
   position: relative;
   overflow: hidden;
+  border: 2px solid var(--accent-blue);
+  animation: borderGlow 3s ease-in-out infinite, slideInFade 0.6s ease-out;
+}
+
+@keyframes slideInFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                0 0 0 0 rgba(59, 130, 246, 0);
+  }
+  50% {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
+                0 2px 4px -1px rgba(0, 0, 0, 0.06),
+                0 0 20px 2px rgba(59, 130, 246, 0.6);
+  }
 }
 
 .card.savings-hero::before {
@@ -322,7 +352,7 @@ input.range::-moz-range-thumb {
   right: -10%;
   width: 250px;
   height: 250px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(59, 130, 246, 0.08);
   border-radius: 50%;
 }
 
@@ -330,17 +360,30 @@ input.range::-moz-range-thumb {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(59, 130, 246, 0.2);
   padding: 0.375rem 0.875rem;
   border-radius: 20px;
   font-size: 0.8125rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
   backdrop-filter: blur(10px);
+  animation: badgePulse 2s ease-in-out infinite;
+  color: #1e40af;
+}
+
+@keyframes badgePulse {
+  0%, 100% {
+    transform: scale(1);
+    background: rgba(59, 130, 246, 0.2);
+  }
+  50% {
+    transform: scale(1.05);
+    background: rgba(59, 130, 246, 0.3);
+  }
 }
 
 .savings-badge svg {
-  color: white;
+  color: var(--accent-blue);
   width: 18px;
   height: 18px;
 }
@@ -358,6 +401,7 @@ input.range::-moz-range-thumb {
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+  color: #1e40af;
 }
 
 .big-savings {
@@ -365,6 +409,28 @@ input.range::-moz-range-thumb {
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.02em;
+  color: #1e40af;
+  animation: savingsGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes savingsGlow {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(59, 130, 246, 0.6),
+      0 0 20px rgba(59, 130, 246, 0.4),
+      0 0 30px rgba(59, 130, 246, 0.3),
+      0 0 40px rgba(59, 130, 246, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    text-shadow: 
+      0 0 15px rgba(59, 130, 246, 0.8),
+      0 0 30px rgba(30, 64, 175, 0.6),
+      0 0 45px rgba(30, 64, 175, 0.4),
+      0 0 60px rgba(30, 64, 175, 0.3),
+      0 0 80px rgba(30, 64, 175, 0.2);
+    transform: scale(1.02);
+  }
 }
 
 .savings-grid {
@@ -377,12 +443,12 @@ input.range::-moz-range-thumb {
 }
 
 .savings-metric {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.6);
   padding: 0.75rem 0.5rem;
   border-radius: 10px;
   text-align: center;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .metric-value {
@@ -390,12 +456,14 @@ input.range::-moz-range-thumb {
   font-weight: 700;
   margin-bottom: 0.125rem;
   line-height: 1.1;
+  color: #1e40af;
 }
 
 .metric-label {
   font-size: 0.75rem;
   opacity: 0.85;
   font-weight: 500;
+  color: #1e40af;
 }
 
 .payoff-dates {
@@ -407,11 +475,11 @@ input.range::-moz-range-thumb {
   display: flex;
   align-items: center;
   gap: 0.875rem;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.6);
   padding: 0.75rem 1rem;
   border-radius: 10px;
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
 }
 
 .date-item {
@@ -426,11 +494,13 @@ input.range::-moz-range-thumb {
   text-transform: uppercase;
   letter-spacing: 0.03em;
   font-weight: 500;
+  color: #1e40af;
 }
 
 .date-item strong {
   font-size: 1rem;
   font-weight: 700;
+  color: #1e40af;
 }
 
 .date-item.original {
@@ -438,7 +508,7 @@ input.range::-moz-range-thumb {
 }
 
 .date-item.new {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(59, 130, 246, 0.15);
   padding: 0.375rem 0.625rem;
   border-radius: 6px;
 }
@@ -448,6 +518,7 @@ input.range::-moz-range-thumb {
   font-weight: bold;
   opacity: 0.6;
   flex-shrink: 0;
+  color: #1e40af;
 }
 
 /* === MONTHLY COST CARD === */
@@ -474,8 +545,8 @@ input.range::-moz-range-thumb {
 }
 
 .payment-badge {
-  background: var(--accent-light);
-  color: #0d7c74;
+  background: var(--accent-blue-light);
+  color: var(--accent-blue-dark);
   padding: 0.375rem 0.75rem;
   border-radius: 6px;
   font-size: 0.875rem;
@@ -498,7 +569,7 @@ input.range::-moz-range-thumb {
 
 .payment-item small {
   display: block;
-  font-size: 0.75rem;
+  font-size: 14px;
   color: var(--gray-600);
   margin-bottom: 0.375rem;
   font-weight: 600;
@@ -508,6 +579,7 @@ input.range::-moz-range-thumb {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--gray-900);
+  animation: slideInFade 0.6s ease-out;
 }
 
 .payment-item .amount.base {
@@ -515,7 +587,7 @@ input.range::-moz-range-thumb {
 }
 
 .payment-item .amount.extra {
-  color: var(--accent-teal);
+  color: var(--accent-blue);
 }
 
 .payment-item.total {
@@ -523,11 +595,33 @@ input.range::-moz-range-thumb {
   padding: 0.75rem;
   border-radius: 8px;
   border: 2px solid var(--primary-blue);
+  animation: totalGlow 3s ease-in-out infinite;
+}
+
+@keyframes totalGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(65, 105, 225, 0);
+  }
+  50% {
+    box-shadow: 0 0 15px 2px rgba(65, 105, 225, 0.4);
+  }
 }
 
 .payment-item.total .amount {
   color: var(--primary-blue);
   font-size: 1.75rem;
+  position: relative;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(65, 105, 225, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(65, 105, 225, 0.6),
+                 0 0 25px rgba(65, 105, 225, 0.4);
+  }
 }
 
 .plus-sign,
@@ -569,7 +663,7 @@ input.range::-moz-range-thumb {
 
 .chart-bars {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -581,9 +675,9 @@ input.range::-moz-range-thumb {
 }
 
 .bar-label {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--gray-700);
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--gray-900);
 }
 
 .bar-container {
@@ -619,15 +713,32 @@ input.range::-moz-range-thumb {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
-  background: var(--success-light);
-  border-radius: 8px;
-  color: var(--success-dark);
-  font-size: 0.9375rem;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-radius: 10px;
+  border: 2px solid var(--accent-blue);
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1e40af;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  animation: highlightPulse 2s ease-in-out infinite;
+}
+
+@keyframes highlightPulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 6px 20px rgba(59, 130, 246, 0.5);
+    transform: scale(1.01);
+  }
 }
 
 .chart-footer svg {
-  color: var(--success-green);
+  color: var(--accent-blue);
+  width: 22px;
+  height: 22px;
 }
 
 /* === CTA CARD (when no extra payments) === */
@@ -643,7 +754,7 @@ input.range::-moz-range-thumb {
 }
 
 .cta-icon svg {
-  color: var(--accent-teal);
+  color: var(--accent-blue);
 }
 
 .cta-card h3 {
