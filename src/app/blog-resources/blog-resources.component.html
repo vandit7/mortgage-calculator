@@ -1,0 +1,167 @@
+<div class="blog-resources-container">
+  <!-- HERO SECTION -->
+  <section class="blog-hero">
+    <div class="blog-hero-content">
+      <h1>
+        Mortgage Payoff Blog & Resources
+      </h1>
+      <p>
+        Discover expert strategies, financial insights, and actionable tips to help you pay off your mortgage early and build wealth faster.
+      </p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <!-- ARTICLE VIEW -->
+    <div *ngIf="selectedPost" class="article-view">
+      <button (click)="closePost()" class="back-btn">
+        ← Back to All Articles
+      </button>
+
+      <article>
+        <div class="article-header">
+          <div class="article-header-top">
+            <span class="icon">{{ selectedPost.icon }}</span>
+            <span class="category-badge">
+              {{ selectedPost.category }}
+            </span>
+          </div>
+          <h1 class="article-title">{{ selectedPost.title }}</h1>
+          <div class="article-meta">
+            <span>📅 {{ getFormattedDate(selectedPost.date) }}</span>
+            <span>⏱️ {{ selectedPost.readTime }} min read</span>
+          </div>
+        </div>
+
+        <div class="article-content">
+          <!-- Using innerHTML for markdown-like content -->
+          <ng-container *ngFor="let paragraph of selectedPost.content.split('\n\n')">
+            <ng-container *ngIf="paragraph.startsWith('##')">
+              <h2 style="font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #333;">
+                {{ paragraph.substring(2).trim() }}
+              </h2>
+            </ng-container>
+            <ng-container *ngIf="!paragraph.startsWith('##') && !paragraph.startsWith('-')">
+              <p style="margin-bottom: 1rem;">{{ paragraph }}</p>
+            </ng-container>
+            <ng-container *ngIf="paragraph.startsWith('-')">
+              <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <!-- <li *ngFor="let item of paragraph.split('\n').filter(l => l.startsWith('-'))" style="margin-bottom: 0.5rem;">
+                  {{ item.substring(1).trim() }}
+                </li> -->
+              </ul>
+            </ng-container>
+          </ng-container>
+        </div>
+
+        <div class="article-footer">
+          <h3>Ready to start your mortgage payoff journey?</h3>
+          <p>Use our free mortgage payoff calculator to see exactly how much you can save.</p>
+          <button>
+            Try the Calculator
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <!-- BLOG LIST VIEW -->
+    <div *ngIf="!selectedPost">
+      <!-- FILTER BUTTONS -->
+      <div class="filter-section">
+        <h3 class="filter-title">Filter by Category</h3>
+        <div class="filter-buttons">
+          <button *ngFor="let cat of categories"
+            (click)="selectedCategory = cat"
+            [class.active]="selectedCategory === cat">
+            {{ cat }}
+          </button>
+        </div>
+      </div>
+
+      <!-- BLOG POSTS GRID -->
+      <div class="blog-grid">
+        <article *ngFor="let post of filteredPosts"
+          (click)="selectPost(post)"
+          class="blog-card"
+          >
+          
+          <div class="blog-card-content">
+            <div class="blog-card-icon">{{ post.icon }}</div>
+            
+            <span class="blog-card-category">
+              {{ post.category }}
+            </span>
+
+            <h2 class="blog-card-title">
+              {{ post.title }}
+            </h2>
+
+            <p class="blog-card-excerpt">
+              {{ post.excerpt }}
+            </p>
+
+            <div class="blog-card-footer">
+              <span>📅 {{ getFormattedDate(post.date) }}</span>
+              <span>⏱️ {{ post.readTime }} min</span>
+            </div>
+
+            <!-- <button style="width: 100%; margin-top: 1rem; padding: 0.75rem; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background 0.3s;"
+              (mouseenter)="($event.currentTarget as HTMLElement).style.background = '#764ba2'"
+              (mouseleave)="($event.currentTarget as HTMLElement).style.background = '#667eea'">
+              Read More →
+            </button> -->
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <h2>Stop Overpaying In Interest</h2>
+      <p>
+        Our free early mortgage payoff calculator shows you exactly how much money you can save with extra payments. See your savings potential today.
+      </p>
+      <!-- <button style="background: white; color: #667eea; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 1rem; transition: transform 0.3s;"
+        (mouseenter)="($event.currentTarget as HTMLElement).style.transform = 'scale(1.05)'"
+        (mouseleave)="($event.currentTarget as HTMLElement).style.transform = 'scale(1)'">
+        Calculate Your Savings →
+      </button> -->
+    </section>
+  </div>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>How much extra payment should I make?</h3>
+        <p>
+          Even small amounts help. Try $100 extra per month to start. As your income increases, increase the extra payment. Our calculator shows exactly how much you'll save at any amount.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Will paying off my mortgage early hurt my credit score?</h3>
+        <p>
+          No. While paying off debt doesn't boost your credit, it doesn't hurt it either. In fact, having less debt can improve your credit-to-income ratio over time.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Are there penalties for early payoff?</h3>
+        <p>
+          Most mortgages have no prepayment penalty. However, some loans (especially FHA, VA, or USDA loans) may have restrictions. Check your mortgage documents or contact your lender to confirm.
+        </p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Should I pay off my mortgage or invest the money?</h3>
+        <p>
+          This depends on your mortgage rate, risk tolerance, and investment opportunities. See our blog post "Mortgage Payoff vs. Investing" for a detailed comparison. Many successful people do both.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

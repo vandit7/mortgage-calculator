@@ -1,4 +1,6 @@
 <div class="page ai-style early-payoff">
+  
+  
   <div class="layout">
     <!-- LEFT SIDE: Loan Details + Extra Payment -->
     <div class="card inputs">
@@ -290,18 +292,18 @@
         @if (extraMonthlyPayment > 0 || oneTimePayment > 0) {
           <div class="card comparison-chart">
             <h3>Interest Comparison</h3>
-            <div class="chart-bars" style="display: flex; flex-wrap: nowrap; gap: 4rem; align-items: flex-end; justify-content: center; height: 350px; padding: 2rem 0; width: 100%; min-width: 400px;">
-              <div class="bar-item" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; flex-shrink: 0;">
-                <div class="bar-container" style="width: 80px; height: 280px; display: flex; align-items: flex-end;">
-                  <div class="bar original-bar" [style.height.%]="100" style="width: 100%; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; padding: 8px;">
+            <div class="chart-bars">
+              <div class="bar-item">
+                <div class="bar-container">
+                  <div class="bar original-bar" [style.height.%]="100">
                     ${{ totalInterest | number:'1.0-0' }}
                   </div>
                 </div>
                 <div class="bar-label">Without Extra Payments</div>
               </div>
-              <div class="bar-item" style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; flex-shrink: 0;">
-                <div class="bar-container" style="width: 80px; height: 280px; display: flex; align-items: flex-end;">
-                  <div class="bar new-bar" [style.height.%]="(totalInterestWithExtra / totalInterest) * 100" style="width: 100%; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 14px; padding: 8px;">
+              <div class="bar-item">
+                <div class="bar-container">
+                  <div class="bar new-bar" [style.height.%]="(totalInterestWithExtra / totalInterest) * 100">
                     ${{ totalInterestWithExtra | number:'1.0-0' }}
                   </div>
                 </div>
@@ -342,6 +344,66 @@
     }
   </div>
 
+  <!-- EDUCATIONAL CONTENT SECTION -->
+  <section class="blog-content-section" style="max-width: 1200px; margin: 0 auto 3rem; padding: 0 2rem;">
+    <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px; margin-bottom: 3rem;">
+      <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #333;">Why Pay Off Your Mortgage Early?</h2>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #667eea; font-weight: 600;">💰 Save a Fortune in Interest</h3>
+          <p style="line-height: 1.8; color: #555;">
+            On a $300,000 mortgage at 6.5%, you'll pay over $350,000 in interest over 30 years. Even small extra payments can cut this dramatically. For example, adding just $200/month could save you $60,000+ in interest and pay off your home 7+ years earlier.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #667eea; font-weight: 600;">🏠 Build Equity Faster</h3>
+          <p style="line-height: 1.8; color: #555;">
+            Extra payments go directly to your principal balance, building home equity quicker. This means more financial security, faster home ownership, and greater flexibility if you need to refinance or tap into your equity.
+          </p>
+        </div>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #667eea; font-weight: 600;">😌 Peace of Mind & Freedom</h3>
+          <p style="line-height: 1.8; color: #555;">
+            Paying off your home years early means you'll be mortgage-free sooner. Imagine entering retirement with no house payment or having the option to work less, spend more time with family, or pursue your passions without a mortgage hanging over your head.
+          </p>
+        </div>
+        <div>
+          <h3 style="font-size: 1.2rem; margin-bottom: 1rem; color: #667eea; font-weight: 600;">💡 Flexibility & Control</h3>
+          <p style="line-height: 1.8; color: #555;">
+            Unlike investments tied to the stock market, paying off your mortgage gives you guaranteed "returns" equal to your mortgage interest rate. It's a safe, predictable way to build wealth while maintaining complete control over your finances.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUICK TIPS SECTION -->
+    <div style="background: #fff3cd; padding: 2rem; border-radius: 12px; border-left: 5px solid #ffc107;">
+      <h3 style="font-size: 1.3rem; margin-bottom: 1.5rem; color: #333;">💡 Smart Strategies to Pay Off Your Mortgage Early</h3>
+      <ul style="list-style: none; padding: 0; margin: 0;">
+        <li style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; font-weight: bold; color: #ffc107;">✓</span>
+          <strong>Bi-Weekly Payments:</strong> Instead of one monthly payment, pay half every two weeks. You'll make 26 payments (13 months) per year, adding an extra month of principal payments annually.
+        </li>
+        <li style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; font-weight: bold; color: #ffc107;">✓</span>
+          <strong>Round Up Your Payment:</strong> If your mortgage is $1,847, round to $1,900. This small change accumulates to significant savings over time.
+        </li>
+        <li style="margin-bottom: 1.5rem; padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; font-weight: bold; color: #ffc107;">✓</span>
+          <strong>Apply Windfalls Directly:</strong> Tax refunds, bonuses, inheritance, or side hustle income? Apply every dollar to your principal for maximum impact.
+        </li>
+        <li style="padding-left: 2rem; position: relative;">
+          <span style="position: absolute; left: 0; font-weight: bold; color: #ffc107;">✓</span>
+          <strong>Refinance to a Shorter Term:</strong> If rates are favorable, refinancing to a 15-year mortgage can dramatically reduce interest and force you to pay faster.
+        </li>
+      </ul>
+    </div>
+  </section>
+  
   <!-- FOOTER WITH INSIGHTS -->
   <footer class="footer-section">
     <div class="footer-content">

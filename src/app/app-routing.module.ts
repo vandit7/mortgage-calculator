@@ -5,12 +5,14 @@ import { MortgagePayoffWithExtraPaymentsComponent } from './mortgage-payoff-with
 import { MortgageCalculatorComponent } from './mortgage-calculator/mortgage-calculator.component';
 import { RefinanceCalculatorComponent } from './refinance-calculator/refinance-calculator.component';
 import { LegalComponent } from './legal/legal.component';
+import { BlogResourcesComponent } from './blog-resources/blog-resources.component';
 
 const routes: Routes = [
   { path: 'early-mortgage-payoff-calculator', component: EarlyMortgagePayoffCalculatorComponent },
   { path: 'mortgage-payoff-with-extra-payments', component: MortgagePayoffWithExtraPaymentsComponent },
   { path: 'mortgage-calculator', component: MortgageCalculatorComponent },
   { path: 'refinance-calculator', component: RefinanceCalculatorComponent },
+  { path: 'blog', component: BlogResourcesComponent },
   { path: 'legal', component: LegalComponent },
   { path: '', redirectTo: '/early-mortgage-payoff-calculator', pathMatch: 'full' }
 ];

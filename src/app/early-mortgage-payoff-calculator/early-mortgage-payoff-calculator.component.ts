@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './early-mortgage-payoff-calculator.component.scss',
 })
 export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
-// Loan inputs
+  // Loan inputs
   homePrice: number = 400000;
   downPayment: number = 80000;
   interestRate: number = 6.5;
@@ -34,6 +34,8 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
   newLoanTerm: number = 0;
   originalPayoffDate: string = '';
   newPayoffDate: string = '';
+
+  constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.calculateMortgage();
@@ -83,49 +85,54 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
       this.interestSaved = 0;
       this.yearsSaved = 0;
       this.newLoanTerm = this.loanTerm;
+      this.calculatePayoffDates();
     }
-
-    // Calculate payoff dates
-    this.calculatePayoffDates();
   }
 
   calculateWithExtraPayments(principal: number, monthlyRate: number) {
+    const maxMonths = this.loanTerm * 12;
     let balance = principal;
     let month = 0;
     let totalInterestPaid = 0;
-    const maxMonths = this.loanTerm * 12;
 
     // Apply one-time payment to principal immediately
     if (this.oneTimePayment > 0) {
       balance -= this.oneTimePayment;
     }
 
-    while (balance > 0 && month < maxMonths) {
-      month++;
+    // Process calculation in chunks to keep UI responsive
+    const processChunk = () => {
+      const chunkSize = 24; // Process 2 years at a time
       
-      // Calculate interest for this month
-      const interestPayment = balance * monthlyRate;
-      totalInterestPaid += interestPayment;
+      for (let i = 0; i < chunkSize && balance > 0 && month < maxMonths; i++) {
+        month++;
+        const interestPayment = balance * monthlyRate;
+        totalInterestPaid += interestPayment;
 
-      // Calculate principal payment
-      let principalPayment = this.monthlyPayment - interestPayment;
-      
-      // Add extra payment to principal
-      principalPayment += this.extraMonthlyPayment;
-
-      // Reduce balance
-      balance -= principalPayment;
-
-      // Prevent negative balance
-      if (balance < 0) {
-        balance = 0;
+        let principalPayment = this.monthlyPayment - interestPayment;
+        principalPayment += this.extraMonthlyPayment;
+        
+        balance -= principalPayment;
+        if (balance < 0) {
+          balance = 0;
+        }
       }
-    }
 
-    this.totalInterestWithExtra = totalInterestPaid;
-    this.interestSaved = this.totalInterest - this.totalInterestWithExtra;
-    this.newLoanTerm = month / 12;
-    this.yearsSaved = this.loanTerm - this.newLoanTerm;
+      if (balance > 0 && month < maxMonths) {
+        // Schedule next chunk
+        requestAnimationFrame(processChunk);
+      } else {
+        // Calculation complete
+        this.totalInterestWithExtra = totalInterestPaid;
+        this.interestSaved = this.totalInterest - this.totalInterestWithExtra;
+        this.newLoanTerm = month / 12;
+        this.yearsSaved = this.loanTerm - this.newLoanTerm;
+        this.calculatePayoffDates();
+        this.cdr.markForCheck();
+      }
+    };
+
+    requestAnimationFrame(processChunk);
   }
 
   calculatePayoffDates() {
