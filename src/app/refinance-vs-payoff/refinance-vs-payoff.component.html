@@ -1,0 +1,382 @@
+<div class="refinance-container">
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Refinance vs Early Mortgage Payoff: Which Strategy Is Better?</h1>
+      <p>Compare refinancing and extra payment strategies with real scenarios to make the optimal decision for your financial situation.</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content">
+    <!-- OVERVIEW SECTION -->
+    <section class="overview-section">
+      <h2>The Refinance vs Payoff Decision</h2>
+      <p>
+        Two powerful strategies can reduce your mortgage burden: <strong>refinancing</strong> to a lower rate and 
+        <strong>paying extra principal</strong>. But which is better for you? The answer depends on interest rates, 
+        break-even math, and your financial goals.
+      </p>
+      <p>
+        This guide walks through real scenarios so you can make an informed decision based on your unique situation.
+      </p>
+    </section>
+
+    <!-- REFINANCING BENEFITS SECTION -->
+    <section class="strategy-section">
+      <h2>What Is Refinancing?</h2>
+      <p>
+        Refinancing means replacing your current mortgage with a new loan—often at a different rate or term. 
+        This is powerful when interest rates drop because you immediately benefit from a lower monthly payment.
+      </p>
+      
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">📉</div>
+          <h3>Lower Monthly Payment</h3>
+          <p>
+            Refinancing from 6.5% to 5.5% reduces your monthly payment by $350+, improving monthly cash flow immediately.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3>Reduced Total Interest</h3>
+          <p>
+            A 1% rate drop can save $150,000+ in total interest over the life of your loan through lower periodic interest.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">⏰</div>
+          <h3>Accelerated Payoff (Optional)</h3>
+          <p>
+            Use your lower payment to maintain the same monthly cost but shorten your term from 30 to 15 years, or pocket the savings.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💵</div>
+          <h3>Access Cash (If Needed)</h3>
+          <p>
+            Cash-out refinancing lets you borrow against home equity for major expenses, though this increases loan amount.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Refinancing Drawbacks</h3>
+      <ul style="margin-left: 2rem; color: #666;">
+        <li><strong>Closing Costs:</strong> Typically $2,000-$5,000, so you need a decent rate drop to break even</li>
+        <li><strong>Time to Break Even:</strong> May take 12-48 months to recoup costs through savings</li>
+        <li><strong>New Application Process:</strong> Credit check, appraisal, and underwriting required</li>
+        <li><strong>Potential Rate Lock Risks:</strong> If you don't lock in before closing, rates could change</li>
+      </ul>
+    </section>
+
+    <!-- EARLY PAYOFF BENEFITS SECTION -->
+    <section class="strategy-section">
+      <h2>What Is Early Payoff?</h2>
+      <p>
+        Early payoff means making extra principal payments on your existing mortgage—whether through monthly extra payments, 
+        biweekly scheduling, or lump-sum payments. This accelerates equity-building without refinancing.
+      </p>
+
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🎯</div>
+          <h3>No Closing Costs</h3>
+          <p>
+            Extra payments have zero transaction costs. Every dollar extra goes directly to your mortgage reduction.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">📊</div>
+          <h3>Guaranteed Interest Reduction</h3>
+          <p>
+            Principal payments always reduce future interest by the amount of your current rate, providing a "guaranteed return."
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">📱</div>
+          <h3>Flexibility</h3>
+          <p>
+            Increase or decrease extra payments as your financial situation changes. No reapplication or approval needed.
+          </p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🔒</div>
+          <h3>Simpler Process</h3>
+          <p>
+            No application, no credit check, no appraisal. Just contact your lender to set up extra payments.
+          </p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 2rem;">Early Payoff Drawbacks</h3>
+      <ul style="margin-left: 2rem; color: #666;">
+        <li><strong>Requires Discipline:</strong> You must consistently make extra payments to see results</li>
+        <li><strong>Cash Flow Impact:</strong> Money is locked into the loan and not accessible for emergencies</li>
+        <li><strong>Opportunity Cost:</strong> If you'd earn more investing, extra payments aren't optimal</li>
+        <li><strong>Slower Than Refinancing (Typically):</strong> 1% rate drop usually saves more than typical extra payments</li>
+      </ul>
+    </section>
+
+    <!-- REAL SCENARIO COMPARISON -->
+    <section class="scenario-section">
+      <h2>Real Scenario: Current Rate 6.5%, Refinance Rate 5.5%</h2>
+      <p style="margin-bottom: 2rem;">
+        Your situation: $300,000 loan, 27 years remaining, currently at 6.5%. Rates are now 5.5% and you're considering refinancing 
+        to a 15-year loan. Your alternative: Keep current loan and make $950 extra principal payments monthly.
+      </p>
+
+      <div class="scenario-comparison">
+        <div class="scenario-card">
+          <h3>Option 1: Refinance to 15-Year at 5.5%</h3>
+          <div class="scenario-details">
+            <div class="detail-row">
+              <span>Current Monthly Payment:</span>
+              <strong>${{ monthlyPaymentCurrent | number: '1.2-2' }}</strong>
+            </div>
+            <div class="detail-row highlight">
+              <span>New Monthly Payment (15-year):</span>
+              <strong>${{ monthlyPaymentRefinance15 | number: '1.2-2' }}</strong>
+            </div>
+            <div class="detail-row">
+              <span>Monthly Increase:</span>
+              <strong>${{ (monthlyPaymentRefinance15 - monthlyPaymentCurrent) | number: '1.2-2' }}</strong>
+            </div>
+            <div class="detail-row">
+              <span>Closing Costs:</span>
+              <strong>${{ closingCosts }}</strong>
+            </div>
+            <div class="detail-row">
+              <span>Break-Even Point:</span>
+              <strong>~{{ breakEven }} months</strong>
+            </div>
+            <div class="detail-row savings">
+              <span>Total Interest Paid (15 years):</span>
+              <strong>~$131,500</strong>
+            </div>
+            <div class="detail-row savings">
+              <span>Interest Saved vs 27-year path:</span>
+              <strong>~$241,134</strong>
+            </div>
+          </div>
+          <a href="/refinance-calculator" class="card-button">Use Refinance Calculator →</a>
+        </div>
+
+        <div class="scenario-card">
+          <h3>Option 2: Keep Loan & Extra Payments</h3>
+          <div class="scenario-details">
+            <div class="detail-row">
+              <span>Regular Payment:</span>
+              <strong>${{ monthlyPaymentCurrent | number: '1.2-2' }}</strong>
+            </div>
+            <div class="detail-row highlight">
+              <span>Extra Principal Payment:</span>
+              <strong>+${{ extraPaymentStrategy | number: '1.2-2' }}</strong>
+            </div>
+            <div class="detail-row highlight">
+              <span>Total Monthly Payment:</span>
+              <strong>${{ (monthlyPaymentCurrent + extraPaymentStrategy) | number: '1.2-2' }}</strong>
+            </div>
+            <div class="detail-row">
+              <span>Closing Costs:</span>
+              <strong>$0</strong>
+            </div>
+            <div class="detail-row">
+              <span>Break-Even Point:</span>
+              <strong>Immediate (no costs)</strong>
+            </div>
+            <div class="detail-row savings">
+              <span>Estimated Payoff Time:</span>
+              <strong>~16 years</strong>
+            </div>
+            <div class="detail-row savings">
+              <span>Interest Saved vs standard 27-year:</span>
+              <strong>~$215,000</strong>
+            </div>
+          </div>
+          <a href="/early-payoff-calculator" class="card-button">Use Payoff Calculator →</a>
+        </div>
+      </div>
+
+      <div class="summary-box">
+        <h3>📊 Summary</h3>
+        <p>
+          In this scenario, <strong>refinancing to a 15-year at 5.5% saves slightly more total interest</strong> (~$241K vs ~$215K) 
+          and forces faster payoff through higher monthly payment. However, <strong>extra payments offer flexibility</strong> if you want to 
+          maintain cash flow or adjust the strategy quickly. The best choice depends on your comfort with higher payments and confidence 
+          in your rate stability.
+        </p>
+      </div>
+    </section>
+
+    <!-- DECISION MATRIX -->
+    <section class="decision-section">
+      <h2>When to Refinance vs When to Pay Extra</h2>
+      
+      <div class="decision-grid">
+        <div class="decision-card refinance">
+          <h3>✅ Refinance When:</h3>
+          <ul>
+            <li>Rates dropped 0.75-1% or more below your current rate</li>
+            <li>You plan to stay in the home at least 5 years post-refinance</li>
+            <li>Your credit score improved since original loan</li>
+            <li>You can afford higher payments (if shortening term)</li>
+            <li>Current market conditions are competitive</li>
+          </ul>
+        </div>
+
+        <div class="decision-card payoff">
+          <h3>✅ Pay Extra When:</h3>
+          <ul>
+            <li>Rates are stable or rising (no refinance benefit)</li>
+            <li>You want flexibility in payment amounts</li>
+            <li>Closing costs relative to savings exceed your timeline</li>
+            <li>Your credit isn't strong enough for better rates</li>
+            <li>You value simplicity over maximum savings</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALCULATION: Break-Even Analysis -->
+    <section class="breakeven-section">
+      <h2>Calculate Your Break-Even Point</h2>
+      <p>
+        Break-even is the month when refinancing savings exceed your closing costs. Everything before break-even, 
+        you'd have been better off just paying extra. Everything after, refinancing wins.
+      </p>
+      
+      <div class="breakeven-example">
+        <h3>Example Calculation:</h3>
+        <div class="calculation-steps">
+          <div class="calc-step">
+            <span class="step-num">1</span>
+            <p><strong>Current Payment:</strong> $1,896.20</p>
+          </div>
+          <div class="calc-step">
+            <span class="step-num">2</span>
+            <p><strong>New Payment:</strong> $2,397.60</p>
+          </div>
+          <div class="calc-step">
+            <span class="step-num">3</span>
+            <p><strong>Payment Increase:</strong> $501.40/month</p>
+          </div>
+          <div class="calc-step">
+            <span class="step-num">4</span>
+            <p><strong>Closing Costs:</strong> $3,000</p>
+          </div>
+          <div class="calc-step result">
+            <span class="step-num">✓</span>
+            <p><strong>Break-Even:</strong> $3,000 ÷ $501.40 = 6 months</p>
+          </div>
+        </div>
+        <p style="margin-top: 2rem; color: #667eea; font-weight: 600;">
+          After 6 months, the higher payment generates enough interest savings to justify refinancing costs.
+        </p>
+      </div>
+    </section>
+
+    <!-- SCENARIO VARIATIONS -->
+    <section class="variations-section">
+      <h2>Different Rate Scenarios</h2>
+      <p>How should your decision change based on available refinance rates?</p>
+      
+      <div class="scenarios-grid">
+        <div *ngFor="let scenario of comparisonScenarios" class="scenario-box">
+          <h3>{{ scenario.scenario }}</h3>
+          <p class="scenario-desc">{{ scenario.description }}</p>
+          <div class="scenario-content">
+            <div class="metric">
+              <span>Estimated Monthly:</span>
+              <strong>{{ scenario.monthly }}</strong>
+            </div>
+            <div class="metric">
+              <span>Potential Savings:</span>
+              <strong>{{ scenario.savings }}</strong>
+            </div>
+          </div>
+          <p class="recommendation"><strong>📌 Recommendation:</strong> {{ scenario.recommendation }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- INVESTEMENT VS PAYOFF -->
+    <section class="investment-section">
+      <h2>The Investment vs Mortgage Payoff Question</h2>
+      <p>
+        "Should I invest $500/month or pay $500 extra mortgage principal?" This is perhaps the most important financial question.
+      </p>
+      
+      <div class="investment-comparison">
+        <div class="investment-card">
+          <h3>🏠 Mortgage Payoff (6.5% return)</h3>
+          <p>
+            You get a "guaranteed" 6.5% return on every extra payment through reduced interest. This is mathematically guarant need, 
+            tax-free, and risk-free. However, your money is locked into home equity.
+          </p>
+          <p style="margin-top: 1rem; color: #66c882; font-weight: 600;">Best when: Conservative investors, risk-averse, want guaranteed returns</p>
+        </div>
+
+        <div class="investment-card">
+          <h3>📈 Stock Market Investment (~10% average)</h3>
+          <p>
+            Historical stock market returns average ~10% annually, potentially beating your mortgage rate. However, returns vary significantly 
+            year-to-year, and you could lose money short-term. Your money remains liquid and accessible.
+          </p>
+          <p style="margin-top: 1rem; color: #667eea; font-weight: 600;">Best when: Long time horizon, comfortable with volatility, age 30-50s</p>
+        </div>
+      </div>
+
+      <div class="hybrid-approach">
+        <h3 style="margin-top: 2rem;">The Smart Approach: Do Both</h3>
+        <p>
+          Many successful homeowners split extra capital: pay $300 extra mortgage principal (guaranteed return) + invest $200 
+          (growth potential). This balances security with opportunity and gives you both home equity and investment growth.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <h2>Make Your Decision</h2>
+      <p>
+        Use our refinance calculator and early payoff calculator to model your specific scenario. Run the numbers for your exact 
+        loan amount, rate, and timeline to make an informed decision.
+      </p>
+      <div class="cta-buttons">
+        <a href="/refinance-calculator" class="cta-button">Refinance Calculator →</a>
+        <a href="/early-payoff-calculator" class="cta-button variant">Payoff Calculator →</a>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-grid">
+        <div *ngFor="let item of faqItems" class="faq-item">
+          <h3>{{ item.question }}</h3>
+          <p>{{ item.answer }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RELATED RESOURCES -->
+    <section class="related-section">
+      <h2>Related Mortgage Resources</h2>
+      <ul class="related-links">
+        <li><a href="/blog-resources">← Back to Blog & Resources</a></li>
+        <li><a href="/refinance-calculator">Refinance Calculator</a></li>
+        <li><a href="/early-payoff-calculator">Early Payoff Calculator</a></li>
+        <li><a href="/payoff-15-years">30-Year to 15-Year Strategy</a></li>
+        <li><a href="/biweekly-vs-monthly">Biweekly Payments Strategy</a></li>
+      </ul>
+    </section>
+  </main>
+</div>

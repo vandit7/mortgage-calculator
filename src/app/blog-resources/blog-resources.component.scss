@@ -356,7 +356,227 @@
   }
 }
 
-/* Responsive adjustments */
+  // POPULAR STRATEGIES SECTION
+  .strategies-section {
+    margin-bottom: 4rem;
+    animation: fadeIn 0.8s ease-out;
+
+    h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 900px;
+    }
+  }
+
+  .strategies-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .strategy-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-left: 4px solid #667eea;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .strategy-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .strategy-btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+  }
+
+  // COMPARISON TABLE SECTION
+  .comparison-section {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 4rem;
+
+    h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .table-container {
+    overflow-x: auto;
+  }
+
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+
+    thead {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      border: none;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid #e0e0e0;
+      color: #333;
+    }
+
+    tbody tr {
+      transition: background 0.3s;
+
+      &:hover {
+        background: #f8f9fa;
+      }
+
+      &:last-child td {
+        border-bottom: none;
+      }
+
+      td:first-child {
+        font-weight: 600;
+        color: #667eea;
+      }
+    }
+  }
+
+  .table-note {
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 1rem;
+    font-style: italic;
+  }
+
+  // MOST SEARCHED QUESTIONS SECTION
+  .trending-questions-section {
+    margin-bottom: 4rem;
+    animation: fadeIn 0.8s ease-out;
+
+    h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      max-width: 900px;
+    }
+  }
+
+  .questions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .question-item {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    border-top: 4px solid #667eea;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.15);
+    }
+
+    .question-number {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      color: #333;
+      margin-bottom: 1rem;
+      line-height: 1.4;
+    }
+
+    p {
+      color: #666;
+      line-height: 1.7;
+    }
+  }
+
+  // FAQ INTRO TEXT
+  .faq-intro {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+
 @media (max-width: 768px) {
   .blog-resources-container {
     .blog-hero h1 {
@@ -370,6 +590,27 @@
     .article-content {
       h2 {
         font-size: 1.3rem;
+      }
+    }
+
+    .strategies-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .questions-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .comparison-section {
+      padding: 1.5rem;
+    }
+
+    .comparison-table {
+      font-size: 0.85rem;
+
+      th,
+      td {
+        padding: 0.75rem;
       }
     }
   }

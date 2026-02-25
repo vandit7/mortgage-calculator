@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 interface BlogPost {
   id: number;
@@ -15,7 +16,7 @@ interface BlogPost {
 @Component({
   selector: 'app-blog-resources',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   templateUrl: './blog-resources.component.html',
   styleUrl: './blog-resources.component.scss',
 })

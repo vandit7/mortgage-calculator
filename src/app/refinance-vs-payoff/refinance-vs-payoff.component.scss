@@ -1,0 +1,755 @@
+.refinance-container {
+  min-height: 100vh;
+  background: #fafafa;
+
+  .hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      p {
+        font-size: 1.2rem;
+        opacity: 0.95;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .main-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    section {
+      margin-bottom: 3rem;
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 1.05rem;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    strong {
+      color: #667eea;
+      font-weight: 600;
+    }
+  }
+
+  // Overview section
+  .overview-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  // Strategy section
+  .strategy-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    h3 {
+      font-size: 1.3rem;
+      color: #333;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    ul {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+
+      li {
+        margin-bottom: 0.75rem;
+        line-height: 1.6;
+        color: #555;
+      }
+    }
+  }
+
+  // Benefits grid
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .benefit-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #f8fafb 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+      transform: translateY(-4px);
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      color: #333;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #666;
+    }
+  }
+
+  // Scenario section
+  .scenario-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .scenario-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .scenario-card {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 2px solid #e0e0e0;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  .scenario-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e0e0e0;
+
+    span {
+      color: #666;
+      font-weight: 500;
+    }
+
+    strong {
+      font-size: 1.05rem;
+      color: #667eea;
+    }
+
+    &.highlight {
+      background: rgba(102, 126, 234, 0.1);
+      border-color: #667eea;
+    }
+
+    &.savings {
+      background: rgba(102, 200, 130, 0.1);
+      border-color: #66c882;
+
+      strong {
+        color: #66c882;
+      }
+    }
+  }
+
+  .card-button {
+    display: inline-block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: #667eea;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s;
+    margin-top: 1rem;
+
+    &:hover {
+      background: #764ba2;
+      transform: scale(1.02);
+    }
+  }
+
+  .summary-box {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+
+    h3 {
+      color: #667eea;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+  }
+
+  // Decision section
+  .decision-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .decision-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .decision-card {
+    padding: 2rem;
+    border-radius: 12px;
+    border-left: 4px solid;
+
+    &.refinance {
+      background: rgba(102, 126, 234, 0.08);
+      border-left-color: #667eea;
+
+      h3 {
+        color: #667eea;
+      }
+    }
+
+    &.payoff {
+      background: rgba(102, 200, 130, 0.08);
+      border-left-color: #66c882;
+
+      h3 {
+        color: #66c882;
+      }
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+        color: #555;
+        line-height: 1.6;
+
+        &:before {
+          content: '✓';
+          position: absolute;
+          left: 0;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+
+  // Break-even section
+  .breakeven-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .breakeven-example {
+    background: #f8f9fa;
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 1.5rem 0;
+
+    h3 {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .calculation-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+  }
+
+  .calc-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    position: relative;
+
+    .step-num {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0;
+    }
+
+    &.result {
+      background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+      border-color: #667eea;
+
+      .step-num {
+        background: #66c882;
+      }
+
+      p {
+        font-weight: 600;
+        color: #333;
+      }
+    }
+  }
+
+  // Variations section
+  .variations-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .scenarios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .scenario-box {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    }
+
+    h3 {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .scenario-desc {
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 1rem;
+      font-style: italic;
+    }
+
+    .scenario-content {
+      background: white;
+      padding: 1rem;
+      border-radius: 6px;
+      margin: 1rem 0;
+    }
+
+    .metric {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e0e0e0;
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      span {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      strong {
+        font-size: 0.95rem;
+      }
+    }
+
+    .recommendation {
+      background: rgba(102, 126, 234, 0.1);
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 1rem;
+    }
+  }
+
+  // Investment section
+  .investment-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .investment-comparison {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .investment-card {
+    background: linear-gradient(135deg, #f5f7fa 0%, #f8fafb 100%);
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s;
+
+    h3 {
+      font-size: 1.1rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.7;
+    }
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+  }
+
+  .hybrid-approach {
+    background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+    border-left: 4px solid #667eea;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+
+    p {
+      color: #555;
+    }
+  }
+
+  // CTA Section
+  .cta-section {
+    background: white;
+    border: 2px solid #667eea;
+    padding: 3rem 2rem;
+    border-radius: 12px;
+    text-align: center;
+
+    h2 {
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    &.variant {
+      background: #66c882;
+
+      &:hover {
+        box-shadow: 0 6px 16px rgba(102, 200, 130, 0.4);
+      }
+    }
+  }
+
+  // FAQ Section
+  .faq-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .faq-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .faq-item {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+    transition: all 0.3s;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.1);
+    }
+
+    h3 {
+      color: #667eea;
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+      font-weight: 600;
+    }
+
+    p {
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+  }
+
+  // Related section
+  .related-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .related-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+
+    li {
+      a {
+        display: block;
+        padding: 1rem;
+        background: #f8f9fa;
+        border-radius: 8px;
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border-left: 4px solid transparent;
+
+        &:hover {
+          background: #667eea;
+          color: white;
+          border-left-color: white;
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .refinance-container {
+    .hero {
+      padding: 2.5rem 1.5rem;
+
+      .hero-content {
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+      }
+    }
+
+    .main-content {
+      padding: 0 1.5rem;
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+    }
+
+    .benefits-grid,
+    .decision-grid,
+    .investment-comparison,
+    .scenarios-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .scenario-comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .calculation-steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-button {
+      width: 100%;
+    }
+
+    .related-links {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .refinance-container {
+    .hero {
+      padding: 2rem 1rem;
+
+      .hero-content {
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+        }
+      }
+    }
+
+    .main-content {
+      padding: 0 1rem;
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      section {
+        padding: 1.5rem !important;
+      }
+    }
+
+    .detail-row {
+      flex-direction: column;
+      align-items: flex-start;
+
+      strong {
+        margin-top: 0.5rem;
+      }
+    }
+
+    .calculation-steps {
+      grid-template-columns: 1fr;
+    }
+  }
+}
