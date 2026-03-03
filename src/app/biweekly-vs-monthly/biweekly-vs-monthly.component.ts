@@ -105,27 +105,6 @@ export class BiweeklyVsMonthlyComponent implements OnInit {
       content: 'Learn how biweekly mortgage payments save $40,000+ in interest. Complete comparison table and real examples.'
     });
 
-    // SEO: Add JSON-LD FAQ schema
-    this.addFaqSchema();
-  }
-
-  addFaqSchema(): void {
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: this.faqItems.map(item => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer
-        }
-      }))
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    document.head.appendChild(script);
+    // SEO: Add JSON-LD FAQ schema (added directly in HTML template)
   }
 }

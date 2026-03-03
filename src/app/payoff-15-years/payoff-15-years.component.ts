@@ -66,28 +66,7 @@ export class Payoff15YearsComponent implements OnInit {
       content: 'Discover how to accelerate your mortgage payoff and save $200K+ in interest. Detailed strategy with real calculations and expert tips.'
     });
 
-    // SEO: Add JSON-LD FAQ schema
-    this.addFaqSchema();
-  }
-
-  addFaqSchema(): void {
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: this.faqItems.map(item => ({
-        '@type': 'Question',
-        name: item.question,
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: item.answer
-        }
-      }))
-    };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(faqSchema);
-    document.head.appendChild(script);
+    // SEO: Add JSON-LD FAQ schema (added directly in HTML template)
   }
 
   calculatePayoff(principal: number, rate: number, years: number): any {

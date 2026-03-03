@@ -23,6 +23,65 @@ interface BlogPost {
 export class BlogResourcesComponent implements OnInit {
   blogPosts: BlogPost[] = [
     {
+      id: 7,
+      title: 'How to Pay Off Your Mortgage Early in 2026',
+      excerpt: 'Discover practical strategies to accelerate your mortgage payoff and save hundreds of thousands in interest, even with rising costs.',
+      content: `If you bought a home in the last few years, you've probably felt it — rising taxes, increasing insurance costs, and higher overall monthly payments. Many homeowners are now asking: Is there a smart way to pay off a mortgage early without feeling house-poor?
+
+The good news: yes. And even small extra payments can make a huge difference over time.
+
+## Why Paying Off Your Mortgage Early Matters
+
+A typical 30-year mortgage can cost hundreds of thousands in interest. For example, a $400,000 loan at 6.5% over 30 years could cost you over $500,000+ in interest alone.
+
+That's why more homeowners in 2026 are focusing on early payoff strategies.
+
+## 4 Smart Ways to Pay Off Your Mortgage Faster
+
+### 1. Add Extra to Principal Each Month
+Even $100–$300 extra per month can shave years off your loan and save tens of thousands in interest.
+
+### 2. Make One Extra Payment Per Year
+One additional payment annually equals 13 payments instead of 12 — this alone can cut 4–6 years off a 30-year loan.
+
+### 3. Switch to Biweekly Payments
+Biweekly payments create one extra full payment per year automatically, without dramatically changing your lifestyle.
+
+### 4. Increase Payments When Income Rises
+Bonuses, raises, or side income can go directly toward principal, accelerating payoff without sacrificing your current budget.
+
+## How Much Could You Actually Save?
+
+The best way to stay motivated is to see real numbers. Instead of guessing, you can use our free early payoff calculator to see:
+
+- How many years you'll save
+- How much interest you'll avoid
+- The impact of different extra payment amounts
+
+Running scenarios helps you decide what's realistic without stressing your monthly budget.
+
+## Should You Pay Off Your Mortgage Early?
+
+It depends on several factors:
+
+- Your interest rate (lower rates make extra payments less urgent)
+- Emergency savings (make sure you have 3-6 months saved)
+- Retirement contributions (don't sacrifice retirement investing)
+- Other high-interest debt (pay those off first)
+
+For many homeowners in 2026, the strategy is: Build savings first → then accelerate the mortgage.
+
+## Final Thoughts
+
+Homeownership feels heavier than it used to. Costs keep rising. But having a plan makes it manageable.
+
+You don't need to double your payment. Even small, consistent extra payments can create massive long-term savings. If you're serious about reducing interest and gaining financial freedom sooner, start by running your numbers and building a payoff plan today.`,
+      category: 'Strategy',
+      readTime: 5,
+      date: '2026-02-25',
+      icon: '💪'
+    },
+    {
       id: 1,
       title: 'How to Pay Off Your Mortgage 10 Years Early',
       excerpt: 'Discover proven strategies that thousands of Americans use to accelerate their mortgage payoff and save big on interest.',
