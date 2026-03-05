@@ -1,0 +1,150 @@
+<!-- Results Display Component -->
+<!-- Shows savings breakdown with emotional impact messaging -->
+@if (isVisible()) {
+  <section class="results-container" role="region" aria-live="polite" aria-label="Savings calculation results">
+    
+    <!-- HERO SECTION: Big Savings Number -->
+    <div class="hero-section">
+      <div class="celebration-icon" aria-hidden="true">🎉</div>
+      
+      <div class="savings-hero">
+        <h2 class="hero-label">You Could Save</h2>
+        
+        <div class="savings-amount" [class.animate]="animationComplete()">
+          <span class="amount-value" aria-label="Savings amount">
+            {{ formattedSavings() }}
+          </span>
+        </div>
+
+        <p class="hero-subtitle">
+          in interest by paying
+          <strong>{{ formattedExtraPayment() }} extra per month</strong>
+        </p>
+      </div>
+    </div>
+
+    <!-- WHAT THIS MEANS Section -->
+    <div class="meaning-section">
+      <h3 class="section-title">What {{ formattedSavings() }} Actually Means:</h3>
+      
+      <ul class="benefits-grid" role="list">
+        @for (benefit of emotionalBenefits(); track trackBenefitByEmoji(benefit); let index = $index) {
+          <li class="benefit-card" role="listitem" [style.animation-delay]="(index * 100) + 'ms'">
+            <div class="benefit-emoji" aria-hidden="true">{{ benefit.emoji }}</div>
+            <div class="benefit-text">{{ benefit.text }}</div>
+          </li>
+        }
+      </ul>
+    </div>
+
+    <!-- SAVINGS BREAKDOWN Section -->
+    <div class="breakdown-section">
+      <h3 class="section-title">Your Savings Breakdown</h3>
+      
+      <div class="comparison-cards">
+        <!-- Without Extra Payments -->
+        <div class="comparison-card">
+          <h4 class="card-title">Without Extra Payments</h4>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Payoff Date:</span>
+            <span class="breakdown-value">{{ formattedOriginalPayoffDate() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Total Interest:</span>
+            <span class="breakdown-value highlight-danger">{{ formattedOriginalInterest() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Monthly Payment:</span>
+            <span class="breakdown-value">{{ formattedMonthlyPayment() }}</span>
+          </div>
+        </div>
+
+        <!-- Arrow Icon -->
+        <div class="arrow-icon" aria-hidden="true">→</div>
+
+        <!-- With Extra Payments -->
+        <div class="comparison-card highlight">
+          <h4 class="card-title">With Extra Payments</h4>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Payoff Date:</span>
+            <span class="breakdown-value highlight-success">{{ formattedNewPayoffDate() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Total Interest:</span>
+            <span class="breakdown-value highlight-success">{{ formattedNewInterest() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span class="breakdown-label">Monthly Payment:</span>
+            <span class="breakdown-value">
+              {{ formattedMonthlyPayment() }} 
+              <span class="extra-payment">+ {{ formattedExtraPayment() }} extra</span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Savings Highlight -->
+      <div class="savings-highlight">
+        <svg class="highlight-icon" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+        </svg>
+        <div>
+          <div class="highlight-title">Interest Saved</div>
+          <div class="highlight-amount">{{ formattedSavings() }}</div>
+          <div class="highlight-subtitle">In just {{ resultsData().yearsSaved }} years</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIME SAVINGS Section -->
+    <div class="time-savings-section">
+      <h3 class="section-title">How Much Time You'll Save</h3>
+      <div class="time-card">
+        <div class="time-value" [attr.aria-label]="'Save ' + resultsData().yearsSaved + ' years'">
+          <span class="time-number">{{ resultsData().yearsSaved }}</span>
+          <span class="time-unit">Years</span>
+        </div>
+        <div class="time-months">
+          ({{ resultsData().monthsToPayoff }} months instead of {{ resultsData().monthsToPayoff + (resultsData().yearsSaved * 12 - resultsData().monthsToPayoff) }})
+        </div>
+      </div>
+    </div>
+
+    <!-- ACTION PLAN Section (Preview) -->
+    <div class="action-plan-section">
+      <h3 class="section-title">Your 12-Month Action Plan</h3>
+      <div class="action-steps">
+        <div class="action-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h4>Months 1-3</h4>
+            <p>Start making {{ formattedExtraPayment() }} extra payments. Set up automatic transfers.</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h4>Months 4-6</h4>
+            <p>Review your budget and earnings. Increase extra payments if possible.</p>
+          </div>
+        </div>
+        
+        <div class="action-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h4>Months 7-12</h4>
+            <p>Make lump sum payments with tax refunds, bonuses, or inheritance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA TEASER (Full CTA section handled by parent) -->
+    <div class="results-footer" role="contentinfo">
+      <p class="footer-message">
+        Ready to accelerate your payoff? Download your personalized strategy report.
+      </p>
+    </div>
+  </section>
+}

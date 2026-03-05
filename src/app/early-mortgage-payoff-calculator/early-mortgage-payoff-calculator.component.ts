@@ -1,163 +1,357 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { Component, inject, signal, computed, effect, ChangeDetectionStrategy, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { Title, Meta } from '@angular/platform-browser';
+import { CalculationService, CalculatorInputs, ExtraPaymentResult } from '../services/calculation.service';
+import { EmailCapturePopupComponent } from '../components/email-capture-popup/email-capture-popup.component';
+import { ResultsDisplayComponent, ResultsData } from '../components/results-display/results-display.component';
+import { CtaCardsComponent, CTAEvent } from '../components/cta-cards/cta-cards.component';
+
+// Declare gtag global for analytics
+declare let gtag: Function;
+
+interface CalculatorState {
+  homePrice: number;
+  downPayment: number;
+  interestRate: number;
+  loanTermYears: number;
+  propertyTaxRate: number;
+  insurancePerYear: number;
+  extraMonthlyPayment: number;
+  oneTimePayment: number;
+}
 
 @Component({
   selector: 'app-early-mortgage-payoff-calculator',
-  imports: [FormsModule, CommonModule],
+  standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    EmailCapturePopupComponent,
+    ResultsDisplayComponent,
+    CtaCardsComponent,
+  ],
   templateUrl: './early-mortgage-payoff-calculator.component.html',
   styleUrl: './early-mortgage-payoff-calculator.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
-  // Loan inputs
-  homePrice: number = 400000;
-  downPayment: number = 80000;
-  interestRate: number = 6.5;
-  loanTerm: number = 30;
-  propertyTaxRate: number = 1.2;
-  insurancePerYear: number = 1200;
+export class EarlyMortgagePayoffCalculatorComponent {
+  private calculationService: CalculationService = inject(CalculationService);
+  private titleService: Title = inject(Title);
+  private metaService: Meta = inject(Meta);
 
-  // Extra payment inputs
-  extraMonthlyPayment: number = 0;
-  oneTimePayment: number = 0;
+  /* ─────────────────────────────────────────────────────────────── */
+  /* INPUT SIGNALS - User Input State */
+  /* ─────────────────────────────────────────────────────────────── */
 
-  // Standard calculations
-  monthlyPayment: number = 0;
-  totalMonthlyCost: number = 0;
-  totalInterest: number = 0;
+  homePrice = signal<number>(400000);
+  downPayment = signal<number>(80000);
+  interestRate = signal<number>(6.5);
+  loanTermYears = signal<number>(30);
+  propertyTaxRate = signal<number>(1.2);
+  insurancePerYear = signal<number>(1200);
+  extraMonthlyPayment = signal<number>(0);
+  oneTimePayment = signal<number>(0);
 
-  // Early payoff calculations
-  totalInterestWithExtra: number = 0;
-  interestSaved: number = 0;
-  yearsSaved: number = 0;
-  newLoanTerm: number = 0;
-  originalPayoffDate: string = '';
-  newPayoffDate: string = '';
+  /* ─────────────────────────────────────────────────────────────── */
+  /* CALCULATION RESULT SIGNALS */
+  /* ─────────────────────────────────────────────────────────────── */
 
-  constructor(private cdr: ChangeDetectorRef) {}
+  monthlyPayment = signal<number>(0);
+  totalMonthlyCost = signal<number>(0);
+  totalInterest = signal<number>(0);
+  payoffResults = signal<ExtraPaymentResult | null>(null);
 
-  ngOnInit() {
-    this.calculateMortgage();
-  }
+  /* ─────────────────────────────────────────────────────────────── */
+  /* UI STATE SIGNALS */
+  /* ─────────────────────────────────────────────────────────────── */
 
-  setPreset(price: number) {
-    this.homePrice = price;
-    this.calculateMortgage();
-  }
+  isCalculating = signal<boolean>(false);
+  showEmailPopup = signal<boolean>(false);
+  showResults = signal<boolean>(false);
+  emailCaptured = signal<boolean>(false);
 
-  calculateMortgage() {
-    const principal = this.homePrice - this.downPayment;
-    const monthlyRate = this.interestRate / 100 / 12;
-    const numberOfPayments = this.loanTerm * 12;
+  /* ─────────────────────────────────────────────────────────────── */
+  /* COMPUTED SIGNALS - Derived Values */
+  /* ─────────────────────────────────────────────────────────────── */
 
-    // Calculate standard monthly payment (P&I only)
-    if (monthlyRate === 0) {
-      this.monthlyPayment = principal / numberOfPayments;
-    } else {
-      this.monthlyPayment = principal * 
-        (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
-        (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
-    }
+  principal = computed(() =>
+    this.calculationService.calculatePrincipal(
+      this.homePrice(),
+      this.downPayment()
+    )
+  );
 
-    // Calculate total monthly cost including taxes and insurance
-    const monthlyTax = (this.homePrice * this.propertyTaxRate / 100) / 12;
-    const monthlyInsurance = this.insurancePerYear / 12;
-    
-    // Add PMI if down payment is less than 20%
-    const downPaymentPercent = (this.downPayment / this.homePrice) * 100;
-    let pmi = 0;
-    if (downPaymentPercent < 20) {
-      pmi = principal * 0.005 / 12; // 0.5% annual PMI
-    }
+  downPaymentPercent = computed(() =>
+    this.calculationService.calculateDownPaymentPercent(
+      this.homePrice(),
+      this.downPayment()
+    )
+  );
 
-    this.totalMonthlyCost = this.monthlyPayment + monthlyTax + monthlyInsurance + pmi;
+  monthlyTax = computed(() =>
+    (this.homePrice() * this.propertyTaxRate() / 100) / 12
+  );
 
-    // Calculate total interest without extra payments
-    this.totalInterest = (this.monthlyPayment * numberOfPayments) - principal;
+  monthlyInsurance = computed(() => this.insurancePerYear() / 12);
 
-    // Calculate with extra payments
-    if (this.extraMonthlyPayment > 0 || this.oneTimePayment > 0) {
-      this.calculateWithExtraPayments(principal, monthlyRate);
-    } else {
-      // Reset savings metrics
-      this.totalInterestWithExtra = this.totalInterest;
-      this.interestSaved = 0;
-      this.yearsSaved = 0;
-      this.newLoanTerm = this.loanTerm;
-      this.calculatePayoffDates();
-    }
-  }
+  monthlyPMI = computed(() => {
+    if (this.downPaymentPercent() >= 20) return 0;
+    return (this.principal() * 0.005) / 12;
+  });
 
-  calculateWithExtraPayments(principal: number, monthlyRate: number) {
-    const maxMonths = this.loanTerm * 12;
-    let balance = principal;
-    let month = 0;
-    let totalInterestPaid = 0;
+  hasExtraPayments = computed(() =>
+    this.extraMonthlyPayment() > 0 || this.oneTimePayment() > 0
+  );
 
-    // Apply one-time payment to principal immediately
-    if (this.oneTimePayment > 0) {
-      balance -= this.oneTimePayment;
-    }
+  interestSaved = computed(() =>
+    this.payoffResults()?.interestSaved ?? 0
+  );
 
-    // Process calculation in chunks to keep UI responsive
-    const processChunk = () => {
-      const chunkSize = 24; // Process 2 years at a time
-      
-      for (let i = 0; i < chunkSize && balance > 0 && month < maxMonths; i++) {
-        month++;
-        const interestPayment = balance * monthlyRate;
-        totalInterestPaid += interestPayment;
+  yearsSaved = computed(() =>
+    this.payoffResults()?.yearsSaved ?? 0
+  );
 
-        let principalPayment = this.monthlyPayment - interestPayment;
-        principalPayment += this.extraMonthlyPayment;
-        
-        balance -= principalPayment;
-        if (balance < 0) {
-          balance = 0;
+  // Format computed values for display
+  formattedMonthlyPayment = computed(() =>
+    this.calculationService.formatCurrency(this.monthlyPayment())
+  );
+
+  formattedTotalMonthlyCost = computed(() =>
+    this.calculationService.formatCurrency(this.totalMonthlyCost())
+  );
+
+  formattedTotalInterest = computed(() =>
+    this.calculationService.formatCurrency(this.totalInterest())
+  );
+
+  formattedInterestSaved = computed(() =>
+    this.calculationService.formatCurrency(this.interestSaved())
+  );
+
+  formattedMonthlyTax = computed(() =>
+    this.calculationService.formatCurrency(this.monthlyTax())
+  );
+
+  formattedMonthlyInsurance = computed(() =>
+    this.calculationService.formatCurrency(this.monthlyInsurance())
+  );
+
+  formattedMonthlyPMI = computed(() =>
+    this.calculationService.formatCurrency(this.monthlyPMI())
+  );
+
+  /* Results data for display component */
+  resultsData = computed(() => {
+    const results = this.payoffResults();
+    if (!results) return null;
+
+    return {
+      monthlyPayment: this.monthlyPayment(),
+      originalTotalInterest: this.totalInterest(),
+      newTotalInterest: results.newTotalInterest,
+      interestSaved: results.interestSaved,
+      monthsToPayoff: results.monthsToPayoff,
+      yearsSaved: results.yearsSaved,
+      originalPayoffDate: results.originalPayoffDate,
+      newPayoffDate: results.newPayoffDate,
+      extraMonthlyPayment: this.extraMonthlyPayment(),
+    } as ResultsData;
+  });
+
+  /* ─────────────────────────────────────────────────────────────── */
+  /* EFFECTS - Reactive Logic */
+  /* ─────────────────────────────────────────────────────────────── */
+
+  constructor() {
+    // Calculate mortgage on input changes
+    effect(() => {
+      // These reads create dependencies
+      this.homePrice();
+      this.downPayment();
+      this.interestRate();
+      this.loanTermYears();
+      this.extraMonthlyPayment();
+      this.oneTimePayment();
+
+      this.calculateMortgage();
+    });
+
+    // Track email capture event
+    effect(() => {
+      if (this.emailCaptured()) {
+        this.showEmailPopup.set(false);
+        this.showResults.set(true);
+
+        if (typeof gtag !== 'undefined') {
+          gtag('event', 'email_captured', {
+            event_source: 'calculator',
+          });
         }
       }
+    });
 
-      if (balance > 0 && month < maxMonths) {
-        // Schedule next chunk
-        requestAnimationFrame(processChunk);
-      } else {
-        // Calculation complete
-        this.totalInterestWithExtra = totalInterestPaid;
-        this.interestSaved = this.totalInterest - this.totalInterestWithExtra;
-        this.newLoanTerm = month / 12;
-        this.yearsSaved = this.loanTerm - this.newLoanTerm;
-        this.calculatePayoffDates();
-        this.cdr.markForCheck();
+    // Scroll to results and show email modal after delay
+    effect(() => {
+      if (this.showResults()) {
+        // Scroll to results area smoothly (works on mobile & desktop)
+        setTimeout(() => {
+          const resultsElement = document.getElementById('results-anchor');
+          if (resultsElement) {
+            // Use 'nearest' for better mobile behavior, or 'center' for better visibility
+            const isMobile = window.innerWidth < 768;
+            resultsElement.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: isMobile ? 'center' : 'start'
+            });
+          }
+        }, 50); // Increased timeout to ensure rendering complete
+
+        // Show email modal after 2500ms
+        setTimeout(() => {
+          this.showEmailPopup.set(true);
+        }, 2500);
       }
-    };
-
-    requestAnimationFrame(processChunk);
-  }
-
-  calculatePayoffDates() {
-    const today = new Date();
-    
-    // Original payoff date
-    const originalDate = new Date(today);
-    originalDate.setMonth(originalDate.getMonth() + (this.loanTerm * 12));
-    this.originalPayoffDate = originalDate.toLocaleDateString('en-US', { 
-      month: 'short', 
-      year: 'numeric' 
-    });
-
-    // New payoff date with extra payments
-    const newDate = new Date(today);
-    const newMonths = this.newLoanTerm * 12;
-    newDate.setMonth(newDate.getMonth() + newMonths);
-    this.newPayoffDate = newDate.toLocaleDateString('en-US', { 
-      month: 'short', 
-      year: 'numeric' 
     });
   }
 
+  /**
+   * Calculate standard mortgage payment and extra payment savings
+   * Called when any input signal changes (via effect)
+   */
+  calculateMortgage(): void {
+    const principal = this.principal();
+
+    if (principal <= 0) {
+      this.monthlyPayment.set(0);
+      this.totalMonthlyCost.set(0);
+      this.totalInterest.set(0);
+      return;
+    }
+
+    // Calculate standard monthly payment (P&I only)
+    const monthlyRate = this.interestRate() / 100 / 12;
+    const numberOfPayments = this.loanTermYears() * 12;
+
+    const monthlyPayment = this.calculationService.calculateMonthlyPayment(
+      principal,
+      this.interestRate(),
+      this.loanTermYears()
+    );
+
+    this.monthlyPayment.set(monthlyPayment);
+
+    // Calculate total monthly cost including taxes, insurance, PMI
+    const totalActualMonthlyCost = monthlyPayment + this.monthlyTax() + this.monthlyInsurance() + this.monthlyPMI();
+    this.totalMonthlyCost.set(totalActualMonthlyCost);
+
+    // Calculate total interest without extra payments
+    const totalInterest = this.calculationService.calculateTotalInterest(
+      monthlyPayment,
+      this.loanTermYears(),
+      principal
+    );
+    this.totalInterest.set(totalInterest);
+
+    // Calculate with extra payments if applicable
+    if (this.hasExtraPayments()) {
+      const inputs: CalculatorInputs & {
+        monthlyPayment: number;
+        originalTotalInterest: number;
+      } = {
+        homePrice: this.homePrice(),
+        downPayment: this.downPayment(),
+        interestRate: this.interestRate(),
+        loanTermYears: this.loanTermYears(),
+        propertyTaxRate: this.propertyTaxRate(),
+        insurancePerYear: this.insurancePerYear(),
+        extraMonthlyPayment: this.extraMonthlyPayment(),
+        oneTimePayment: this.oneTimePayment(),
+        monthlyPayment,
+        originalTotalInterest: totalInterest,
+      };
+
+      const results = this.calculationService.calculateWithExtraPayments(inputs);
+      this.payoffResults.set(results);
+
+      // Show results when calculations complete
+      this.showResults.set(true);
+
+      // Track calculation event
+      if (typeof gtag !== 'undefined') {
+        gtag('event', 'calculator_complete', {
+          loan_amount: principal,
+          interest_rate: this.interestRate(),
+          extra_payment: this.extraMonthlyPayment(),
+          savings_amount: results.interestSaved,
+          years_saved: results.yearsSaved,
+        });
+      }
+    } else {
+      this.payoffResults.set(null);
+      // Show basic results even without extra payments
+      this.showResults.set(true);
+    }
+  }
+
+  /**
+   * Set home price preset
+   */
+  setPreset(price: number): void {
+    this.homePrice.set(price);
+
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'preset_selected', {
+        price_point: price,
+      });
+    }
+  }
+
+  /**
+   * Set extra payment preset
+   */
+  setExtraPaymentPreset(amount: number): void {
+    this.extraMonthlyPayment.set(amount);
+  }
+
+  /**
+   * Get gradient background for range input
+   * Used for visual feedback on sliders
+   */
   getRangeBackground(value: number, min: number, max: number): string {
     const percentage = ((value - min) / (max - min)) * 100;
-    return `linear-gradient(to right, #2563eb 0%, #2563eb ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
+    return `linear-gradient(to right, #4169e1 0%, #4169e1 ${percentage}%, #e5e7eb ${percentage}%, #e5e7eb 100%)`;
+  }
+
+  /**
+   * Handle CTA click event
+   */
+  onCtaClick(event: CTAEvent): void {
+    if (event.type === 'pdf') {
+      // Handle PDF download
+      window.open('/download-report', '_blank');
+    } else if (event.type === 'refinance') {
+      // Handle affiliate redirect
+      window.open('https://www.example.com/refinance-rates', '_blank');
+    } else if (event.type === 'consultation') {
+      // Handle consultation booking
+      window.open('/book-consultation', '_blank');
+    }
+  }
+
+  /**
+   * Handle email capture
+   */
+  onEmailCaptured(): void {
+    this.emailCaptured.set(true);
+  }
+
+  /**
+   * Close email popup without capturing
+   * User can see results without email
+   */
+  onEmailPopupClosed(): void {
+    this.showEmailPopup.set(false);
+    this.showResults.set(true);
   }
 }

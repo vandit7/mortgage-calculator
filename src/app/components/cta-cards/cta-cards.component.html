@@ -1,0 +1,155 @@
+<!-- CTA Cards Component -->
+<!-- Three monetization opportunities: PDF, Affiliate, Consultation -->
+<section class="cta-section" role="region" aria-label="Call to action options">
+  <div class="cta-header">
+    <h3 class="cta-title">Next Steps</h3>
+    <p class="cta-subtitle">Choose how to accelerate your payoff journey</p>
+  </div>
+
+  <div class="cta-grid">
+    <!-- CTA 1: Download PDF Report -->
+    <div class="cta-card">
+      <div class="card-badge">Most Popular</div>
+      <div class="card-icon" aria-hidden="true">📄</div>
+      
+      <h4 class="card-title">Download Detailed Report</h4>
+      <p class="card-description">
+        Get your personalized payoff strategy with tax optimization tips, budget templates, and visualizations.
+      </p>
+      
+      <div class="card-features">
+        <ul role="list">
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            Personalized calculations
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            Budget & payment templates
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            Lifetime access
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-price">
+        <span class="price-amount">$7</span>
+        <span class="price-label">one-time</span>
+      </div>
+
+      <button
+        class="cta-button primary"
+        (click)="onCtaClick('pdf')"
+        aria-label="Download detailed payoff report for $7">
+        Download Report
+        <span class="arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <!-- CTA 2: Refinance Rates (Affiliate) -->
+    <div class="cta-card">
+      <div class="card-badge featured">Free Rates</div>
+      <div class="card-icon" aria-hidden="true">💰</div>
+      
+      <h4 class="card-title">Check Refinance Rates</h4>
+      <p class="card-description">
+        Compare rates from top lenders. See if refinancing can save you even more money than extra payments.
+      </p>
+      
+      <div class="card-features">
+        <ul role="list">
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            Free rate quotes
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            No credit impact
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            5-minute process
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-price">
+        <span class="price-label">FREE</span>
+      </div>
+
+      <button
+        class="cta-button secondary"
+        (click)="onCtaClick('refinance')"
+        aria-label="Check refinance rates for free">
+        View Rates
+        <span class="arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <!-- CTA 3: Strategy Call -->
+    <div class="cta-card">
+      <div class="card-badge">Expert Help</div>
+      <div class="card-icon" aria-hidden="true">📞</div>
+      
+      <h4 class="card-title">Book Strategy Call</h4>
+      <p class="card-description">
+        Get 30 minutes of personalized advice from a mortgage strategist. Customize your payoff plan.
+      </p>
+      
+      <div class="card-features">
+        <ul role="list">
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            30-minute consultation
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            Personalized strategy
+          </li>
+          <li>
+            <svg class="feature-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="currentColor"/>
+            </svg>
+            Money-back guarantee
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-price">
+        <span class="price-amount">$49</span>
+        <span class="price-label">one-time</span>
+      </div>
+
+      <button
+        class="cta-button primary"
+        (click)="onCtaClick('consultation')"
+        aria-label="Book a 30-minute strategy call for $49">
+        Book Call
+        <span class="arrow" aria-hidden="true">→</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Bottom Text -->
+  <p class="cta-footer">
+    💡 Bonus: When you buy the report, you'll get invited to join our community of 12,000+ homeowners saving money on mortgages.
+  </p>
+</section>
