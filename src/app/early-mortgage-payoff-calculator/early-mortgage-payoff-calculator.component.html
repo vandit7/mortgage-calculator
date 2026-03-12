@@ -1,10 +1,16 @@
 <div class="page ai-style early-payoff">
   <!-- EMAIL CAPTURE POPUP (CRITICAL: Shown before results) -->
-  @if (showEmailPopup()) {
+  <!-- @if (showEmailPopup()) {
     <app-email-capture-popup 
       (emailCaptured)="onEmailCaptured()">
     </app-email-capture-popup>
-  }
+  } -->
+
+  <!-- PAGE HEADER WITH H1 AND TRUST LINE -->
+  <!-- <div class="page-header">
+    <h1>Early Mortgage Payoff Calculator</h1>
+    <p class="trust-line">Free. Instant results. No signup required.</p>
+  </div> -->
 
   <div class="layout">
     <!-- LEFT SIDE: Loan Details + Extra Payment Inputs -->
@@ -391,6 +397,55 @@
             <div class="strategy-benefit">Accelerates payoff by 5-10 years</div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEARN MORE SECTION -->
+  <section class="learn-more-section">
+    <div class="content-wrapper">
+      <h2>Learn More About Mortgage Payoff Strategies</h2>
+      <nav class="learn-more-links">
+        <a href="/blog" class="learn-more-link">Should I Pay Off My Mortgage Early?</a>
+        <a href="/biweekly-vs-monthly" class="learn-more-link">Biweekly vs Monthly Mortgage Payments</a>
+        <a href="/refinance-vs-payoff" class="learn-more-link">Refinance vs Paying Extra</a>
+      </nav>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div class="content-wrapper">
+      <h2>Frequently Asked Questions</h2>
+      
+      <div class="faq-item">
+        <h3>Is it smart to pay off a mortgage early?</h3>
+        <p>Paying off a mortgage early can be smart if you have a high interest rate (6%+), have stable income, and have an emergency fund. It guarantees a return equal to your mortgage rate and reduces psychological stress. However, if rates are low (under 4%) and you have better investment returns elsewhere, investing might be optimal.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>How much interest can I save with extra payments?</h3>
+        <p>Interest savings depend on loan amount, rate, and extra payment frequency. On a $300,000 mortgage at 6.5%, adding just $200/month extra can save $60,000+ in interest and pay off the loan 7+ years earlier. Use our calculator above to see exact savings for your situation.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Is paying biweekly better than monthly?</h3>
+        <p>Paying biweekly (every two weeks) can be beneficial because you make 26 payments per year instead of 12 monthly payments, which equals 13 months of payments annually. This results in one extra full payment per year going directly to principal, typically saving $30,000+ in interest over the loan term.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Should I invest instead of paying off my mortgage early?</h3>
+        <p>This depends on your mortgage rate versus potential investment returns. If your mortgage rate is 3-4% and stock market returns average 8%+, investing may be better. However, paying off a mortgage is lower risk, guaranteed returns, and provides peace of mind. Many people benefit from a balanced approach: pay extra when rates are high and invest when rates are low.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Does paying off a mortgage early hurt credit?</h3>
+        <p>Paying off a mortgage early does not hurt your credit score. In fact, it demonstrates responsible financial management. Your score may temporarily dip slightly when the account closes, but this is minor and temporary. The long-term benefit of being debt-free far outweighs any temporary score fluctuation.</p>
+      </div>
+
+      <div class="faq-item">
+        <h3>Can I pay off my mortgage early without penalty?</h3>
+        <p>Most mortgages in the US have no prepayment penalties, meaning you can pay extra or pay off the loan early without fees. However, some loans (particularly those with adjustable rates or from certain lenders) may have prepayment penalties. Check your mortgage documents or contact your lender to confirm you have no prepayment restrictions.</p>
       </div>
     </div>
   </section>

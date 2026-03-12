@@ -534,3 +534,238 @@ app-root,
   margin: 0 !important;
   padding: 0 !important;
 }
+/* For white text that pops on blue header */
+.brand-logo-v2 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: transparent;
+}
+
+.logo-title {
+  display: flex;
+  gap: 8px;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0;
+  color: #ffffff; /* All white */
+}
+
+.logo-subtitle {
+  font-size: 28px; /* Even BIGGER */
+  font-weight: 800; /* BOLDER */
+  letter-spacing: 10px; /* MAX SPACING */
+  color: #fbbf24; /* GOLD/YELLOW - pops on blue */
+  text-transform: uppercase;
+  margin: 0;
+  margin-top: 2px;
+}
+/* ===== HERO HEADER ===== */
+.hero {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #0b5cff 0%, #2b90ff 50%, #60a5fa 100%);
+  box-shadow: 0 2px 12px rgba(11, 92, 255, 0.15);
+  overflow: hidden;
+  position: relative;
+  min-height: 90px;
+}
+
+.hero-bg-blob {
+  position: absolute;
+  right: -120px;
+  top: -50px;
+  width: 520px;
+  height: 260px;
+  pointer-events: none;
+  filter: blur(18px) saturate(110%);
+  opacity: 0.4;
+  z-index: 0;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  padding: 18px 0;
+}
+
+/* ===== TRANSPARENT LOGO ===== */
+.hero-left {
+  display: flex;
+  align-items: center;
+}
+
+.brand-link {
+  text-decoration: none;
+  display: block;
+}
+
+.brand-logo-transparent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: transparent; /* KEY: NO WHITE BOX */
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.brand-link:hover .brand-logo-transparent {
+  transform: scale(1.02);
+}
+
+.house-icon {
+  height: 65px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.logo-main {
+  display: flex;
+  gap: 6px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.3px;
+}
+
+.logo-main .smart {
+  color: #ffffff; /* WHITE on blue background */
+}
+
+.logo-main .mortgage {
+  color: #ffffff; /* WHITE on blue background */
+}
+
+.logo-sub {
+  font-size: 26px; /* BIGGER */
+  font-weight: 700; /* BOLD */
+  letter-spacing: 8px; /* MORE SPACING */
+  color: #fbbf24; /* GOLD/YELLOW - pops on blue */
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Optional: Subtle text shadow for depth */
+.logo-main,
+.logo-sub {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== NAVIGATION ===== */
+.hero-nav ul {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hero-nav a {
+  color: rgba(255, 255, 255, 0.95);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.2s ease;
+}
+
+.hero-nav a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.hero-nav a.active {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .house-icon {
+    height: 55px;
+  }
+  
+  .logo-main {
+    font-size: 28px;
+  }
+  
+  .logo-sub {
+    font-size: 22px;
+    letter-spacing: 6px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0;
+  }
+  
+  .house-icon {
+    height: 50px;
+  }
+  
+  .logo-main {
+    font-size: 24px;
+  }
+  
+  .logo-sub {
+    font-size: 20px;
+    letter-spacing: 5px;
+  }
+  
+  .hero-nav {
+    width: 100%;
+  }
+  
+  .hero-nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo-transparent {
+    gap: 12px;
+  }
+  
+  .house-icon {
+    height: 45px;
+  }
+  
+  .logo-main {
+    font-size: 20px;
+  }
+  
+  .logo-sub {
+    font-size: 17px;
+    letter-spacing: 4px;
+  }
+}
