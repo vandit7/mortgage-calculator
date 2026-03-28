@@ -1,3 +1,29 @@
+<div class="premium-header">
+  <div class="header-content">
+
+    <div class="badge">
+      ⚡ Smart Mortgage Optimization Tool
+    </div>
+
+    <h1>
+      Pay Off Your Mortgage <span>Years Early</span>
+    </h1>
+
+    <p class="subtext">
+      Save <strong>$100K+</strong> in interest with smart extra payments
+    </p>
+
+    <div class="trust-line">
+      ✔ Free & Instant Results &nbsp;&nbsp; ✔ No Signup Required &nbsp;&nbsp; ✔ Used by 50,000+ homeowners
+    </div>
+
+    <div class="cta-group">
+      <button class="primary-cta">Calculate Your Savings</button>
+      <button class="secondary-cta">See Example</button>
+    </div>
+
+  </div>
+</div>
 <div class="page ai-style early-payoff">
   <!-- EMAIL CAPTURE POPUP (CRITICAL: Shown before results) -->
   <!-- @if (showEmailPopup()) {
@@ -21,20 +47,9 @@
       <div class="field">
         <label for="homePrice">Home Price ($)</label>
         <div class="control">
-          <input 
-            id="homePrice"
-            class="text" 
-            type="number" 
-            [ngModel]="homePrice()"
-            (ngModelChange)="homePrice.set($event)"
-            title="Enter home price">
-          <input 
-            class="range"
-            type="range"
-            min="50000"
-            max="2000000"
-            step="5000"
-            [ngModel]="homePrice()"
+          <input id="homePrice" class="text" type="number" [ngModel]="homePrice()"
+            (ngModelChange)="homePrice.set($event)" title="Enter home price">
+          <input class="range" type="range" min="50000" max="2000000" step="5000" [ngModel]="homePrice()"
             (ngModelChange)="homePrice.set($event)"
             [style.background]="getRangeBackground(homePrice(), 50000, 2000000)">
         </div>
@@ -44,20 +59,9 @@
       <div class="field">
         <label for="downPayment">Down Payment ($)</label>
         <div class="control">
-          <input 
-            id="downPayment"
-            class="text" 
-            type="number" 
-            [ngModel]="downPayment()"
-            (ngModelChange)="downPayment.set($event)"
-            [disabled]="downPayment() > homePrice()">
-          <input 
-            class="range"
-            type="range"
-            min="0"
-            [max]="homePrice()"
-            step="1000"
-            [ngModel]="downPayment()"
+          <input id="downPayment" class="text" type="number" [ngModel]="downPayment()"
+            (ngModelChange)="downPayment.set($event)" [disabled]="downPayment() > homePrice()">
+          <input class="range" type="range" min="0" [max]="homePrice()" step="1000" [ngModel]="downPayment()"
             (ngModelChange)="downPayment.set($event)"
             [style.background]="getRangeBackground(downPayment(), 0, (homePrice() || 1))"
             [disabled]="downPayment() > homePrice()">
@@ -69,43 +73,19 @@
         <div class="field">
           <label for="interestRate">Interest Rate (%)</label>
           <div class="control">
-            <input 
-              id="interestRate"
-              class="text" 
-              type="number" 
-              step="0.01" 
-              [ngModel]="interestRate()"
+            <input id="interestRate" class="text" type="number" step="0.01" [ngModel]="interestRate()"
               (ngModelChange)="interestRate.set($event)">
-            <input 
-              class="range"
-              type="range"
-              min="2"
-              max="15"
-              step="0.05"
-              [ngModel]="interestRate()"
-              (ngModelChange)="interestRate.set($event)"
-              [style.background]="getRangeBackground(interestRate(), 2, 15)">
+            <input class="range" type="range" min="2" max="15" step="0.05" [ngModel]="interestRate()"
+              (ngModelChange)="interestRate.set($event)" [style.background]="getRangeBackground(interestRate(), 2, 15)">
           </div>
         </div>
 
         <div class="field">
           <label for="loanTerm">Loan Term (Years)</label>
           <div class="control">
-            <input 
-              id="loanTerm"
-              class="text" 
-              type="number" 
-              min="5" 
-              max="40" 
-              [ngModel]="loanTermYears()"
+            <input id="loanTerm" class="text" type="number" min="5" max="40" [ngModel]="loanTermYears()"
               (ngModelChange)="loanTermYears.set($event)">
-            <input 
-              class="range"
-              type="range"
-              min="5"
-              max="40"
-              step="1"
-              [ngModel]="loanTermYears()"
+            <input class="range" type="range" min="5" max="40" step="1" [ngModel]="loanTermYears()"
               (ngModelChange)="loanTermYears.set($event)"
               [style.background]="getRangeBackground(loanTermYears(), 5, 40)">
           </div>
@@ -116,22 +96,13 @@
       <div class="row">
         <div class="field">
           <label for="propertyTax">Property Tax (%)</label>
-          <input 
-            id="propertyTax"
-            class="text" 
-            type="number" 
-            step="0.1" 
-            [ngModel]="propertyTaxRate()"
+          <input id="propertyTax" class="text" type="number" step="0.1" [ngModel]="propertyTaxRate()"
             (ngModelChange)="propertyTaxRate.set($event)">
         </div>
 
         <div class="field">
           <label for="insurance">Insurance (Yearly $)</label>
-          <input 
-            id="insurance"
-            class="text" 
-            type="number" 
-            [ngModel]="insurancePerYear()"
+          <input id="insurance" class="text" type="number" [ngModel]="insurancePerYear()"
             (ngModelChange)="insurancePerYear.set($event)">
         </div>
       </div>
@@ -141,7 +112,9 @@
         <div class="section-header">
           <h3>
             <svg class="icon-rocket" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-              <path d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33 1.26zm11.49-2.03C20.1 3.74 19.21 2 17.5 2c-1.71 0-2.6 1.74-3.18 2.32L3.27 15.37c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L15.73 5.73c.58-.58 2.32-1.47 2.32-3.18 0-1.71-1.74-2.6-2.32-3.18zM4.5 21.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S3 19.17 3 20s.67 1.5 1.5 1.5z" fill="currentColor"/>
+              <path
+                d="M9.19 6.35c-2.04 2.29-3.44 5.58-3.57 5.89L2 10.69l4.05-4.05c.47-.47 1.15-.68 1.81-.55l1.33 1.26zm11.49-2.03C20.1 3.74 19.21 2 17.5 2c-1.71 0-2.6 1.74-3.18 2.32L3.27 15.37c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0L15.73 5.73c.58-.58 2.32-1.47 2.32-3.18 0-1.71-1.74-2.6-2.32-3.18zM4.5 21.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5S3 19.17 3 20s.67 1.5 1.5 1.5z"
+                fill="currentColor" />
             </svg>
             Accelerate Your Payoff
           </h3>
@@ -152,20 +125,9 @@
         <div class="field extra-payment-field">
           <label for="extraPayment">Extra Monthly Payment ($)</label>
           <div class="control">
-            <input 
-              id="extraPayment"
-              class="text large-input" 
-              type="number" 
-              [ngModel]="extraMonthlyPayment()"
-              (ngModelChange)="extraMonthlyPayment.set($event)"
-              placeholder="0">
-            <input 
-              class="range"
-              type="range"
-              min="0"
-              max="2000"
-              step="50"
-              [ngModel]="extraMonthlyPayment()"
+            <input id="extraPayment" class="text large-input" type="number" [ngModel]="extraMonthlyPayment()"
+              (ngModelChange)="extraMonthlyPayment.set($event)" placeholder="0">
+            <input class="range" type="range" min="0" max="2000" step="50" [ngModel]="extraMonthlyPayment()"
               (ngModelChange)="extraMonthlyPayment.set($event)"
               [style.background]="getRangeBackground(extraMonthlyPayment(), 0, 2000)">
           </div>
@@ -193,13 +155,8 @@
         <!-- One-Time Payment (Optional) -->
         <div class="field">
           <label for="oneTime">One-Time Extra Payment ($) <span class="optional">(optional)</span></label>
-          <input 
-            id="oneTime"
-            class="text" 
-            type="number" 
-            [ngModel]="oneTimePayment()"
-            (ngModelChange)="oneTimePayment.set($event)"
-            placeholder="0">
+          <input id="oneTime" class="text" type="number" [ngModel]="oneTimePayment()"
+            (ngModelChange)="oneTimePayment.set($event)" placeholder="0">
         </div>
       </div>
 
@@ -209,19 +166,22 @@
         <div class="chips">
           <button class="chip" type="button" (click)="setPreset(250000)">
             <svg class="chip-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-              <path d="M3 13h2v8H3zm4-8h2v16H7zm4-2h2v18h-2zm4 4h2v14h-2zm4-4h2v18h-2z" fill="currentColor"/>
+              <path d="M3 13h2v8H3zm4-8h2v16H7zm4-2h2v18h-2zm4 4h2v14h-2zm4-4h2v18h-2z" fill="currentColor" />
             </svg>
             Starter $250k
           </button>
           <button class="chip" type="button" (click)="setPreset(500000)">
             <svg class="chip-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" fill="currentColor"/>
+              <path
+                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                fill="currentColor" />
             </svg>
             Family $500k
           </button>
           <button class="chip" type="button" (click)="setPreset(1000000)">
             <svg class="chip-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
-              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" fill="currentColor"/>
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                fill="currentColor" />
             </svg>
             Luxury $1M
           </button>
@@ -235,92 +195,94 @@
 
     <!-- RIGHT SIDE: Results Display -->
     @if (showResults() && totalMonthlyCost() > 0) {
-      <div class="results-area" id="results-anchor">
-        
-        <!-- Monthly Cost Card -->
-        @if (hasExtraPayments()) {
-          <div class="card result">
-            <div class="result-top">
-              <h2>Monthly Payment</h2>
-              <div class="payment-badge">
-                +{{ extraMonthlyPayment() | number:'1.0-0' }} extra
-              </div>
-            </div>
-            
-            <div class="payment-breakdown">
-              <div class="breakdown-row">
-                <span>Principal & Interest:</span>
-                <span class="value">{{ formattedMonthlyPayment() }}</span>
-              </div>
-              <div class="breakdown-row">
-                <span>Property Tax:</span>
-                <span class="value">{{ formattedMonthlyTax() }}</span>
-              </div>
-              <div class="breakdown-row">
-                <span>Insurance:</span>
-                <span class="value">{{ formattedMonthlyInsurance() }}</span>
-              </div>
-              @if (monthlyPMI() > 0) {
-                <div class="breakdown-row">
-                  <span>PMI:</span>
-                  <span class="value">{{ formattedMonthlyPMI() }}</span>
-                </div>
-              }
-              <div class="breakdown-row total">
-                <span>New Total*:</span>
-                <span class="value">{{ formattedTotalMonthlyCost() }}</span>
-              </div>
-            </div>
-          </div>
-        } @else {
-          <div class="card result">
-            <h2>Monthly Payment</h2>
-            <div class="big-number">{{ formattedTotalMonthlyCost() }}</div>
-            <p class="note">Enter an extra payment above to see savings potential</p>
-          </div>
-        }
+    <div class="results-area" id="results-anchor">
 
-        <!-- Results Display Component (emotional impact) -->
-        @if (hasExtraPayments() && resultsData()) {
-          <app-results-display 
-            [resultsData]="resultsData()!"
-            [isVisible]="showResults()">
-          </app-results-display>
-        }
-
-        <!-- Interest Comparison Chart -->
-        @if (hasExtraPayments()) {
-          <div class="card comparison-chart">
-            <h3>Interest Comparison</h3>
-            <div class="chart-bars">
-              <div class="bar-item">
-                <div class="bar-container">
-                  <div class="bar original-bar" [style.height.%]="100">
-                    {{ formattedTotalInterest() }}
-                  </div>
-                </div>
-                <div class="bar-label">Without Extra</div>
-              </div>
-              <div class="bar-item">
-                <div class="bar-container">
-                  @if (payoffResults()) {
-                    <div class="bar new-bar" [style.height.%]="(payoffResults()!.newTotalInterest / totalInterest()) * 100">
-                      <!-- {{ calculationService.formatCurrency(payoffResults()!.newTotalInterest) }} -->
-                    </div>
-                  }
-                </div>
-                <div class="bar-label">With Extra</div>
-              </div>
-            </div>
-            <div class="chart-footer">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-                <path d="M7 10l5 5 5-5z" fill="currentColor"/>
-              </svg>
-              <span>You'll save <strong>{{ formattedInterestSaved() }}</strong> in interest</span>
-            </div>
+      <!-- Monthly Cost Card -->
+      @if (hasExtraPayments()) {
+      <div class="card result">
+        <div class="result-top">
+          <h2>Monthly Payment</h2>
+          <div class="payment-badge">
+            +{{ extraMonthlyPayment() | number:'1.0-0' }} extra
           </div>
-        }
+        </div>
+
+        <div class="payment-breakdown">
+          <div class="breakdown-row">
+            <span>Principal & Interest:</span>
+            <span class="value">{{ formattedMonthlyPayment() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Property Tax:</span>
+            <span class="value">{{ formattedMonthlyTax() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Insurance:</span>
+            <span class="value">{{ formattedMonthlyInsurance() }}</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Extra Payment:</span>
+            <span class="value">${{ extraMonthlyPayment() }}</span>
+          </div>
+          @if (monthlyPMI() > 0) {
+          <div class="breakdown-row">
+            <span>PMI:</span>
+            <span class="value">{{ formattedMonthlyPMI() }}</span>
+          </div>
+          }
+          <div class="breakdown-row total">
+            <span>New Total*:</span>
+            <span class="value">{{ formattedTotalMonthlyCost() }}</span>
+          </div>
+        </div>
       </div>
+      } @else {
+      <div class="card result">
+        <h2>Monthly Payment</h2>
+        <div class="big-number">{{ formattedTotalMonthlyCost() }}</div>
+        <p class="note">Enter an extra payment above to see savings potential</p>
+      </div>
+      }
+
+      <!-- Results Display Component (emotional impact) -->
+      @if (hasExtraPayments() && resultsData()) {
+      <app-results-display [resultsData]="resultsData()!" [isVisible]="showResults()">
+      </app-results-display>
+      }
+
+      <!-- Interest Comparison Chart -->
+      @if (hasExtraPayments()) {
+      <div class="card comparison-chart">
+        <h3>Interest Comparison</h3>
+        <div class="chart-bars">
+          <div class="bar-item">
+            <div class="bar-container">
+              <div class="bar original-bar" [style.height.%]="100">
+                {{ formattedTotalInterest() }}
+              </div>
+            </div>
+            <div class="bar-label">Without Extra</div>
+          </div>
+          <div class="bar-item">
+            <div class="bar-container">
+              @if (payoffResults()) {
+              <div class="bar new-bar" [style.height.%]="(payoffResults()!.newTotalInterest / totalInterest()) * 100">
+                {{ calculationService.formatCurrency(payoffResults()!.newTotalInterest) }}
+              </div>
+              }
+            </div>
+            <div class="bar-label">With Extra</div>
+          </div>
+        </div>
+        <div class="chart-footer">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M7 10l5 5 5-5z" fill="currentColor" />
+          </svg>
+          <span>You'll save <strong>{{ formattedInterestSaved() }}</strong> in interest</span>
+        </div>
+      </div>
+      }
+    </div>
     }
   </div>
 
@@ -338,13 +300,15 @@
         <h2 class="section-title">Why Pay Off Your Mortgage Early?</h2>
         <p class="section-subtitle">Discover how strategic early payments can save you hundreds of thousands</p>
       </div>
-      
+
       <div class="benefits-grid">
         <div class="benefit-card">
           <div class="benefit-icon">💰</div>
           <h3>Save a Fortune in Interest</h3>
           <p>
-            On a $300,000 mortgage at 6.5%, you'll pay over $350,000 in interest over 30 years. Even small extra payments can cut this dramatically. Adding just $200/month could save you $60,000+ in interest and pay off your home 7+ years earlier.
+            On a $300,000 mortgage at 6.5%, you'll pay over $350,000 in interest over 30 years. Even small extra
+            payments can cut this dramatically. Adding just $200/month could save you $60,000+ in interest and pay off
+            your home 7+ years earlier.
           </p>
           <div class="benefit-stat">Save up to <strong>$251,400</strong> in interest</div>
         </div>
@@ -352,7 +316,9 @@
           <div class="benefit-icon">🏠</div>
           <h3>Build Equity Faster</h3>
           <p>
-            Extra payments go directly to your principal balance, building home equity quicker. This means more financial security, faster home ownership, and greater flexibility if you need to refinance or tap into your equity.
+            Extra payments go directly to your principal balance, building home equity quicker. This means more
+            financial security, faster home ownership, and greater flexibility if you need to refinance or tap into your
+            equity.
           </p>
           <div class="benefit-stat">Own your home <strong>years sooner</strong></div>
         </div>
@@ -360,7 +326,8 @@
           <div class="benefit-icon">😌</div>
           <h3>Peace of Mind & Freedom</h3>
           <p>
-            Paying off your home years early means you'll be mortgage-free sooner. Imagine entering retirement with no house payment or having the option to work less, spend more time with family, or pursue your passions.
+            Paying off your home years early means you'll be mortgage-free sooner. Imagine entering retirement with no
+            house payment or having the option to work less, spend more time with family, or pursue your passions.
           </p>
           <div class="benefit-stat">Retire <strong>with confidence</strong></div>
         </div>
@@ -368,7 +335,9 @@
           <div class="benefit-icon">💡</div>
           <h3>Guaranteed Returns</h3>
           <p>
-            Unlike investments tied to the stock market, paying off your mortgage gives you guaranteed returns equal to your mortgage interest rate. It's a safe, predictable way to build wealth while maintaining complete control.
+            Unlike investments tied to the stock market, paying off your mortgage gives you guaranteed returns equal to
+            your mortgage interest rate. It's a safe, predictable way to build wealth while maintaining complete
+            control.
           </p>
           <div class="benefit-stat">6.5% guaranteed return</div>
         </div>
@@ -381,19 +350,22 @@
           <div class="strategy-card">
             <div class="strategy-number">1</div>
             <h4>Bi-Weekly Payments</h4>
-            <p>Pay half every two weeks instead of monthly. You'll make 26 payments (13 months) per year, with one extra payment going directly to principal.</p>
+            <p>Pay half every two weeks instead of monthly. You'll make 26 payments (13 months) per year, with one extra
+              payment going directly to principal.</p>
             <div class="strategy-benefit">Saves ~$30,000+ in interest</div>
           </div>
           <div class="strategy-card">
             <div class="strategy-number">2</div>
             <h4>Round Up Your Payment</h4>
-            <p>If your mortgage is $1,847, round to $1,900 or $2,000. This small change accumulates dramatically over 30 years.</p>
+            <p>If your mortgage is $1,847, round to $1,900 or $2,000. This small change accumulates dramatically over 30
+              years.</p>
             <div class="strategy-benefit">Saves ~$50,000+ in interest</div>
           </div>
           <div class="strategy-card">
             <div class="strategy-number">3</div>
             <h4>Apply Windfalls Directly</h4>
-            <p>Tax refunds, bonuses, inheritance, or raises? Apply every dollar to principal. These large lump sums pay off years of interest.</p>
+            <p>Tax refunds, bonuses, inheritance, or raises? Apply every dollar to principal. These large lump sums pay
+              off years of interest.</p>
             <div class="strategy-benefit">Accelerates payoff by 5-10 years</div>
           </div>
         </div>
@@ -417,35 +389,50 @@
   <section class="faq-section">
     <div class="content-wrapper">
       <h2>Frequently Asked Questions</h2>
-      
+
       <div class="faq-item">
         <h3>Is it smart to pay off a mortgage early?</h3>
-        <p>Paying off a mortgage early can be smart if you have a high interest rate (6%+), have stable income, and have an emergency fund. It guarantees a return equal to your mortgage rate and reduces psychological stress. However, if rates are low (under 4%) and you have better investment returns elsewhere, investing might be optimal.</p>
+        <p>Paying off a mortgage early can be smart if you have a high interest rate (6%+), have stable income, and have
+          an emergency fund. It guarantees a return equal to your mortgage rate and reduces psychological stress.
+          However, if rates are low (under 4%) and you have better investment returns elsewhere, investing might be
+          optimal.</p>
       </div>
 
       <div class="faq-item">
         <h3>How much interest can I save with extra payments?</h3>
-        <p>Interest savings depend on loan amount, rate, and extra payment frequency. On a $300,000 mortgage at 6.5%, adding just $200/month extra can save $60,000+ in interest and pay off the loan 7+ years earlier. Use our calculator above to see exact savings for your situation.</p>
+        <p>Interest savings depend on loan amount, rate, and extra payment frequency. On a $300,000 mortgage at 6.5%,
+          adding just $200/month extra can save $60,000+ in interest and pay off the loan 7+ years earlier. Use our
+          calculator above to see exact savings for your situation.</p>
       </div>
 
       <div class="faq-item">
         <h3>Is paying biweekly better than monthly?</h3>
-        <p>Paying biweekly (every two weeks) can be beneficial because you make 26 payments per year instead of 12 monthly payments, which equals 13 months of payments annually. This results in one extra full payment per year going directly to principal, typically saving $30,000+ in interest over the loan term.</p>
+        <p>Paying biweekly (every two weeks) can be beneficial because you make 26 payments per year instead of 12
+          monthly payments, which equals 13 months of payments annually. This results in one extra full payment per year
+          going directly to principal, typically saving $30,000+ in interest over the loan term.</p>
       </div>
 
       <div class="faq-item">
         <h3>Should I invest instead of paying off my mortgage early?</h3>
-        <p>This depends on your mortgage rate versus potential investment returns. If your mortgage rate is 3-4% and stock market returns average 8%+, investing may be better. However, paying off a mortgage is lower risk, guaranteed returns, and provides peace of mind. Many people benefit from a balanced approach: pay extra when rates are high and invest when rates are low.</p>
+        <p>This depends on your mortgage rate versus potential investment returns. If your mortgage rate is 3-4% and
+          stock market returns average 8%+, investing may be better. However, paying off a mortgage is lower risk,
+          guaranteed returns, and provides peace of mind. Many people benefit from a balanced approach: pay extra when
+          rates are high and invest when rates are low.</p>
       </div>
 
       <div class="faq-item">
         <h3>Does paying off a mortgage early hurt credit?</h3>
-        <p>Paying off a mortgage early does not hurt your credit score. In fact, it demonstrates responsible financial management. Your score may temporarily dip slightly when the account closes, but this is minor and temporary. The long-term benefit of being debt-free far outweighs any temporary score fluctuation.</p>
+        <p>Paying off a mortgage early does not hurt your credit score. In fact, it demonstrates responsible financial
+          management. Your score may temporarily dip slightly when the account closes, but this is minor and temporary.
+          The long-term benefit of being debt-free far outweighs any temporary score fluctuation.</p>
       </div>
 
       <div class="faq-item">
         <h3>Can I pay off my mortgage early without penalty?</h3>
-        <p>Most mortgages in the US have no prepayment penalties, meaning you can pay extra or pay off the loan early without fees. However, some loans (particularly those with adjustable rates or from certain lenders) may have prepayment penalties. Check your mortgage documents or contact your lender to confirm you have no prepayment restrictions.</p>
+        <p>Most mortgages in the US have no prepayment penalties, meaning you can pay extra or pay off the loan early
+          without fees. However, some loans (particularly those with adjustable rates or from certain lenders) may have
+          prepayment penalties. Check your mortgage documents or contact your lender to confirm you have no prepayment
+          restrictions.</p>
       </div>
     </div>
   </section>
@@ -463,12 +450,14 @@
         <div class="tip-card">
           <div class="tip-number">2</div>
           <strong>Add Extra Payments</strong>
-          <p>Start with even $100/month extra to see the dramatic impact on your payoff timeline and interest savings.</p>
+          <p>Start with even $100/month extra to see the dramatic impact on your payoff timeline and interest savings.
+          </p>
         </div>
         <div class="tip-card">
           <div class="tip-number">3</div>
           <strong>Make It Automatic</strong>
-          <p>Set up automatic extra payments so you stay consistent. The best strategy is one you'll actually stick to!</p>
+          <p>Set up automatic extra payments so you stay consistent. The best strategy is one you'll actually stick to!
+          </p>
         </div>
       </div>
     </div>

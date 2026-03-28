@@ -34,7 +34,7 @@ interface CalculatorState {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EarlyMortgagePayoffCalculatorComponent {
-  private calculationService: CalculationService = inject(CalculationService);
+  public calculationService: CalculationService = inject(CalculationService);
   private titleService: Title = inject(Title);
   private metaService: Meta = inject(Meta);
   private renderer: Renderer2 = inject(Renderer2);
@@ -118,7 +118,7 @@ export class EarlyMortgagePayoffCalculatorComponent {
   );
 
   formattedTotalMonthlyCost = computed(() =>
-    this.calculationService.formatCurrency(this.totalMonthlyCost())
+    this.calculationService.formatCurrency(this.totalMonthlyCost() + this.extraMonthlyPayment())
   );
 
   formattedTotalInterest = computed(() =>

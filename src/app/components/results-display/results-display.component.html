@@ -22,22 +22,7 @@
         </p>
       </div>
     </div>
-
-    <!-- WHAT THIS MEANS Section -->
-    <div class="meaning-section">
-      <h3 class="section-title">What {{ formattedSavings() }} Actually Means:</h3>
-      
-      <ul class="benefits-grid" role="list">
-        @for (benefit of emotionalBenefits(); track trackBenefitByEmoji(benefit); let index = $index) {
-          <li class="benefit-card" role="listitem" [style.animation-delay]="(index * 100) + 'ms'">
-            <div class="benefit-emoji" aria-hidden="true">{{ benefit.emoji }}</div>
-            <div class="benefit-text">{{ benefit.text }}</div>
-          </li>
-        }
-      </ul>
-    </div>
-
-    <!-- SAVINGS BREAKDOWN Section -->
+ <!-- SAVINGS BREAKDOWN Section -->
     <div class="breakdown-section">
       <h3 class="section-title">Your Savings Breakdown</h3>
       
@@ -95,6 +80,21 @@
         </div>
       </div>
     </div>
+    <!-- WHAT THIS MEANS Section -->
+    <div class="meaning-section">
+      <h3 class="section-title">What {{ formattedSavings() }} Actually Means:</h3>
+      
+      <ul class="benefits-grid" role="list">
+        @for (benefit of emotionalBenefits(); track trackBenefitByEmoji(benefit); let index = $index) {
+          <li class="benefit-card" role="listitem" [style.animation-delay]="(index * 100) + 'ms'">
+            <div class="benefit-emoji" aria-hidden="true">{{ benefit.emoji }}</div>
+            <div class="benefit-text">{{ benefit.text }}</div>
+          </li>
+        }
+      </ul>
+    </div>
+
+   
 
     <!-- TIME SAVINGS Section -->
     <div class="time-savings-section">
@@ -104,9 +104,9 @@
           <span class="time-number">{{ resultsData().yearsSaved }}</span>
           <span class="time-unit">Years</span>
         </div>
-        <div class="time-months">
-          ({{ resultsData().monthsToPayoff }} months instead of {{ resultsData().monthsToPayoff + (resultsData().yearsSaved * 12 - resultsData().monthsToPayoff) }})
-        </div>
+        <!-- <div class="time-months">
+          ({{ resultsData().monthsToPayoff | number:'1.0-0' }} months instead of {{ (resultsData().monthsToPayoff + (resultsData().yearsSaved * 12 - resultsData().monthsToPayoff)) | number:'1.0-0' }} months)
+        </div> -->
       </div>
     </div>
 

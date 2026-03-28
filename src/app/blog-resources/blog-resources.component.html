@@ -6,7 +6,8 @@
         Mortgage Payoff Blog & Resources
       </h1>
       <p>
-        Discover expert strategies, financial insights, and actionable tips to help you pay off your mortgage early and build wealth faster.
+        Discover expert strategies, financial insights, and actionable tips to help you pay off your mortgage early and
+        build wealth faster.
       </p>
     </div>
   </section>
@@ -36,6 +37,7 @@
 
         <div class="article-content">
           <!-- Using innerHTML for markdown-like content -->
+          <div class="article-content" [innerHTML]="selectedPost.content"></div>
           <ng-container *ngFor="let paragraph of selectedPost.content.split('\n\n')">
             <ng-container *ngIf="paragraph.startsWith('##')">
               <h2 style="font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #333;">
@@ -47,18 +49,26 @@
             </ng-container>
             <ng-container *ngIf="paragraph.startsWith('-')">
               <ul style="margin-left: 2rem; margin-bottom: 1rem;">
-                <!-- <li *ngFor="let item of paragraph.split('\n').filter(l => l.startsWith('-'))" style="margin-bottom: 0.5rem;">
-                  {{ item.substring(1).trim() }}
-                </li> -->
               </ul>
             </ng-container>
           </ng-container>
+          <!-- Try this calculator <a href="/early-mortgage-payoff-calculator" routerLink="/early-mortgage-payoff-calculator">
+            mortgage payoff calculator with extra payments
+          </a> -->
+
+          Try this calculator 
+
+          <a class="strategy-btn" routerLink="/early-mortgage-payoff-calculator" title="{{ selectedPost.anchorTexts }}"
+            style="background: #667eea; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600;">
+            {{ selectedPost.anchorTexts }} →
+          </a>
+
         </div>
 
         <div class="article-footer">
           <h3>Ready to start your mortgage payoff journey?</h3>
           <p>Use our free mortgage payoff calculator to see exactly how much you can save.</p>
-          <button>
+          <button routerLink="/early-mortgage-payoff-calculator">
             Try the Calculator
           </button>
         </div>
@@ -72,55 +82,68 @@
       <section class="strategies-section">
         <h2>Popular Mortgage Payoff Strategies in the U.S.</h2>
         <p class="section-intro">
-          Discover proven strategies that thousands of American homeowners use to accelerate their mortgage payoff and save tens of thousands in interest. Each approach leverages fundamental amortization principles to help you build equity faster.
+          Discover proven strategies that thousands of American homeowners use to accelerate their mortgage payoff and
+          save tens of thousands in interest. Each approach leverages fundamental amortization principles to help you
+          build equity faster.
         </p>
-        
+
         <div class="strategies-grid">
-          
+
           <!-- Internal Link: Early Mortgage Payoff Strategy -->
           <div class="strategy-card">
             <div class="strategy-icon">⚡</div>
             <h3>Pay Off 30-Year Mortgage in 15 Years</h3>
             <p>
-              By making larger principal payments early in your mortgage lifecycle, you can dramatically reduce the total interest paid. This strategy capitalizes on how amortization works—early payments have maximum impact on principal reduction.
+              By making larger principal payments early in your mortgage lifecycle, you can dramatically reduce the
+              total interest paid. This strategy capitalizes on how amortization works—early payments have maximum
+              impact on principal reduction.
             </p>
-            <button class="strategy-btn" routerLink="/payoff-15-years" style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            <button class="strategy-btn" routerLink="/payoff-15-years"
+              style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
               Explore Strategy →
             </button>
           </div>
-          
+
           <!-- Internal Link: Extra Payment Strategy -->
           <div class="strategy-card">
             <div class="strategy-icon">💰</div>
             <h3>1 Extra Payment Per Year Strategy</h3>
             <p>
-              Make one additional monthly payment annually (approximately $1 extra per day) to accelerate payoff. This simple yet powerful approach has helped homeowners save $100,000+ in interest without requiring significant lifestyle changes.
+              Make one additional monthly payment annually (approximately $1 extra per day) to accelerate payoff. This
+              simple yet powerful approach has helped homeowners save $100,000+ in interest without requiring
+              significant lifestyle changes.
             </p>
-            <a class="strategy-btn" routerLink="/early-mortgage-payoff-calculator" style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            <a class="strategy-btn" routerLink="/early-mortgage-payoff-calculator"
+              style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
               Calculate Savings →
             </a>
           </div>
-          
+
           <!-- Internal Link: Biweekly Strategy -->
           <div class="strategy-card">
             <div class="strategy-icon">📅</div>
             <h3>Biweekly vs Monthly Payment Comparison</h3>
             <p>
-              Switching from monthly to biweekly payments (26 half-payments per year) results in one extra full payment annually. This approach aligns with paycheck cycles for many workers and is a passive way to accelerate payoff.
+              Switching from monthly to biweekly payments (26 half-payments per year) results in one extra full payment
+              annually. This approach aligns with paycheck cycles for many workers and is a passive way to accelerate
+              payoff.
             </p>
-            <a class="strategy-btn" routerLink="/biweekly-vs-monthly" style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            <a class="strategy-btn" routerLink="/biweekly-vs-monthly"
+              style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
               Compare Approaches →
             </a>
           </div>
-          
+
           <!-- Internal Link: Refinance vs Payoff -->
           <div class="strategy-card">
             <div class="strategy-icon">🔄</div>
             <h3>Refinance vs Early Payoff Decision</h3>
             <p>
-              Understanding when to refinance versus accelerating payoff depends on current U.S. mortgage rates and your financial situation. Recent rate environments have shifted the optimal strategy for many homeowners.
+              Understanding when to refinance versus accelerating payoff depends on current U.S. mortgage rates and your
+              financial situation. Recent rate environments have shifted the optimal strategy for many homeowners.
             </p>
-            <a class="strategy-btn" routerLink="/refinance-vs-payoff" style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            <a class="strategy-btn" routerLink="/refinance-vs-payoff"
+              style="background: #667eea; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-weight: 600;">
               Compare Strategies →
             </a>
           </div>
@@ -131,9 +154,10 @@
       <section class="comparison-section">
         <h2>Mortgage Payoff Strategy Comparison</h2>
         <p class="section-intro">
-          See how different strategies compare in terms of time savings, interest reduction, and implementation difficulty.
+          See how different strategies compare in terms of time savings, interest reduction, and implementation
+          difficulty.
         </p>
-        
+
         <div class="table-container">
           <table class="comparison-table">
             <thead>
@@ -177,7 +201,8 @@
               </tr>
             </tbody>
           </table>
-          <p class="table-note">*Estimates based on $300,000 mortgage at 6.5% interest rate with 30-year amortization. Your actual savings depend on your loan terms and current U.S. mortgage rates.</p>
+          <p class="table-note">*Estimates based on $300,000 mortgage at 6.5% interest rate with 30-year amortization.
+            Your actual savings depend on your loan terms and current U.S. mortgage rates.</p>
         </div>
       </section>
 
@@ -185,8 +210,7 @@
       <div class="filter-section">
         <h3 class="filter-title">Filter by Category</h3>
         <div class="filter-buttons">
-          <button *ngFor="let cat of categories"
-            (click)="selectedCategory = cat"
+          <button *ngFor="let cat of categories" (click)="selectedCategory = cat"
             [class.active]="selectedCategory === cat">
             {{ cat }}
           </button>
@@ -195,14 +219,11 @@
 
       <!-- BLOG POSTS GRID -->
       <div class="blog-grid">
-        <article *ngFor="let post of filteredPosts"
-          (click)="selectPost(post)"
-          class="blog-card"
-          >
-          
+        <article *ngFor="let post of filteredPosts" (click)="selectPost(post)" class="blog-card">
+
           <div class="blog-card-content">
             <div class="blog-card-icon">{{ post.icon }}</div>
-            
+
             <span class="blog-card-category">
               {{ post.category }}
             </span>
@@ -234,7 +255,8 @@
     <section class="cta-section">
       <h2>Stop Overpaying In Interest</h2>
       <p>
-        Our free early mortgage payoff calculator shows you exactly how much money you can save with extra payments. See your savings potential today.
+        Our free early mortgage payoff calculator shows you exactly how much money you can save with extra payments. See
+        your savings potential today.
       </p>
       <!-- <button style="background: white; color: #667eea; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer; font-weight: 700; font-size: 1rem; transition: transform 0.3s;"
         (mouseenter)="($event.currentTarget as HTMLElement).style.transform = 'scale(1.05)'"
@@ -248,55 +270,62 @@
     <section class="trending-questions-section">
       <h2>Most Searched Mortgage Payoff Questions in 2026</h2>
       <p class="section-intro">
-        Real questions homeowners are asking about accelerating their mortgage payoff and understanding amortization principles.
+        Real questions homeowners are asking about accelerating their mortgage payoff and understanding amortization
+        principles.
       </p>
-      
+
       <div class="questions-grid">
         <div class="question-item">
           <div class="question-number">1</div>
           <h3>How do extra mortgage payments reduce interest?</h3>
           <p>
-            Extra payments go directly to your principal, reducing the amount that accrues interest. Since amortization front-loads interest, early payments have the maximum impact on total interest reduction.
+            Extra payments go directly to your principal, reducing the amount that accrues interest. Since amortization
+            front-loads interest, early payments have the maximum impact on total interest reduction.
           </p>
         </div>
-        
+
         <div class="question-item">
           <div class="question-number">2</div>
           <h3>What's the difference between paying biweekly vs monthly?</h3>
           <p>
-            Biweekly payments (26 per year) equal one extra monthly payment annually. Over a 30-year mortgage, this simple change can save $100,000+ in interest without lifestyle sacrifices.
+            Biweekly payments (26 per year) equal one extra monthly payment annually. Over a 30-year mortgage, this
+            simple change can save $100,000+ in interest without lifestyle sacrifices.
           </p>
         </div>
-        
+
         <div class="question-item">
           <div class="question-number">3</div>
           <h3>Can I pay off my mortgage in 15 years instead of 30?</h3>
           <p>
-            Yes, through consistent extra payments or refinancing. Most homeowners can achieve this goal with an extra $500-$1,000 monthly, though your specific amount depends on your interest rate and original loan term.
+            Yes, through consistent extra payments or refinancing. Most homeowners can achieve this goal with an extra
+            $500-$1,000 monthly, though your specific amount depends on your interest rate and original loan term.
           </p>
         </div>
-        
+
         <div class="question-item">
           <div class="question-number">4</div>
           <h3>How much interest will I actually save with early payoff?</h3>
           <p>
-            On a $300,000 mortgage at current U.S. mortgage rates (typically 5-7%), extra payments can save $100,000-$300,000+ in interest. Use our early mortgage payoff calculator for your specific numbers.
+            On a $300,000 mortgage at current U.S. mortgage rates (typically 5-7%), extra payments can save
+            $100,000-$300,000+ in interest. Use our early mortgage payoff calculator for your specific numbers.
           </p>
         </div>
-        
+
         <div class="question-item">
           <div class="question-number">5</div>
           <h3>What's the best strategy: refinance or extra payments?</h3>
           <p>
-            Refinancing works best if rates drop significantly. Extra payments work best if your current rate is favorable. Compare both strategies using our extra mortgage payment calculator and refinance calculator.
+            Refinancing works best if rates drop significantly. Extra payments work best if your current rate is
+            favorable. Compare both strategies using our extra mortgage payment calculator and refinance calculator.
           </p>
         </div>
-        
+
         <div class="question-item">
           <div class="question-number">6</div>
           <h3>Should I pay down my mortgage or invest the money?</h3>
           <p>
-            This depends on your mortgage rate, investment returns, and risk tolerance. Mortgage payoff guarantees a return equal to your interest rate, while investments offer growth potential but with risk.
+            This depends on your mortgage rate, investment returns, and risk tolerance. Mortgage payoff guarantees a
+            return equal to your interest rate, while investments offer growth potential but with risk.
           </p>
         </div>
       </div>
@@ -306,62 +335,80 @@
   <!-- FAQ SECTION - Trust Building Content with Financial Principles -->
   <section class="faq-section">
     <h2 class="faq-title">Frequently Asked Questions About Mortgage Payoff & Amortization</h2>
-    <p class="faq-intro">Based on real questions from homeowners learning how to pay off their mortgages faster and understanding amortization principles.</p>
-    
+    <p class="faq-intro">Based on real questions from homeowners learning how to pay off their mortgages faster and
+      understanding amortization principles.</p>
+
     <div class="faq-grid">
       <div class="faq-item">
         <h3>How does amortization affect my payoff strategy?</h3>
         <p>
-          Amortization spreads your mortgage payments over 30 years, with earlier payments going mostly toward interest. This is why extra payments made early in your loan (especially in the first 10 years) have the maximum impact on total interest paid. Understanding this principle is crucial for any payoff strategy.
+          Amortization spreads your mortgage payments over 30 years, with earlier payments going mostly toward interest.
+          This is why extra payments made early in your loan (especially in the first 10 years) have the maximum impact
+          on total interest paid. Understanding this principle is crucial for any payoff strategy.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>How much extra payment should I make?</h3>
         <p>
-          Even small amounts help. Try $100 extra per month to start. As your income increases, increase the extra payment. Our early mortgage payoff calculator shows exactly how much you'll save at any amount and how many years you can shave off your amortization schedule.
+          Even small amounts help. Try $100 extra per month to start. As your income increases, increase the extra
+          payment. Our early mortgage payoff calculator shows exactly how much you'll save at any amount and how many
+          years you can shave off your amortization schedule.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>Why do mortgage rates matter for payoff decisions?</h3>
         <p>
-          Current U.S. mortgage rates determine whether payoff or refinancing makes more sense. If you have a 3% rate and rates are now 7%, extra payments are better. If rates dropped significantly, refinancing to a shorter term might be better. Our refinance calculator helps you compare both scenarios.
+          Current U.S. mortgage rates determine whether payoff or refinancing makes more sense. If you have a 3% rate
+          and rates are now 7%, extra payments are better. If rates dropped significantly, refinancing to a shorter term
+          might be better. Our refinance calculator helps you compare both scenarios.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>Will paying off my mortgage early hurt my credit score?</h3>
         <p>
-          No. Paying off debt in full demonstrates financial responsibility. While the account closure might cause a temporary dip, your overall credit profile improves as your debt-to-income ratio decreases. This is a core principle of credit scoring models.
+          No. Paying off debt in full demonstrates financial responsibility. While the account closure might cause a
+          temporary dip, your overall credit profile improves as your debt-to-income ratio decreases. This is a core
+          principle of credit scoring models.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>Are there penalties for early payoff or prepayment?</h3>
         <p>
-          Most mortgages have no prepayment penalty. However, some loans (especially FHA, VA, or USDA loans) may have restrictions. Always check your mortgage documents or contact your lender to confirm before making extra payments beyond your normal schedule.
+          Most mortgages have no prepayment penalty. However, some loans (especially FHA, VA, or USDA loans) may have
+          restrictions. Always check your mortgage documents or contact your lender to confirm before making extra
+          payments beyond your normal schedule.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>Should I pay off my mortgage or invest the money?</h3>
         <p>
-          This fundamental financial decision depends on three factors: your mortgage rate, expected investment returns, and risk tolerance. Mortgage payoff guarantees a return equal to your interest rate (a safe, tax-free return). Investing offers growth potential but involves market risk. Many successful homeowners do both—which is why our calculator helps you visualize both scenarios.
+          This fundamental financial decision depends on three factors: your mortgage rate, expected investment returns,
+          and risk tolerance. Mortgage payoff guarantees a return equal to your interest rate (a safe, tax-free return).
+          Investing offers growth potential but involves market risk. Many successful homeowners do both—which is why
+          our calculator helps you visualize both scenarios.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>How do biweekly payments work mathematically?</h3>
         <p>
-          Biweekly payments split your monthly payment in half and collected every two weeks (26 times per year). This totals 13 monthly payments annually instead of 12, which is why biweekly mortgage savings are so significant—you're making one extra payment each year without changing your lifestyle.
+          Biweekly payments split your monthly payment in half and collected every two weeks (26 times per year). This
+          totals 13 monthly payments annually instead of 12, which is why biweekly mortgage savings are so
+          significant—you're making one extra payment each year without changing your lifestyle.
         </p>
       </div>
 
       <div class="faq-item">
         <h3>What does it mean to refinance, and when should I do it?</h3>
         <p>
-          Refinancing replaces your current mortgage with a new loan, often at a different rate or term. Refinance when rates drop 0.75-1% below your current rate, or when you want to switch from a 30-year to 15-year amortization. Calculate your break-even point using our refinance calculator before applying.
+          Refinancing replaces your current mortgage with a new loan, often at a different rate or term. Refinance when
+          rates drop 0.75-1% below your current rate, or when you want to switch from a 30-year to 15-year amortization.
+          Calculate your break-even point using our refinance calculator before applying.
         </p>
       </div>
     </div>
