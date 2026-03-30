@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SeoService } from '../services/seo.service';
 
 interface BlogPost {
   id: number;
@@ -9,6 +10,7 @@ interface BlogPost {
   content: string;
   category: string;
   anchorTexts: string;
+  link: string;
   readTime: number;
   date: string;
   icon: string;
@@ -22,6 +24,7 @@ interface BlogPost {
   styleUrl: './blog-resources.component.scss',
 })
 export class BlogResourcesComponent implements OnInit {
+  private seoService = inject(SeoService);
   blogPosts: BlogPost[] = [
     {
   id: 18,
@@ -57,7 +60,8 @@ Flexibility is the new strategy.`,
   category: 'Strategy',
   readTime: 5,
   date: '2026-03-23',
-  icon: '📈'
+  icon: '📈',
+  link: '/mortgage-payoff-with-extra-payments'
 },
     {
   id: 17,
@@ -90,7 +94,8 @@ Use a mortgage extra payment calculator to compare both paths before deciding.`,
   category: 'Planning',
   readTime: 5,
   date: '2026-03-22',
-  icon: '⚖️'
+  icon: '⚖️',
+  link: '/refinance-vs-payoff'
 },
     {
   id: 16,
@@ -125,7 +130,8 @@ Consistency beats intensity.`,
   category: 'Strategy',
   readTime: 4,
   date: '2026-03-20',
-  icon: '🏠'
+  icon: '🏠',
+  link: '/mortgage-payoff-with-extra-payments'
 },
     {
   id: 15,
@@ -165,7 +171,8 @@ A mortgage calculator with extra payments shows the full picture — not just yo
   category: 'Education',
   readTime: 5,
   date: '2026-03-18',
-  icon: '💡'
+  icon: '💡',
+  link: '/early-mortgage-payoff-calculator'
 },
     {
   id: 14,
@@ -202,10 +209,11 @@ Without a calculator, you’re just guessing.
 ## Bottom Line
 
 The fastest way to freedom is choosing a strategy AND sticking to it.`,
-  category: 'Strategy',
+  category: 'Biweekly',
   readTime: 5,
   date: '2026-03-16',
-  icon: '🚀'
+  icon: '🚀',
+  link: '/biweekly-vs-monthly'
 },
     {
       id: 13,
@@ -254,7 +262,8 @@ The calculator is only as powerful as how you use it. Use realistic numbers and 
       category: 'Strategy',
       readTime: 6,
       date: '2026-03-16',
-      icon: '⚡'
+      icon: '⚡',
+      link: '/early-mortgage-payoff-calculator'
     },
     {
       id: 12,
@@ -304,7 +313,8 @@ Knowing your payoff amount gives you control. Most people avoid this step — sm
       category: 'Education',
       readTime: 5,
       date: '2026-03-14',
-      icon: '🧮'
+      icon: '🧮',
+      link: '/mortgage-calculator'
     },
     {
       id: 11,
@@ -361,7 +371,8 @@ The difference between doing nothing and adding small extra payments can literal
       category: 'Strategy',
       readTime: 6,
       date: '2026-03-12',
-      icon: '📊'
+      icon: '📊',
+      link: '/mortgage-payoff-with-extra-payments'
     },
     {
       id: 10,
@@ -384,7 +395,8 @@ The earlier you start, the more you save.`,
       category: 'Strategy',
       readTime: 6,
       date: '2026-03-09',
-      icon: '🏠'
+      icon: '🏠',
+      link: '/payoff-15-years'
     },
     {
       id: 9,
@@ -408,7 +420,8 @@ The key is consistency. Start small, automate it, and let time do the work.`,
       category: 'Strategy',
       readTime: 5,
       date: '2026-03-09',
-      icon: '💸'
+      icon: '💸',
+      link: '/mortgage-payoff-with-extra-payments'
     },
     {
       id: 8,
@@ -551,7 +564,8 @@ Don't wait. Your future self is asking you to make this decision today.`,
       category: 'Strategy',
       readTime: 15,
       date: '2026-03-08',
-      icon: '💰'
+      icon: '💰',
+      link: '/early-mortgage-payoff-calculator'
     },
     {
       id: 7,
@@ -611,7 +625,8 @@ You don't need to double your payment. Even small, consistent extra payments can
       category: 'Strategy',
       readTime: 5,
       date: '2026-02-25',
-      icon: '💪'
+      icon: '💪',
+      link: '/mortgage-payoff-with-extra-payments'
     },
     {
       id: 1,
@@ -638,7 +653,8 @@ The key is consistency. Even small extra payments work because of compound inter
       category: 'Strategy',
       readTime: 5,
       date: '2024-02-10',
-      icon: '🚀'
+      icon: '🚀',
+      link: '/payoff-15-years'
     },
     {
       id: 2,
@@ -665,7 +681,8 @@ Our calculator helps you see exactly how much you'll save with mortgage payoff s
       category: 'Planning',
       readTime: 6,
       date: '2024-02-08',
-      icon: '⚖️'
+      icon: '⚖️',
+      link: '/early-mortgage-payoff-calculator'
     },
     {
       id: 3,
@@ -689,7 +706,8 @@ This is why understanding the true cost is motivating. Our calculator shows not 
       category: 'Education',
       readTime: 4,
       date: '2024-02-05',
-      icon: '💸'
+      icon: '💸',
+      link: '/mortgage-calculator'
     },
     {
       id: 4,
@@ -721,7 +739,8 @@ If you get paid bi-weekly, this aligns perfectly with your income, making it eve
       category: 'Strategy',
       readTime: 4,
       date: '2024-01-28',
-      icon: '📅'
+      icon: '📅',
+      link: '/biweekly-vs-monthly'
     },
     {
       id: 5,
@@ -750,7 +769,8 @@ Our calculator focuses on the raw numbers, helping you see the true financial be
       category: 'Education',
       readTime: 5,
       date: '2024-01-20',
-      icon: '📊'
+      icon: '📊',
+      link: '/early-mortgage-payoff-calculator'
     },
     {
       id: 6,
@@ -787,7 +807,8 @@ The key decision: Is saving on interest worth the upfront cost and effort of ref
       category: 'Strategy',
       readTime: 6,
       date: '2024-01-15',
-      icon: '🔄'
+      icon: '🔄',
+      link: '/refinance-calculator'
     }
   ];
 
@@ -795,7 +816,12 @@ The key decision: Is saving on interest worth the upfront cost and effort of ref
   selectedCategory: string = 'All';
 
   ngOnInit(): void {
-    // Initialize component
+    this.seoService.setPageSeo({
+      title: 'Mortgage Payoff Blog — Expert Tips to Save Thousands on Your Home (2026)',
+      description: 'Expert mortgage payoff strategies, calculators, and guides to help US homeowners save thousands in interest and own their home sooner.',
+      url: '/blog-resources',
+      keywords: 'mortgage payoff blog, mortgage tips, pay off mortgage early, mortgage strategies, homeowner financial tips',
+    });
   }
 
   get filteredPosts(): BlogPost[] {

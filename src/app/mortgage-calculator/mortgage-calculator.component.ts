@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
 import { EarlyMortgagePayoffCalculatorComponent } from '../early-mortgage-payoff-calculator/early-mortgage-payoff-calculator.component';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-mortgage-calculator',
@@ -10,20 +10,14 @@ import { EarlyMortgagePayoffCalculatorComponent } from '../early-mortgage-payoff
   styleUrl: './mortgage-calculator.component.scss',
 })
 export class MortgageCalculatorComponent implements OnInit {
-  constructor(private title: Title, private meta: Meta) {}
+  private seoService = inject(SeoService);
 
   ngOnInit(): void {
-    this.title.setTitle('Mortgage Calculator - Calculate Your Monthly Payments | USA');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Free mortgage calculator to estimate your monthly payments, including principal, interest, taxes, and insurance. Get accurate calculations for US mortgages.'
+    this.seoService.setPageSeo({
+      title: 'Mortgage Payment Calculator — Estimate Your Monthly Payment (2026)',
+      description: 'Free mortgage calculator to estimate monthly payments including principal, interest, taxes, insurance & PMI. Accurate calculations for any US mortgage.',
+      url: '/mortgage-calculator',
+      keywords: 'mortgage calculator, monthly mortgage payment calculator, mortgage payment estimator, home loan calculator, PITI calculator',
     });
-    this.meta.addTag({ name: 'canonical', content: '/mortgage-calculator' });
-    this.meta.addTag({ property: 'og:title', content: 'Mortgage Calculator - Calculate Your Monthly Payments' });
-    this.meta.addTag({
-      property: 'og:description',
-      content: 'Estimate your monthly mortgage payments with our free calculator. Includes PMI, taxes, and insurance.'
-    });
-    this.meta.addTag({ property: 'og:type', content: 'website' });
   }
 }

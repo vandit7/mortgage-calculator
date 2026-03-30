@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
 import { EarlyMortgagePayoffCalculatorComponent } from '../early-mortgage-payoff-calculator/early-mortgage-payoff-calculator.component';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-mortgage-payoff-with-extra-payments',
@@ -10,20 +10,14 @@ import { EarlyMortgagePayoffCalculatorComponent } from '../early-mortgage-payoff
   styleUrl: './mortgage-payoff-with-extra-payments.component.scss',
 })
 export class MortgagePayoffWithExtraPaymentsComponent implements OnInit {
-  constructor(private title: Title, private meta: Meta) {}
+  private seoService = inject(SeoService);
 
   ngOnInit(): void {
-    this.title.setTitle('Mortgage Payoff Calculator with Extra Payments USA - Save Thousands on Interest');
-    this.meta.updateTag({
-      name: 'description',
-      content: 'Use our mortgage payoff calculator with extra payments USA to see how making additional payments can save you thousands in interest. Calculate your savings today.'
+    this.seoService.setPageSeo({
+      title: 'Extra Payment Mortgage Calculator — Pay Off Your Home Faster (2026)',
+      description: 'See how extra monthly or one-time payments save you $50K-$200K in mortgage interest and cut years off your loan. Free calculator with instant results.',
+      url: '/mortgage-payoff-with-extra-payments',
+      keywords: 'extra payment mortgage calculator, mortgage payoff with extra payments, additional mortgage payment calculator, pay off mortgage faster',
     });
-    this.meta.addTag({ name: 'canonical', content: '/mortgage-payoff-with-extra-payments' });
-    this.meta.addTag({ property: 'og:title', content: 'Mortgage Payoff Calculator with Extra Payments USA' });
-    this.meta.addTag({
-      property: 'og:description',
-      content: 'Calculate how extra payments on your mortgage can reduce your loan term and save you money on interest in the USA.'
-    });
-    this.meta.addTag({ property: 'og:type', content: 'website' });
   }
 }

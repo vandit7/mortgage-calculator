@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-payoff-15-years',
@@ -10,6 +10,7 @@ import { CommonModule, DecimalPipe } from '@angular/common';
   imports: [CommonModule, DecimalPipe]
 })
 export class Payoff15YearsComponent implements OnInit {
+  private seoService = inject(SeoService);
   
   // Example calculation values
   loanAmount = 300000;
@@ -37,36 +38,18 @@ export class Payoff15YearsComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private titleService: Title,
-    private metaService: Meta
-  ) {}
-
   ngOnInit(): void {
-    // SEO: Set page title and meta description
-    this.titleService.setTitle('Pay Off 30-Year Mortgage in 15 Years | Mortgage Payoff Strategy');
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Learn how to pay off a 30-year mortgage in 15 years with proven strategies. Calculate your savings with detailed examples and actionable steps.'
-    });
-    
-    // SEO: Add canonical URL
-    this.metaService.updateTag({
-      rel: 'canonical',
-      href: 'https://yoursite.com/payoff-15-years'
+    this.seoService.setPageSeo({
+      title: 'Pay Off 30-Year Mortgage in 15 Years — Free Calculator (2026)',
+      description: 'Learn how to pay off a 30-year mortgage in just 15 years. Calculate exact extra payments needed, interest savings of $200K+, and get a step-by-step plan.',
+      url: '/payoff-15-years',
+      keywords: 'pay off 30 year mortgage in 15 years, mortgage payoff strategy, accelerate mortgage payoff, 15 year mortgage payoff plan',
     });
 
-    // SEO: Open Graph tags
-    this.metaService.updateTag({
-      property: 'og:title',
-      content: 'Pay Off 30-Year Mortgage in 15 Years | Expert Strategy Guide'
-    });
-    this.metaService.updateTag({
-      property: 'og:description',
-      content: 'Discover how to accelerate your mortgage payoff and save $200K+ in interest. Detailed strategy with real calculations and expert tips.'
-    });
-
-    // SEO: Add JSON-LD FAQ schema (added directly in HTML template)
+    this.seoService.addFaqSchema(this.faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer,
+    })));
   }
 
   calculatePayoff(principal: number, rate: number, years: number): any {

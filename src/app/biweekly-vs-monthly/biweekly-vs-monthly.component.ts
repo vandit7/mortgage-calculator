@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-biweekly-vs-monthly',
@@ -10,6 +10,7 @@ import { CommonModule, DecimalPipe } from '@angular/common';
   imports: [CommonModule, DecimalPipe]
 })
 export class BiweeklyVsMonthlyComponent implements OnInit {
+  private seoService = inject(SeoService);
 
   // Example values
   loanAmount = 300000;
@@ -76,35 +77,17 @@ export class BiweeklyVsMonthlyComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private titleService: Title,
-    private metaService: Meta
-  ) {}
-
   ngOnInit(): void {
-    // SEO: Set page title and meta description
-    this.titleService.setTitle('Biweekly vs Monthly Mortgage Payments: Savings & Comparison');
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Compare biweekly and monthly mortgage payments. See how biweekly payments save you thousands in interest and cut years off your loan term with detailed calculations.'
+    this.seoService.setPageSeo({
+      title: 'Biweekly vs Monthly Mortgage Payments — Which Saves More? (2026)',
+      description: 'Compare biweekly and monthly mortgage payments side by side. See how biweekly payments save $30,000+ in interest and cut years off your loan term.',
+      url: '/biweekly-vs-monthly',
+      keywords: 'biweekly vs monthly mortgage payments, biweekly mortgage payments, biweekly payment savings, mortgage payment frequency comparison',
     });
 
-    // SEO: Add canonical URL
-    this.metaService.updateTag({
-      rel: 'canonical',
-      href: 'https://yoursite.com/biweekly-vs-monthly'
-    });
-
-    // SEO: Open Graph tags
-    this.metaService.updateTag({
-      property: 'og:title',
-      content: 'Biweekly vs Monthly Mortgage Payments: Complete Comparison'
-    });
-    this.metaService.updateTag({
-      property: 'og:description',
-      content: 'Learn how biweekly mortgage payments save $40,000+ in interest. Complete comparison table and real examples.'
-    });
-
-    // SEO: Add JSON-LD FAQ schema (added directly in HTML template)
+    this.seoService.addFaqSchema(this.faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer,
+    })));
   }
 }

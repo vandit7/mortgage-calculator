@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { Title, Meta } from '@angular/platform-browser';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-refinance-vs-payoff',
@@ -10,6 +10,7 @@ import { CommonModule, DecimalPipe } from '@angular/common';
   imports: [CommonModule, DecimalPipe]
 })
 export class RefinanceVsPayoffComponent implements OnInit {
+  private seoService = inject(SeoService);
 
   // Example scenario
   currentRate = 6.5;
@@ -63,35 +64,17 @@ export class RefinanceVsPayoffComponent implements OnInit {
     }
   ];
 
-  constructor(
-    private titleService: Title,
-    private metaService: Meta
-  ) {}
-
   ngOnInit(): void {
-    // SEO: Set page title and meta description
-    this.titleService.setTitle('Refinance vs Early Mortgage Payoff: Which Strategy Is Better?');
-    this.metaService.updateTag({
-      name: 'description',
-      content: 'Compare refinancing vs early mortgage payoff strategies. Analyze scenarios, calculate break-even points, and make the right decision for 2025 with detailed examples.'
+    this.seoService.setPageSeo({
+      title: 'Refinance vs Early Payoff — Which Strategy Saves You More? (2026)',
+      description: 'Compare refinancing vs paying extra on your mortgage. Analyze real scenarios, calculate break-even points, and find the optimal strategy for your situation.',
+      url: '/refinance-vs-payoff',
+      keywords: 'refinance vs early payoff, should I refinance or pay extra, mortgage refinance comparison, pay off mortgage vs refinance',
     });
 
-    // SEO: Add canonical URL
-    this.metaService.updateTag({
-      rel: 'canonical',
-      href: 'https://yoursite.com/refinance-vs-payoff'
-    });
-
-    // SEO: Open Graph tags
-    this.metaService.updateTag({
-      property: 'og:title',
-      content: 'Refinance vs Early Payoff: 2025 Comparison Guide'
-    });
-    this.metaService.updateTag({
-      property: 'og:description',
-      content: 'Real scenarios comparing refinancing vs extra payments. Calculate your break-even point and make the optimal decision.'
-    });
-
-    // SEO: Add JSON-LD FAQ schema (added directly in HTML template)
+    this.seoService.addFaqSchema(this.faqItems.map(item => ({
+      question: item.question,
+      answer: item.answer,
+    })));
   }
 }

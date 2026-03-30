@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SeoService } from '../services/seo.service';
 
 @Component({
   selector: 'app-legal',
@@ -9,10 +10,13 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./legal.component.scss']
 })
 export class LegalComponent implements OnInit {
-
-  constructor() { }
+  private seoService = inject(SeoService);
 
   ngOnInit(): void {
+    this.seoService.setPageSeo({
+      title: 'Legal — Privacy Policy, Terms of Service & Disclaimer',
+      description: 'Privacy policy, terms of service, and financial disclaimer for Smart Mortgage Payoff calculators and tools.',
+      url: '/legal',
+    });
   }
-
 }

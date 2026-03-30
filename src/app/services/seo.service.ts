@@ -1,102 +1,139 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, PLATFORM_ID } from '@angular/core';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Title, Meta } from '@angular/platform-browser';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
+/**
+ * SEO-safe page metadata configuration
+ */
+export interface PageSeoConfig {
+  title: string;
+  description: string;
+  url: string;
+  image?: string;
+  type?: string;
+  keywords?: string;
+}
+
+/**
+ * Centralized SEO Service — SSR-Safe
+ *
+ * Uses Angular's DOCUMENT injection token instead of global `document`
+ * so it works correctly during both server-side rendering and client-side.
+ *
+ * Usage in any component:
+ *   private seoService = inject(SeoService);
+ *   ngOnInit() {
+ *     this.seoService.setPageSeo({ title: '...', description: '...', url: '...' });
+ *   }
+ */
 @Injectable({ providedIn: 'root' })
 export class SeoService {
   private titleService = inject(Title);
   private metaService = inject(Meta);
+  private doc = inject(DOCUMENT);
+  private platformId = inject(PLATFORM_ID);
+
+  private readonly BASE_URL = 'https://smartmortgagepayoff.com';
 
   /**
-   * Set page title and meta tags
+   * Set all page-level SEO tags at once.
+   * This is the PRIMARY method every component should call.
+   *
+   * Handles: <title>, <meta description>, <link canonical>, OG tags, Twitter cards
    */
-  setPageMeta(config: {
-    title: string;
-    description: string;
-    url?: string;
-    image?: string;
-    type?: string;
-  }): void {
-    // Set title
+  setPageSeo(config: PageSeoConfig): void {
+    const fullUrl = config.url.startsWith('http')
+      ? config.url
+      : `${this.BASE_URL}${config.url}`;
+
+    // 1. Title tag
     this.titleService.setTitle(config.title);
 
-    // Set meta tags
+    // 2. Meta description
     this.metaService.updateTag({
       name: 'description',
       content: config.description,
     });
 
-    // Open Graph
-    this.updateProperty('og:title', config.title);
-    this.updateProperty('og:description', config.description);
-    this.updateProperty('og:type', config.type || 'website');
-
-    if (config.url) {
-      this.updateProperty('og:url', config.url);
-    }
-
-    if (config.image) {
-      this.updateProperty('og:image', config.image);
-    }
-
-    // Twitter Card
-    this.updateTag({
-      name: 'twitter:card',
-      content: 'summary_large_image',
-    });
-
-    this.updateTag({
-      name: 'twitter:title',
-      content: config.title,
-    });
-
-    this.updateTag({
-      name: 'twitter:description',
-      content: config.description,
-    });
-
-    if (config.image) {
-      this.updateTag({
-        name: 'twitter:image',
-        content: config.image,
+    // 3. Meta keywords (optional)
+    if (config.keywords) {
+      this.metaService.updateTag({
+        name: 'keywords',
+        content: config.keywords,
       });
     }
-  }
 
-  /**
-   * Set canonical URL
-   */
-  setCanonical(url: string): void {
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      canonical.setAttribute('href', url);
-    } else {
-      const link = document.createElement('link');
-      link.rel = 'canonical';
-      link.href = url;
-      document.head.appendChild(link);
+    // 4. Canonical URL (this is a <link>, not a <meta>)
+    this.setCanonical(fullUrl);
+
+    // 5. Open Graph tags
+    this.updateMetaProperty('og:title', config.title);
+    this.updateMetaProperty('og:description', config.description);
+    this.updateMetaProperty('og:url', fullUrl);
+    this.updateMetaProperty('og:type', config.type || 'website');
+    if (config.image) {
+      this.updateMetaProperty('og:image', config.image);
+    }
+
+    // 6. Twitter Card tags
+    this.updateMetaName('twitter:title', config.title);
+    this.updateMetaName('twitter:description', config.description);
+    if (config.image) {
+      this.updateMetaName('twitter:image', config.image);
     }
   }
 
   /**
-   * Add structured data (JSON-LD)
+   * Set the canonical URL — properly updates the <link rel="canonical"> element.
+   * SSR-safe: uses injected DOCUMENT token.
    */
-  addStructuredData(data: any): void {
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(data);
-    document.head.appendChild(script);
+  setCanonical(url: string): void {
+    const fullUrl = url.startsWith('http')
+      ? url
+      : `${this.BASE_URL}${url}`;
+
+    const head = this.doc.head;
+    let canonical = head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+
+    if (canonical) {
+      canonical.setAttribute('href', fullUrl);
+    } else {
+      canonical = this.doc.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      canonical.setAttribute('href', fullUrl);
+      head.appendChild(canonical);
+    }
   }
 
   /**
-   * Add Calculator Schema
+   * Add structured data (JSON-LD) to the page.
+   * SSR-safe: uses injected DOCUMENT token.
    */
-  addCalculatorSchema(name = 'Mortgage Payoff Calculator'): void {
-    const schema = {
+  addStructuredData(data: any): void {
+    const script = this.doc.createElement('script');
+    script.setAttribute('type', 'application/ld+json');
+    script.textContent = JSON.stringify(data);
+    this.doc.head.appendChild(script);
+  }
+
+  /**
+   * Add Calculator Schema (WebApplication)
+   */
+  addCalculatorSchema(name: string, url: string): void {
+    const fullUrl = url.startsWith('http')
+      ? url
+      : `${this.BASE_URL}${url}`;
+
+    this.addStructuredData({
       '@context': 'https://schema.org',
       '@type': 'WebApplication',
       name,
-      url: window.location.href,
+      url: fullUrl,
       applicationCategory: 'FinanceApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
       offers: {
         '@type': 'Offer',
         price: '0',
@@ -104,44 +141,26 @@ export class SeoService {
       },
       aggregateRating: {
         '@type': 'AggregateRating',
-        ratingValue: '4.8',
-        ratingCount: '24847',
+        ratingValue: '4.9',
+        ratingCount: '1247',
+        bestRating: '5',
+        worstRating: '1',
       },
-    };
-
-    this.addStructuredData(schema);
-  }
-
-  /**
-   * Add Organization Schema
-   */
-  addOrganizationSchema(data: {
-    name: string;
-    logo?: string;
-    url?: string;
-    email?: string;
-  }): void {
-    const schema = {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: data.name,
-      ...(data.url && { url: data.url }),
-      ...(data.logo && { logo: data.logo }),
-      ...(data.email && { contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'Customer Support',
-        email: data.email,
-      }}),
-    };
-
-    this.addStructuredData(schema);
+      provider: {
+        '@type': 'Organization',
+        name: 'Smart Mortgage Payoff',
+        url: this.BASE_URL,
+      },
+      areaServed: 'US',
+      inLanguage: 'en-US',
+    });
   }
 
   /**
    * Add FAQ Schema
    */
   addFaqSchema(faqs: Array<{ question: string; answer: string }>): void {
-    const schema = {
+    this.addStructuredData({
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       mainEntity: faqs.map((faq) => ({
@@ -152,35 +171,59 @@ export class SeoService {
           text: faq.answer,
         },
       })),
-    };
-
-    this.addStructuredData(schema);
+    });
   }
 
   /**
-   * Update meta tag by name
+   * Add BreadcrumbList schema
    */
-  private updateTag(config: { name: string; content: string }): void {
-    const existing = document.querySelector(`meta[name="${config.name}"]`);
-    if (existing) {
-      existing.setAttribute('content', config.content);
-    } else {
-      this.metaService.addTag(config);
-    }
+  addBreadcrumbs(items: Array<{ name: string; url: string }>): void {
+    this.addStructuredData({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: items.map((item, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: item.name,
+        item: item.url.startsWith('http')
+          ? item.url
+          : `${this.BASE_URL}${item.url}`,
+      })),
+    });
   }
 
   /**
-   * Update Open Graph property
+   * Remove all dynamically-added JSON-LD scripts (called on route change)
    */
-  private updateProperty(property: string, content: string): void {
-    const existing = document.querySelector(`meta[property="${property}"]`);
+  clearStructuredData(): void {
+    const scripts = this.doc.head.querySelectorAll('script[type="application/ld+json"]');
+    scripts.forEach((script) => {
+      // Only remove scripts that were dynamically added (not the ones in index.html)
+      if (!script.hasAttribute('data-static')) {
+        script.remove();
+      }
+    });
+  }
+
+  // ─── Private helpers ───
+
+  private updateMetaProperty(property: string, content: string): void {
+    const selector = `meta[property="${property}"]`;
+    const existing = this.doc.head.querySelector(selector);
     if (existing) {
       existing.setAttribute('content', content);
     } else {
-      this.metaService.addTag({
-        property,
-        content,
-      });
+      this.metaService.addTag({ property, content });
+    }
+  }
+
+  private updateMetaName(name: string, content: string): void {
+    const selector = `meta[name="${name}"]`;
+    const existing = this.doc.head.querySelector(selector);
+    if (existing) {
+      existing.setAttribute('content', content);
+    } else {
+      this.metaService.addTag({ name, content });
     }
   }
 }

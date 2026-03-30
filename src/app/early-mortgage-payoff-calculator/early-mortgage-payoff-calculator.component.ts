@@ -6,6 +6,7 @@ import { CalculationService, CalculatorInputs, ExtraPaymentResult } from '../ser
 import { EmailCapturePopupComponent } from '../components/email-capture-popup/email-capture-popup.component';
 import { ResultsDisplayComponent, ResultsData } from '../components/results-display/results-display.component';
 import { CtaCardsComponent, CTAEvent } from '../components/cta-cards/cta-cards.component';
+import { SeoService } from '../services/seo.service';
 
 // Declare gtag global for analytics
 declare let gtag: Function;
@@ -39,6 +40,7 @@ export class EarlyMortgagePayoffCalculatorComponent {
   private metaService: Meta = inject(Meta);
   private renderer: Renderer2 = inject(Renderer2);
   private sanitizer: DomSanitizer = inject(DomSanitizer);
+  private seoService: SeoService = inject(SeoService);
 
   /* ─────────────────────────────────────────────────────────────── */
   /* INPUT SIGNALS - User Input State */
@@ -164,6 +166,14 @@ export class EarlyMortgagePayoffCalculatorComponent {
   /* ─────────────────────────────────────────────────────────────── */
 
   constructor() {
+    // ──── SEO: Set unique page meta, canonical, and structured data ────
+    this.seoService.setPageSeo({
+      title: 'Early Mortgage Payoff Calculator — Save $50K+ in Interest (2026)',
+      description: 'Free calculator: see how $100-$500/month extra saves $50K-$200K in mortgage interest. Instant results, no signup. Used by 50,000+ homeowners.',
+      url: '/early-mortgage-payoff-calculator',
+      keywords: 'early mortgage payoff calculator, mortgage calculator, pay off mortgage early, extra mortgage payment calculator, mortgage payoff, mortgage interest savings',
+    });
+
     // Calculate mortgage on input changes
     effect(() => {
       // These reads create dependencies
@@ -362,67 +372,31 @@ export class EarlyMortgagePayoffCalculatorComponent {
    * Inject FAQ schema into document head for SEO
    */
   private injectFaqSchema(): void {
-    const faqSchema = {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      'mainEntity': [
-        {
-          '@type': 'Question',
-          'name': 'Is it smart to pay off a mortgage early?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Paying off a mortgage early can be smart if you have a high interest rate (6%+), have stable income, and have an emergency fund. It guarantees a return equal to your mortgage rate and reduces psychological stress. However, if rates are low (under 4%) and you have better investment returns elsewhere, investing might be optimal.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'How much interest can I save with extra payments?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Interest savings depend on loan amount, rate, and extra payment frequency. On a $300,000 mortgage at 6.5%, adding just $200/month extra can save $60,000+ in interest and pay off the loan 7+ years earlier. Use our calculator to see exact savings for your situation.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'Is paying biweekly better than monthly?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Paying biweekly (every two weeks) can be beneficial because you make 26 payments per year instead of 12 monthly payments, which equals 13 months of payments annually. This results in one extra full payment per year going directly to principal, typically saving $30,000+ in interest over the loan term.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'Should I invest instead of paying off my mortgage early?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'This depends on your mortgage rate versus potential investment returns. If your mortgage rate is 3-4% and stock market returns average 8%+, investing may be better. However, paying off a mortgage is lower risk, guaranteed returns, and provides peace of mind. Many people benefit from a balanced approach: pay extra when rates are high and invest when rates are low.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'Does paying off a mortgage early hurt credit?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Paying off a mortgage early does not hurt your credit score. In fact, it demonstrates responsible financial management. Your score may temporarily dip slightly when the account closes, but this is minor and temporary. The long-term benefit of being debt-free far outweighs any temporary score fluctuation.'
-          }
-        },
-        {
-          '@type': 'Question',
-          'name': 'Can I pay off my mortgage early without penalty?',
-          'acceptedAnswer': {
-            '@type': 'Answer',
-            'text': 'Most mortgages in the US have no prepayment penalties, meaning you can pay extra or pay off the loan early without fees. However, some loans (particularly those with adjustable rates or from certain lenders) may have prepayment penalties. Check your mortgage documents or contact your lender to confirm you have no prepayment restrictions.'
-          }
-        }
-      ]
-    };
-
-    // Create script element
-    const script = this.renderer.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(faqSchema);
-    
-    // Append to head
-    this.renderer.appendChild(document.head, script);
+    this.seoService.addFaqSchema([
+      {
+        question: 'Is it smart to pay off a mortgage early?',
+        answer: 'Paying off a mortgage early can be smart if you have a high interest rate (6%+), have stable income, and have an emergency fund. It guarantees a return equal to your mortgage rate and reduces psychological stress. However, if rates are low (under 4%) and you have better investment returns elsewhere, investing might be optimal.',
+      },
+      {
+        question: 'How much interest can I save with extra payments?',
+        answer: 'Interest savings depend on loan amount, rate, and extra payment frequency. On a $300,000 mortgage at 6.5%, adding just $200/month extra can save $60,000+ in interest and pay off the loan 7+ years earlier. Use our calculator to see exact savings for your situation.',
+      },
+      {
+        question: 'Is paying biweekly better than monthly?',
+        answer: 'Paying biweekly (every two weeks) can be beneficial because you make 26 payments per year instead of 12 monthly payments, which equals 13 months of payments annually. This results in one extra full payment per year going directly to principal, typically saving $30,000+ in interest over the loan term.',
+      },
+      {
+        question: 'Should I invest instead of paying off my mortgage early?',
+        answer: 'This depends on your mortgage rate versus potential investment returns. If your mortgage rate is 3-4% and stock market returns average 8%+, investing may be better. However, paying off a mortgage is lower risk, guaranteed returns, and provides peace of mind. Many people benefit from a balanced approach: pay extra when rates are high and invest when rates are low.',
+      },
+      {
+        question: 'Does paying off a mortgage early hurt credit?',
+        answer: 'Paying off a mortgage early does not hurt your credit score. In fact, it demonstrates responsible financial management. Your score may temporarily dip slightly when the account closes, but this is minor and temporary. The long-term benefit of being debt-free far outweighs any temporary score fluctuation.',
+      },
+      {
+        question: 'Can I pay off my mortgage early without penalty?',
+        answer: 'Most mortgages in the US have no prepayment penalties, meaning you can pay extra or pay off the loan early without fees. However, some loans (particularly those with adjustable rates or from certain lenders) may have prepayment penalties. Check your mortgage documents or contact your lender to confirm you have no prepayment restrictions.',
+      },
+    ]);
   }
 }

@@ -36,30 +36,26 @@
         </div>
 
         <div class="article-content">
-          <!-- Using innerHTML for markdown-like content -->
-          <div class="article-content" [innerHTML]="selectedPost.content"></div>
           <ng-container *ngFor="let paragraph of selectedPost.content.split('\n\n')">
-            <ng-container *ngIf="paragraph.startsWith('##')">
+            <ng-container *ngIf="paragraph.startsWith('## ')">
               <h2 style="font-size: 1.5rem; margin-top: 2rem; margin-bottom: 1rem; color: #333;">
-                {{ paragraph.substring(2).trim() }}
+                {{ paragraph.substring(3).trim() }}
               </h2>
             </ng-container>
-            <ng-container *ngIf="!paragraph.startsWith('##') && !paragraph.startsWith('-')">
+            <ng-container *ngIf="!paragraph.startsWith('## ') && !paragraph.startsWith('- ')">
               <p style="margin-bottom: 1rem;">{{ paragraph }}</p>
             </ng-container>
-            <ng-container *ngIf="paragraph.startsWith('-')">
+            <ng-container *ngIf="paragraph.startsWith('- ')">
               <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+                <li>{{ paragraph.substring(2).trim() }}</li>
               </ul>
             </ng-container>
           </ng-container>
-          <!-- Try this calculator <a href="/early-mortgage-payoff-calculator" routerLink="/early-mortgage-payoff-calculator">
-            mortgage payoff calculator with extra payments
-          </a> -->
 
-          Try this calculator 
+          <p style="margin-top:2rem"><strong>Try this calculator</strong></p>
 
-          <a class="strategy-btn" routerLink="/early-mortgage-payoff-calculator" title="{{ selectedPost.anchorTexts }}"
-            style="background: #667eea; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600;">
+          <a class="strategy-btn" [routerLink]="selectedPost.link" [title]="selectedPost.anchorTexts"
+            style="display: inline-block; margin-top: 1rem; background: #667eea; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">
             {{ selectedPost.anchorTexts }} →
           </a>
 
