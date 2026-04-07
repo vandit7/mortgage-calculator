@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed, effect, ChangeDetectionStrategy, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, inject, signal, computed, effect, ChangeDetectionStrategy, ViewChild, ElementRef, Renderer2, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Title, Meta, DomSanitizer } from '@angular/platform-browser';
@@ -34,7 +34,9 @@ interface CalculatorState {
   styleUrl: './early-mortgage-payoff-calculator.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EarlyMortgagePayoffCalculatorComponent {
+export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
+  @Input() isChildComponent = false;
+
   public calculationService: CalculationService = inject(CalculationService);
   private titleService: Title = inject(Title);
   private metaService: Meta = inject(Meta);
@@ -166,14 +168,6 @@ export class EarlyMortgagePayoffCalculatorComponent {
   /* ─────────────────────────────────────────────────────────────── */
 
   constructor() {
-    // ──── SEO: Set unique page meta, canonical, and structured data ────
-    this.seoService.setPageSeo({
-      title: 'Early Mortgage Payoff Calculator — Save $50K+ in Interest (2026)',
-      description: 'Free calculator: see how $100-$500/month extra saves $50K-$200K in mortgage interest. Instant results, no signup. Used by 50,000+ homeowners.',
-      url: '/early-mortgage-payoff-calculator',
-      keywords: 'early mortgage payoff calculator, mortgage calculator, pay off mortgage early, extra mortgage payment calculator, mortgage payoff, mortgage interest savings',
-    });
-
     // Calculate mortgage on input changes
     effect(() => {
       // These reads create dependencies
@@ -224,8 +218,21 @@ export class EarlyMortgagePayoffCalculatorComponent {
       }
     });
 
-    // Inject FAQ schema for SEO
-    this.injectFaqSchema();
+  }
+
+  ngOnInit(): void {
+    if (!this.isChildComponent) {
+      // ──── SEO: Set unique page meta, canonical, and structured data ────
+      this.seoService.setPageSeo({
+        title: 'Early Mortgage Payoff Calculator — Save $50K+ in Interest (2026)',
+        description: 'Free calculator: see how $100-$500/month extra saves $50K-$200K in mortgage interest. Instant results, no signup. Used by 50,000+ homeowners.',
+        url: '/early-mortgage-payoff-calculator',
+        keywords: 'early mortgage payoff calculator, mortgage calculator, pay off mortgage early, extra mortgage payment calculator, mortgage payoff, mortgage interest savings',
+      });
+
+      // Inject FAQ schema for SEO
+      this.injectFaqSchema();
+    }
   }
 
   /**
