@@ -22,6 +22,8 @@ interface CalculatorState {
   oneTimePayment: number;
 }
 
+import { RouterLink } from '@angular/router';
+
 @Component({
   selector: 'app-early-mortgage-payoff-calculator',
   standalone: true,
@@ -29,6 +31,7 @@ interface CalculatorState {
     CommonModule,
     FormsModule,
     ResultsDisplayComponent,
+    RouterLink,
   ],
   templateUrl: './early-mortgage-payoff-calculator.component.html',
   styleUrl: './early-mortgage-payoff-calculator.component.scss',
@@ -224,8 +227,8 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
     if (!this.isChildComponent) {
       // ──── SEO: Set unique page meta, canonical, and structured data ────
       this.seoService.setPageSeo({
-        title: 'Early Mortgage Payoff Calculator — Save $50K+ in Interest (2026)',
-        description: 'Free calculator: see how $100-$500/month extra saves $50K-$200K in mortgage interest. Instant results, no signup. Used by 50,000+ homeowners.',
+        title: 'Early Mortgage Payoff Calculator [2026] — Save $100K+ in Interest',
+        description: 'Free early mortgage payoff calculator. See how $100-$500 extra/month saves $100K-$250K in interest and cuts years off your loan. Trusted by 50K+ homeowners.',
         url: '/early-mortgage-payoff-calculator',
         keywords: 'early mortgage payoff calculator, mortgage calculator, pay off mortgage early, extra mortgage payment calculator, mortgage payoff, mortgage interest savings',
       });

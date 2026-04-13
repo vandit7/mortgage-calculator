@@ -1,18 +1,53 @@
 <div class="container">
+  <div class="hero-section">
+    <h1>Mortgage Payment Calculator</h1>
+    <p class="lead">Planning to buy a home in 2026? Use our accurate mortgage estimator to calculate your total monthly PITI payment including taxes and insurance.</p>
+  </div>
+
   <div class="intro">
-    <p>Calculate your monthly mortgage payments with our comprehensive mortgage calculator. This tool helps you estimate your principal and interest payments, plus additional costs like property taxes and homeowners insurance.</p>
-    <p>Enter your home price, down payment, interest rate, and loan term to get an accurate breakdown of your monthly mortgage costs.</p>
+    <p>Calculate your monthly mortgage payments with our comprehensive mortgage calculator. This tool helps you estimate your principal and interest payments, plus additional costs like property taxes and homeowners insurance. Knowing your total monthly commitment is the first step toward responsible homeownership.</p>
+    <p>Enter your home price, down payment, interest rate, and loan term to get an accurate breakdown of your monthly mortgage costs. Our calculator also accounts for PMI (Private Mortgage Insurance) if your down payment is less than 20%.</p>
   </div>
 
   <app-early-mortgage-payoff-calculator [isChildComponent]="true"></app-early-mortgage-payoff-calculator>
 
-  <div class="explanation">
-    <h2>Understanding Your Mortgage Payment</h2>
-    <p>Your monthly mortgage payment typically includes principal, interest, property taxes, and homeowners insurance (often referred to as PITI). Our calculator provides a complete breakdown of these costs.</p>
-    <p>The principal portion goes toward reducing your loan balance, while interest is the cost of borrowing money. Property taxes and insurance are escrowed items that your lender collects monthly.</p>
+  <div class="educational-content">
+    <section class="explanation">
+      <h2>Understanding Your Mortgage Payment (PITI)</h2>
+      <p>Your monthly mortgage payment is more than just paying back the money you borrowed. Most homeowners pay what is called <strong>PITI</strong>, which stands for:</p>
+      
+      <ul class="piti-list">
+        <li><strong>Principal:</strong> The portion of your payment that actively reduces the loan balance.</li>
+        <li><strong>Interest:</strong> The fee charged by the lender for borrowing the money.</li>
+        <li><strong>Taxes:</strong> Real estate property taxes required by your local government.</li>
+        <li><strong>Insurance:</strong> Homeowners insurance to protect against damage and liability.</li>
+      </ul>
+
+      <div class="tip-box">
+        <strong>🔍 What about PMI?</strong> If you put down less than 20%, you'll likely pay Private Mortgage Insurance. Our calculator automatically estimates this at ~0.5% of your loan amount per year.
+      </div>
+    </section>
+
+    <section class="faq-standard">
+      <h2>Mortgage Calculator FAQ</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>How do I calculate my mortgage manually?</h4>
+          <p>The formula is M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1 ], where P is principal, i is monthly interest rate, and n is number of months. Or, just use our free tool!</p>
+        </div>
+        <div class="faq-item">
+          <h4>What is a good down payment?</h4>
+          <p>While 20% is the gold standard (to avoid PMI), many first-time buyers use FHA loans with as little as 3.5% down or conventional loans with 3-5% down.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Does the calculator include HOA fees?</h4>
+          <p>Currently, this tool focuses on PITI. If you have HOA fees, you should add them to the "New Total" shown in the results for a complete picture.</p>
+        </div>
+      </div>
+    </section>
   </div>
 
   <div class="internal-links">
-    <p>Explore more calculators: <a href="/early-mortgage-payoff-calculator">Early Mortgage Payoff Calculator</a> <a href="/mortgage-payoff-with-extra-payments">Mortgage Payoff with Extra Payments</a> <a href="/refinance-calculator">Mortgage Refinance Calculator</a></p>
+    <p>Explore more mortgage tools: <a href="/early-mortgage-payoff-calculator">Early Mortgage Payoff Calculator</a> · <a href="/mortgage-payoff-with-extra-payments">Extra Payment Calculator</a> · <a href="/refinance-calculator">Refinance Calculator</a></p>
   </div>
 </div>

@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { SeoService } from '../services/seo.service';
 
+
 @Component({
   selector: 'app-payoff-15-years',
   templateUrl: './payoff-15-years.component.html',
@@ -11,7 +12,7 @@ import { SeoService } from '../services/seo.service';
 })
 export class Payoff15YearsComponent implements OnInit {
   private seoService = inject(SeoService);
-  
+
   // Example calculation values
   loanAmount = 300000;
   interestRate = 6.5;
@@ -22,7 +23,7 @@ export class Payoff15YearsComponent implements OnInit {
   standardInterestTotal = 382632;
   acceleratedInterestTotal = 141498;
   interestSaved = 241134;
-  
+
   faqItems = [
     {
       question: 'How much extra do I need to pay monthly to pay off a 30-year mortgage in 15 years?',
@@ -40,8 +41,8 @@ export class Payoff15YearsComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Pay Off 30-Year Mortgage in 15 Years — Free Calculator (2026)',
-      description: 'Learn how to pay off a 30-year mortgage in just 15 years. Calculate exact extra payments needed, interest savings of $200K+, and get a step-by-step plan.',
+      title: 'Mortgage Payoff Strategy: How to Turn a 30-Year into a 15-Year',
+      description: 'Learn exactly how to pay off a 30-year mortgage in 15 years. Free calculator, interest savings table ($241K+), and step-by-step strategy for US homeowners.',
       url: '/payoff-15-years',
       keywords: 'pay off 30 year mortgage in 15 years, mortgage payoff strategy, accelerate mortgage payoff, 15 year mortgage payoff plan',
     });
@@ -55,10 +56,10 @@ export class Payoff15YearsComponent implements OnInit {
   calculatePayoff(principal: number, rate: number, years: number): any {
     const monthlyRate = rate / 100 / 12;
     const numberOfPayments = years * 12;
-    const monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) 
+    const monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments))
       / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
     const totalInterest = (monthlyPayment * numberOfPayments) - principal;
-    
+
     return {
       monthlyPayment: monthlyPayment.toFixed(2),
       totalInterest: totalInterest.toFixed(2)

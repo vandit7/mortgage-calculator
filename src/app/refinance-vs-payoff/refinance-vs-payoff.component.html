@@ -287,22 +287,27 @@
       <h2>Different Rate Scenarios</h2>
       <p>How should your decision change based on available refinance rates?</p>
       
-      <div class="scenarios-grid">
-        <div *ngFor="let scenario of comparisonScenarios" class="scenario-box">
-          <h3>{{ scenario.scenario }}</h3>
-          <p class="scenario-desc">{{ scenario.description }}</p>
-          <div class="scenario-content">
-            <div class="metric">
-              <span>Estimated Monthly:</span>
-              <strong>{{ scenario.monthly }}</strong>
-            </div>
-            <div class="metric">
-              <span>Potential Savings:</span>
-              <strong>{{ scenario.savings }}</strong>
-            </div>
-          </div>
-          <p class="recommendation"><strong>📌 Recommendation:</strong> {{ scenario.recommendation }}</p>
-        </div>
+      <div class="table-wrapper">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th>Market Scenario</th>
+              <th>Rate Change</th>
+              <th>Monthly Impact</th>
+              <th>Total Savings</th>
+              <th>Recommendation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let scenario of comparisonScenarios">
+              <td><strong>{{ scenario.scenario }}</strong></td>
+              <td>{{ scenario.description }}</td>
+              <td>{{ scenario.monthly }}</td>
+              <td class="highlight-value">{{ scenario.savings }}</td>
+              <td class="recommendation-cell">✅ {{ scenario.recommendation }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
@@ -380,36 +385,3 @@
     </section>
   </main>
 </div>
-
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is refinancing worth it in 2025?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Refinancing is worth it only if rates have dropped significantly (typically 0.75-1% below your current rate) and you plan to stay in the home long enough to recoup closing costs. Compare your break-even point against expected time in home. Always calculate the math for your specific situation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does refinancing reset my loan term?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, refinancing typically resets your loan to a new 15, 20, or 30-year term. However, you can refinance from a 30-year to a 20-year or 15-year to accelerate payoff. Always specify your desired term when refinancing."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Should I invest instead of paying off my mortgage?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "This depends on three factors: your mortgage rate, expected investment returns, and risk tolerance. A 6.5% guaranteed return from mortgage payoff is stable, while stock market historically returns 10% but with volatility. Many people do both - pay extra mortgage principal and invest the remainder."
-      }
-    }
-  ]
-}
-</script>

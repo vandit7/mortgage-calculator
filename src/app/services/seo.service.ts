@@ -34,8 +34,18 @@ export class SeoService {
   private metaService = inject(Meta);
   private doc = inject(DOCUMENT);
   private platformId = inject(PLATFORM_ID);
+  private router = inject(Router);
 
   private readonly BASE_URL = 'https://smartmortgagepayoff.com';
+
+  constructor() {
+    // Automatically clear dynamic structured data on every route change
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.clearStructuredData();
+    });
+  }
 
   /**
    * Set all page-level SEO tags at once.

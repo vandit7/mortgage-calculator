@@ -2,6 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { SeoService } from '../services/seo.service';
 
+
 @Component({
   selector: 'app-biweekly-vs-monthly',
   templateUrl: './biweekly-vs-monthly.component.html',
@@ -57,8 +58,13 @@ export class BiweeklyVsMonthlyComponent implements OnInit {
     },
     {
       metric: 'Difficulty Level',
-      monthly: 'Easy',
-      biweekly: 'Moderate'
+      monthly: 'Easy (Default)',
+      biweekly: 'Moderate (Setup req.)'
+    },
+    {
+      metric: 'Lender Support',
+      monthly: '100% (All Lenders)',
+      biweekly: 'Standard (Most Lenders)'
     }
   ];
 
@@ -79,8 +85,8 @@ export class BiweeklyVsMonthlyComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Biweekly vs Monthly Mortgage Payments — Which Saves More? (2026)',
-      description: 'Compare biweekly and monthly mortgage payments side by side. See how biweekly payments save $30,000+ in interest and cut years off your loan term.',
+      title: 'Biweekly vs Monthly Mortgage [Calculator] — Save 3-5 Years Early',
+      description: 'Side-by-side comparison: Biweekly vs Monthly payments. Learn how one extra payment per year saves $40,000+ in interest. [2026 Strategy Guide]',
       url: '/biweekly-vs-monthly',
       keywords: 'biweekly vs monthly mortgage payments, biweekly mortgage payments, biweekly payment savings, mortgage payment frequency comparison',
     });

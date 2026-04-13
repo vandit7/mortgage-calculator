@@ -1,228 +1,238 @@
-/* Corporate/Enterprise Level Styling */
 .container {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 1.6;
-  color: #333;
+  padding: 40px 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #1e293b;
 }
 
 /* Hero Section */
-h1 {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #1a365d;
+.hero-section {
   text-align: center;
-  margin-bottom: 2rem;
-  background: linear-gradient(135deg, #0b5cff 0%, #2b90ff 50%, #60a5fa 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: fadeInUp 1s ease-out;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Intro Section */
-.intro {
-  background: linear-gradient(135deg, #f5f7fa 0%, #e6eef8 100%);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
-  margin-bottom: 2rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.intro::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-  pointer-events: none;
-}
-
-.intro p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  color: #4a5568;
-  position: relative;
-  z-index: 1;
-}
-
-.intro p:first-child {
-  font-weight: 600;
-  color: #2d3748;
-}
-
-/* Calculator Section */
-app-early-mortgage-payoff-calculator {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(17, 24, 39, 0.06);
-  margin-bottom: 2rem;
-  border: 1px solid #e6eef8;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-}
-
-app-early-mortgage-payoff-calculator:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 38px rgba(17, 24, 39, 0.08);
-}
-
-/* Explanation Section */
-.explanation {
-  background: linear-gradient(135deg, #0b5cff 0%, #2b90ff 50%, #60a5fa 100%);
-  color: white;
-  padding: 3rem;
-  border-radius: 15px;
-  margin-bottom: 3rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.explanation::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.explanation h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-}
-
-.explanation p {
-  font-size: 1.1rem;
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 1;
-  opacity: 0.95;
-}
-
-/* FAQ Section */
-.faq {
-  background: #f8fafc;
-  padding: 3rem;
-  border-radius: 15px;
-  margin-bottom: 3rem;
-}
-
-.faq h2 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #1a365d;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.faq-item {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  border-left: 5px solid #667eea;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.faq-item:hover {
-  transform: translateX(10px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-}
-
-.faq-item h3 {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #2d3748;
-  margin-bottom: 1rem;
-}
-
-.faq-item p {
-  color: #4a5568;
-  font-size: 1rem;
-}
-
-/* Internal Links */
-.internal-links {
-  background: linear-gradient(135deg,#0b5cff 0%,#60a5fa 100%);
-  color: white;
-  padding: 2rem;
-  border-radius: 15px;
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.internal-links p {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.internal-links a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  margin: 0 1rem;
-  transition: color 0.3s ease;
-}
-
-.internal-links a:hover {
-  color: #90cdf4;
-  text-decoration: underline;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
-
+  margin-bottom: 4rem;
+  
   h1 {
-    font-size: 2rem;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #0b5cff 0%, #60a5fa 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.02em;
   }
 
-  .intro, .explanation, .faq {
-    padding: 2rem;
-  }
-
-  .explanation h2, .faq h2 {
-    font-size: 2rem;
-  }
-
-  app-early-mortgage-payoff-calculator {
-    padding: 1rem;
-  }
-
-  .internal-links a {
-    display: block;
-    margin: 0.5rem 0;
+  .lead {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
 }
+
+/* Impact Section & Table */
+.impact-section {
+  background: white;
+  padding: 3rem;
+  border-radius: 32px;
+  margin-bottom: 4rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f1f5f9;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #0f172a;
+  }
+
+  p {
+    text-align: center;
+    color: #64748b;
+    margin-bottom: 2.5rem;
+  }
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+
+  th {
+    background: #f8fafc;
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  td {
+    padding: 1.5rem;
+    border-top: 1px solid #f1f5f9;
+    color: #1e293b;
+    font-size: 1.1rem;
+
+    strong {
+      color: #0b5cff;
+      font-weight: 700;
+    }
+  }
+
+  tr:hover td {
+    background: #f8fafc;
+  }
+}
+
+/* Educational Content */
+.educational-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  margin-top: 4rem;
+}
+
+/* Scenarios */
+.scenarios {
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+
+  .scenario-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .scenario-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 24px;
+    border: 1px solid #f1f5f9;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    h4 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0b5cff;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      color: #475569;
+      line-height: 1.6;
+      font-size: 1.05rem;
+
+      strong {
+        color: #0f172a;
+      }
+    }
+  }
+}
+
+.explanation {
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #0f172a;
+  }
+
+  p {
+    font-size: 1.125rem;
+    line-height: 1.8;
+    color: #475569;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.warning-box {
+  background: #fffbeb;
+  border-left: 6px solid #f59e0b;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  color: #92400e;
+  font-size: 1.1rem;
+  margin: 2rem 0;
+}
+
+.faq {
+  h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    color: #0f172a;
+  }
+
+  .faq-item {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 1.5rem;
+    border: 1px solid #e2e8f0;
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: #0f172a;
+    }
+
+    p {
+      color: #64748b;
+      line-height: 1.6;
+    }
+  }
+}
+
+.internal-links {
+  margin-top: 4rem;
+  padding: 2.5rem;
+  background: #f8fafc;
+  border-radius: 24px;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+
+  a {
+    color: #0b5cff;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 0.5rem;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2.25rem;
+  }
+  
+  .scenario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .impact-section {
+    padding: 1.5rem;
+  }
+}

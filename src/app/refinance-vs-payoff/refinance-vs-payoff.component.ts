@@ -66,8 +66,8 @@ export class RefinanceVsPayoffComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Refinance vs Early Payoff — Which Strategy Saves You More? (2026)',
-      description: 'Compare refinancing vs paying extra on your mortgage. Analyze real scenarios, calculate break-even points, and find the optimal strategy for your situation.',
+      title: 'Refinance vs Early Payoff: The "Hidden" Math to Save $200K+',
+      description: 'Compare refinancing vs paying extra on your mortgage. Analyze 3 real scenarios, calculate break-even points, and find your optimal savings strategy. [2026 Edition]',
       url: '/refinance-vs-payoff',
       keywords: 'refinance vs early payoff, should I refinance or pay extra, mortgage refinance comparison, pay off mortgage vs refinance',
     });

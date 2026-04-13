@@ -1,17 +1,108 @@
 <div class="container">
-  <h1>Mortgage Refinance Calculator</h1>
-
-  <div class="intro">
-    <p>Considering refinancing your mortgage? Our refinance calculator helps you compare your current mortgage with potential new loan terms to see if refinancing makes financial sense.</p>
-    <p>Enter your current loan details and proposed new terms to calculate potential savings, new monthly payments, and break-even points.</p>
+  <div class="hero-section">
+    <h1>Mortgage Refinance Calculator</h1>
+    <p class="lead">Is it time to lock in a lower rate? Our 2026 refinance calculator helps you visualize the exact impact of new loan terms on your monthly budget.</p>
   </div>
+
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="icon">📉</div>
+      <h3>Lower Your Rate</h3>
+      <p>Calculate how much a 0.5% or 1% drop in interest rates reduces your monthly PITI payment.</p>
+    </div>
+    <div class="intro-card">
+      <div class="icon">⏱️</div>
+      <h3>Break-Even Point</h3>
+      <p>Estimate when your monthly savings will officially outweigh the closing costs of the new loan.</p>
+    </div>
+    <div class="intro-card">
+      <div class="icon">📅</div>
+      <h3>Shorten Your Term</h3>
+      <p>See if moving from a 30-year to a 15-year mortgage makes sense for your long-term wealth.</p>
+    </div>
+  </div>
+
+  <!-- REFINANCE IMPACT TABLE -->
+  <section class="impact-section">
+    <h2>Impact of Lowering Your Rate ($400k Loan)</h2>
+    <p>See how much you could save every month by refinancing to a lower interest rate.</p>
+    
+    <div class="table-wrapper">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Current Rate</th>
+            <th>New Rate</th>
+            <th>Monthly Savings</th>
+            <th>Annual Savings</th>
+            <th>5-Year Impact</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>7.5%</td>
+            <td><strong>6.5%</strong></td>
+            <td>$268</td>
+            <td>$3,216</td>
+            <td>$16,080</td>
+          </tr>
+          <tr>
+            <td>7.0%</td>
+            <td><strong>6.0%</strong></td>
+            <td>$254</td>
+            <td>$3,048</td>
+            <td>$15,240</td>
+          </tr>
+          <tr>
+            <td>6.5%</td>
+            <td><strong>5.5%</strong></td>
+            <td>$241</td>
+            <td>$2,892</td>
+            <td>$14,460</td>
+          </tr>
+          <tr>
+            <td>6.0%</td>
+            <td><strong>5.0%</strong></td>
+            <td>$229</td>
+            <td>$2,748</td>
+            <td>$13,740</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
 
   <app-early-mortgage-payoff-calculator [isChildComponent]="true"></app-early-mortgage-payoff-calculator>
 
-  <div class="explanation">
-    <h2>When Should You Refinance?</h2>
-    <p>Refinancing can make sense when interest rates drop significantly, allowing you to lower your monthly payments or shorten your loan term. However, consider closing costs and how long you'll stay in the home.</p>
-    <p>Our calculator helps you model different scenarios to determine if the savings from a lower rate outweigh the costs of refinancing.</p>
-  </div>
+  <div class="educational-content">
+    <section class="explanation">
+      <h2>When Should You Refinance?</h2>
+      <p>Refinancing generally makes sense when you can lower your interest rate by at least 0.75% to 1%. This "rule of thumb" helps ensure that the monthly savings are significant enough to justify the closing costs, which typically range from 2% to 5% of the loan amount.</p>
+      
+      <div class="tip-box">
+        <strong>💡 Pro Tip:</strong> If you plan to stay in your home for more than 5 years, even a 0.5% rate drop can result in massive long-term savings.
+      </div>
 
+      <h3>The "Break-Even" Calculation</h3>
+      <p>Your break-even point is the number of months it takes for your monthly savings to cover the cost of the refinance. For example, if your closing costs are $5,000 and you save $200 per month, your break-even point is 25 months. If you plan to sell the home before that, refinancing might actually lose you money.</p>
+    </section>
+
+    <section class="faq-refinance">
+      <h2>Refinance FAQ</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>How much does it cost to refinance?</h4>
+          <p>Expect to pay between 2% and 5% of your total loan balance in closing costs, which includes appraisal fees, title insurance, and origination fees.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Does refinancing hurt my credit score?</h4>
+          <p>A refinance involves a "hard inquiry," which may cause a temporary dip of a few points. However, consistently making payments on a more affordable loan will help your score in the long run.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Can I refinance with bad credit?</h4>
+          <p>Yes, though you may not get the best rates. Some government-backed programs like FHA Streamline Refinance have more flexible credit requirements.</p>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>

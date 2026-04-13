@@ -1,3 +1,4 @@
+@if (!isChildComponent) {
 <div class="premium-header">
   <div class="header-content">
 
@@ -24,6 +25,7 @@
 
   </div>
 </div>
+}
 <div class="page ai-style early-payoff">
   <!-- EMAIL CAPTURE POPUP (CRITICAL: Shown before results) -->
   <!-- @if (showEmailPopup()) {
@@ -293,6 +295,7 @@
     </section>
   } -->
 
+  @if (!isChildComponent) {
   <!-- EDUCATIONAL CONTENT SECTION -->
   <section class="blog-content-section">
     <div class="content-wrapper">
@@ -462,4 +465,5 @@
       </div>
     </div>
   </footer>
+  }
 </div>
