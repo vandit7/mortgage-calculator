@@ -22,16 +22,16 @@ export class MortgagePayoffWithExtraPaymentsComponent implements OnInit {
 
     this.seoService.addFaqSchema([
       {
-        question: 'Is there a penalty for paying off a mortgage early in the USA?',
-        answer: 'In most cases, there is no penalty for paying off your mortgage early in the USA. However, some older loans or specific loan types may have prepayment penalties. Always check your loan documents or contact your lender to confirm.'
+        question: 'Will my lender charge a penalty for extra payments?',
+        answer: 'In the USA, most conventional mortgages do NOT have prepayment penalties. However, some subprime or older loans might. Always confirm No Prepayment Penalty with your lender before starting.'
       },
       {
-        question: 'Does extra payment go to principal?',
-        answer: 'Yes, extra payments are typically applied directly to the principal balance of your loan, reducing the amount that accrues interest. This helps you build equity faster and shorten your loan term.'
+        question: 'Should I pay off my mortgage or high-interest credit cards first?',
+        answer: 'Generally, you should pay off credit cards first as they often have rates above 20%. Once high-interest debt is gone, apply those savings to your mortgage principal.'
       },
       {
-        question: 'Is it better to pay off a mortgage early or invest?',
-        answer: 'This depends on your individual circumstances. If your mortgage rate is higher than potential investment returns and you have an emergency fund, paying extra on your mortgage can be beneficial. However, if you can earn higher returns through investments, that might be preferable.'
+        question: 'What is a Mortgage Recast?',
+        answer: 'A recast is when you make a large lump sum payment and the lender recalculates your monthly payment to be lower. This is different from a simple extra payment which keeps the payment the same but ends the loan faster.'
       }
     ]);
   }

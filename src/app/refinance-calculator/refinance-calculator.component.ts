@@ -19,5 +19,19 @@ export class RefinanceCalculatorComponent implements OnInit {
       url: '/refinance-calculator',
       keywords: 'mortgage refinance calculator, refinance calculator, should I refinance, refinance break even, mortgage refinance savings',
     });
+    this.seoService.addFaqSchema([
+      {
+        question: 'How much does it cost to refinance?',
+        answer: 'Expect to pay between 2% and 5% of your total loan balance in closing costs, which includes appraisal fees, title insurance, and origination fees.'
+      },
+      {
+        question: 'Does refinancing hurt my credit score?',
+        answer: 'A refinance involves a hard inquiry, which may cause a temporary dip of a few points. However, consistently making payments on a more affordable loan will help your score in the long run.'
+      },
+      {
+        question: 'Can I refinance with bad credit?',
+        answer: 'Yes, though you may not get the best rates. Some government-backed programs like FHA Streamline Refinance have more flexible credit requirements.'
+      }
+    ]);
   }
 }

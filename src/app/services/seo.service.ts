@@ -54,9 +54,16 @@ export class SeoService {
    * Handles: <title>, <meta description>, <link canonical>, OG tags, Twitter cards
    */
   setPageSeo(config: PageSeoConfig): void {
-    const fullUrl = config.url.startsWith('http')
+    let normalizedUrl = config.url.startsWith('http')
       ? config.url
       : `${this.BASE_URL}${config.url}`;
+
+    // Normalize: remove trailing slash if present (unless it's the root domain)
+    if (normalizedUrl.endsWith('/') && normalizedUrl !== `${this.BASE_URL}/`) {
+      normalizedUrl = normalizedUrl.slice(0, -1);
+    }
+
+    const fullUrl = normalizedUrl;
 
     // 1. Title tag
     this.titleService.setTitle(config.title);
