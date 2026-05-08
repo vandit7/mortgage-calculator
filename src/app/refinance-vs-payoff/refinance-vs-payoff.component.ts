@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule, DecimalPipe } from '@angular/common';
 import { SeoService } from '../services/seo.service';
+import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-refinance-vs-payoff',
@@ -64,10 +65,12 @@ export class RefinanceVsPayoffComponent implements OnInit {
     }
   ];
 
+
+
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Refinance vs Early Payoff: The "Hidden" Math to Save $200K+',
-      description: 'Compare refinancing vs paying extra on your mortgage. Analyze 3 real scenarios, calculate break-even points, and find your optimal savings strategy. [2026 Edition]',
+      title: 'Refinance vs Pay Off Early: Which Saves More? (2026 Real Numbers)',
+      description: 'Should you refinance or make extra payments? We compared both with 3 real scenarios. See exact savings, break-even points, and which strategy wins for your rate.',
       url: '/refinance-vs-payoff',
       keywords: 'refinance vs early payoff, should I refinance or pay extra, mortgage refinance comparison, pay off mortgage vs refinance',
     });

@@ -14,8 +14,8 @@ export class MortgagePayoffWithExtraPaymentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Extra Payment Mortgage Calculator [2026] — Save $200K+ Today',
-      description: 'See how extra monthly or one-time payments save you $100K-$250K in mortgage interest. Free calculator: Model any payment scenario instantly. [Trusted Tool]',
+      title: 'Mortgage Payoff Calculator With Extra Payments — See Your Real Savings',
+      description: 'Enter your loan details and extra payment amount to see exactly how many years you cut off and how much interest you save. Free, instant, no signup.',
       url: '/mortgage-payoff-with-extra-payments',
       keywords: 'extra payment mortgage calculator, mortgage payoff with extra payments, additional mortgage payment calculator, pay off mortgage faster',
     });

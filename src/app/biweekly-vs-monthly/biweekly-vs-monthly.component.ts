@@ -85,8 +85,8 @@ export class BiweeklyVsMonthlyComponent implements OnInit {
 
   ngOnInit(): void {
     this.seoService.setPageSeo({
-      title: 'Biweekly vs Monthly Mortgage [Calculator] — Save 3-5 Years Early',
-      description: 'Side-by-side comparison: Biweekly vs Monthly payments. Learn how one extra payment per year saves $40,000+ in interest. [2026 Strategy Guide]',
+      title: 'Biweekly vs Monthly Mortgage Payments: Save 3 Years and $38,000',
+      description: 'One extra payment per year saves $38,962 in interest on a $300k loan. See the exact comparison and set up biweekly payments the right way.',
       url: '/biweekly-vs-monthly',
       keywords: 'biweekly vs monthly mortgage payments, biweekly mortgage payments, biweekly payment savings, mortgage payment frequency comparison',
     });

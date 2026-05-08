@@ -207,8 +207,8 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
           if (resultsElement) {
             // Use 'nearest' for better mobile behavior, or 'center' for better visibility
             const isMobile = window.innerWidth < 768;
-            resultsElement.scrollIntoView({ 
-              behavior: 'smooth', 
+            resultsElement.scrollIntoView({
+              behavior: 'smooth',
               block: isMobile ? 'center' : 'start'
             });
           }
@@ -227,8 +227,8 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
     if (!this.isChildComponent) {
       // ──── SEO: Set unique page meta, canonical, and structured data ────
       this.seoService.setPageSeo({
-        title: 'Early Mortgage Payoff Calculator [2026] — Save $100K+ in Interest',
-        description: 'Free early mortgage payoff calculator. See how $100-$500 extra/month saves $100K-$250K in interest and cuts years off your loan. Trusted by 50K+ homeowners.',
+        title: 'Free Early Mortgage Payoff Calculator — How Much Could You Save?',
+        description: 'See how extra monthly payments cut years off your mortgage and save thousands in interest. Enter your loan balance, rate, and extra payment — free instant results.',
         url: '/early-mortgage-payoff-calculator',
         keywords: 'early mortgage payoff calculator, mortgage calculator, pay off mortgage early, extra mortgage payment calculator, mortgage payoff, mortgage interest savings',
       });
