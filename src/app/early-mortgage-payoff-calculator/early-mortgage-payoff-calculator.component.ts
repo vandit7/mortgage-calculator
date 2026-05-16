@@ -22,7 +22,7 @@ interface CalculatorState {
   oneTimePayment: number;
 }
 
-import { RouterLink } from '@angular/router';
+import { RouterLink, Router } from '@angular/router';
 
 @Component({
   selector: 'app-early-mortgage-payoff-calculator',
@@ -46,6 +46,7 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
   private renderer: Renderer2 = inject(Renderer2);
   private sanitizer: DomSanitizer = inject(DomSanitizer);
   private seoService: SeoService = inject(SeoService);
+  private router: Router = inject(Router);
 
   /* ─────────────────────────────────────────────────────────────── */
   /* INPUT SIGNALS - User Input State */
@@ -225,11 +226,18 @@ export class EarlyMortgagePayoffCalculatorComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.isChildComponent) {
+      // Detect whether we're at root '/' or '/early-mortgage-payoff-calculator'
+      // so the canonical tag is always correct and no duplicate-content issues arise.
+      const isRoot = this.router.url === '/' || this.router.url === '';
+      const canonicalUrl = isRoot
+        ? 'https://smartmortgagepayoff.com/'
+        : '/early-mortgage-payoff-calculator';
+
       // ──── SEO: Set unique page meta, canonical, and structured data ────
       this.seoService.setPageSeo({
         title: 'Free Early Mortgage Payoff Calculator — How Much Could You Save?',
         description: 'See how extra monthly payments cut years off your mortgage and save thousands in interest. Enter your loan balance, rate, and extra payment — free instant results.',
-        url: '/early-mortgage-payoff-calculator',
+        url: canonicalUrl,
         keywords: 'early mortgage payoff calculator, mortgage calculator, pay off mortgage early, extra mortgage payment calculator, mortgage payoff, mortgage interest savings',
       });
 

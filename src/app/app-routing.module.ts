@@ -27,7 +27,6 @@ const routes: Routes = [
       import('./early-mortgage-payoff-calculator/early-mortgage-payoff-calculator.component')
         .then(m => m.EarlyMortgagePayoffCalculatorComponent)
   },
-  { path: 'early-payoff-calculator', redirectTo: 'early-mortgage-payoff-calculator', pathMatch: 'full' },
 
   {
     path: 'mortgage-payoff-with-extra-payments',
@@ -54,17 +53,28 @@ const routes: Routes = [
       import('./blog-resources/blog-resources.component')
         .then(m => m.BlogResourcesComponent)
   },
-  { path: 'blog', redirectTo: 'blog-resources', pathMatch: 'full' },
+  {
+    path: 'blog/:slug',
+    loadComponent: () =>
+      import('./blog-post/blog-post.component')
+        .then(m => m.BlogPostComponent)
+  },
   {
     path: 'legal',
     loadComponent: () =>
       import('./legal/legal.component')
         .then(m => m.LegalComponent)
   },
-  { path: '', redirectTo: 'early-mortgage-payoff-calculator', pathMatch: 'full' }
+  {
+    path: '',
+    pathMatch: 'full',
+    loadComponent: () =>
+      import('./early-mortgage-payoff-calculator/early-mortgage-payoff-calculator.component')
+        .then(m => m.EarlyMortgagePayoffCalculatorComponent)
+  }
 ];
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'top' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -1,0 +1,97 @@
+<div class="post-page">
+  <!-- NOT FOUND STATE -->
+  <div *ngIf="!article" class="not-found">
+    <div class="not-found-inner">
+      <span class="not-found-icon">📭</span>
+      <h1>Article Not Found</h1>
+      <p>We couldn't find that article. It may have moved or been removed.</p>
+      <a routerLink="/blog-resources" class="back-link">← Back to All Articles</a>
+    </div>
+  </div>
+
+  <!-- ARTICLE STATE -->
+  <div *ngIf="article" class="post-wrapper">
+
+    <!-- BACK NAVIGATION -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a routerLink="/blog-resources" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to All Articles
+      </a>
+    </nav>
+
+    <article class="post-article">
+
+      <!-- ARTICLE HEADER -->
+      <header class="post-header">
+        <div class="post-meta-top">
+          <span class="post-icon" aria-hidden="true">{{ article.icon }}</span>
+          <span class="post-category">{{ article.category }}</span>
+        </div>
+
+        <h1 class="post-title">{{ article.title }}</h1>
+
+        <div class="post-meta-bottom">
+          <span class="post-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            {{ formattedDate }}
+          </span>
+          <span class="post-meta-divider" aria-hidden="true">·</span>
+          <span class="post-meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            {{ article.readTime }} min read
+          </span>
+        </div>
+
+        <p class="post-excerpt">{{ article.excerpt }}</p>
+      </header>
+
+      <!-- ARTICLE BODY -->
+      <div class="post-body">
+        <ng-container *ngFor="let block of contentBlocks">
+          <!-- H2 heading -->
+          <h2 *ngIf="block.type === 'h2'" class="post-h2">{{ block.text }}</h2>
+          <!-- H3 heading -->
+          <h3 *ngIf="block.type === 'h3'" class="post-h3">{{ block.text }}</h3>
+          <!-- Bullet list item -->
+          <ul *ngIf="block.type === 'list'" class="post-list">
+            <li>{{ block.text }}</li>
+          </ul>
+          <!-- Numbered list item -->
+          <ol *ngIf="block.type === 'olist'" class="post-olist">
+            <li>{{ block.text }}</li>
+          </ol>
+          <!-- Regular paragraph -->
+          <p *ngIf="block.type === 'p'" class="post-p">{{ block.text }}</p>
+        </ng-container>
+      </div>
+
+      <!-- CTA FOOTER -->
+      <footer class="post-footer">
+        <div class="post-footer-inner">
+          <div class="post-footer-text">
+            <h2 class="post-footer-title">Ready to calculate your savings?</h2>
+            <p class="post-footer-desc">Use our free mortgage payoff calculator to see exactly how much you can save with extra payments.</p>
+          </div>
+          <a routerLink="/early-mortgage-payoff-calculator" class="post-cta-btn">
+            Try the Calculator →
+          </a>
+        </div>
+      </footer>
+
+    </article>
+
+    <!-- BACK LINK (bottom) -->
+    <div class="post-bottom-nav">
+      <a routerLink="/blog-resources" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+        Back to All Articles
+      </a>
+    </div>
+
+  </div>
+</div>

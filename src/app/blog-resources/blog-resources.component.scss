@@ -234,6 +234,33 @@
     font-size: 0.9rem;
   }
 
+  /* Anchor-based card reset — makes <a> look identical to the old <article> */
+  .blog-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+
+    &:visited {
+      color: inherit;
+    }
+
+    &:hover .blog-card-title {
+      color: #667eea;
+    }
+  }
+
+  .blog-card-read-more {
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #667eea;
+    transition: gap 0.2s;
+
+    .blog-card-link:hover & {
+      text-decoration: underline;
+    }
+  }
+
   .cta-section {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;

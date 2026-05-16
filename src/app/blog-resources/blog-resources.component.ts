@@ -16,58 +16,73 @@ interface BlogPost {
   icon: string;
 }
 
-@Component({
-  selector: 'app-blog-resources',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  templateUrl: './blog-resources.component.html',
-  styleUrl: './blog-resources.component.scss',
-})
-export class BlogResourcesComponent implements OnInit {
-  private seoService = inject(SeoService);
-  blogPosts: BlogPost[] = [
-    {
-      "id": 26,
-      "anchorTexts": "Estimate Your Real Closing Costs Now",
-      "title": "How Much Are Closing Costs? What No One Tells You Before Buying a Home",
-      "excerpt": "Closing costs can quietly add thousands to your home purchase. Learn what they include, how much to expect, and simple ways to reduce them before closing day.",
-      "content": "When I first started looking into buying a home, I thought the biggest challenge would be saving for the down payment. That’s what everyone talks about. But honestly, what caught me off guard later was closing costs.\n\nNo one really explains it properly in the beginning. You just hear a rough percentage and move on. But when you actually see the numbers, it feels very real.\n\nSo let’s break it down in a simple way.\n\nClosing costs are basically the extra fees you pay when your home purchase is finalized. It’s not just one charge. It’s a mix of different things like lender fees, property-related costs, and legal paperwork.\n\nI used to think it would be a small amount. But it adds up fast.\n\nIn most cases, closing costs fall somewhere between 2% to 5% of your loan amount. So if you're buying a home worth $250,000, you might end up paying anywhere from $5,000 to $12,500.\n\nThat’s not a small number, especially when you’re already paying a down payment.\n\nOne thing that helped me was understanding what exactly I’m paying for.\n\nSome common costs include loan processing fees, appraisal charges, title insurance, and prepaid expenses like property taxes and homeowner’s insurance. These are all bundled into closing costs.\n\nI noticed that many of these fees are fixed, but some can vary depending on your lender or location.\n\nThat’s why comparing lenders actually makes a difference. I didn’t realize this earlier, but even a small difference in fees can save you a good amount.\n\nAnother important thing is the documents you receive during the process.\n\nFirst is the Loan Estimate. You get this early after applying for a mortgage. It gives you a rough idea of your closing costs. I remember looking at mine and thinking okay, now this is getting serious.\n\nThen comes the Closing Disclosure, which you receive just a few days before closing. This one shows the final numbers. You should definitely review it carefully.\n\nI made the mistake of assuming everything would be the same as the estimate, but there were small changes. Nothing major, but enough to matter.\n\nNow let’s talk about who pays these costs.\n\nMost of the time, the buyer pays the majority of closing costs. But the seller can also contribute in some cases. This is known as seller concessions.\n\nI’ve seen people negotiate this, especially when the market is slow. If the seller wants to close the deal quickly, they might agree to cover part of your costs.\n\nBut in a hot market, it’s harder to ask for that.\n\nSomething else that confused me in the beginning was the difference between closing costs, earnest money, and down payment.\n\nThey are all different.\n\nEarnest money is what you pay upfront when making an offer. It shows you're serious. This amount usually goes toward your final payment if the deal goes through.\n\nDown payment is your share of the home price. It’s your actual investment.\n\nClosing costs are separate. These are the transaction-related expenses.\n\nUnderstanding this cleared up a lot of confusion for me.\n\nOne thing I learned the hard way is to always keep extra funds ready.\n\nEven if your estimate says one number, keep a buffer. Small fees or adjustments can show up at the last moment.\n\nWhat worked for me was setting aside a separate budget just for closing costs. That way I didn’t mix it with my down payment savings.\n\nAlso, I started planning early instead of waiting till the final stage.\n\nIf you’re trying to reduce closing costs, there are a few simple things you can try.\n\nYou can compare lenders and choose the one with lower fees. You can ask about no-closing-cost loans, although they usually come with higher interest rates.\n\nYou can also negotiate with the seller if the situation allows.\n\nAnd sometimes, you can roll certain costs into your loan, but that increases your monthly payment.\n\nSo it depends on what works best for you.\n\nI used to think closing costs are just part of the process and nothing can be done. But after going through it, I realized you do have some control.\n\nNot total control, but enough to make a difference.\n\nAt the end of the day, closing costs are unavoidable, but they don’t have to be stressful.\n\nIf you understand them early, plan your budget properly, and review your documents carefully, the whole process becomes much smoother.\n\nLooking back, I feel this is something every homebuyer should learn before reaching the final step.\n\nBecause closing day should feel exciting, not confusing.",
-      "category": "Education",
-      "readTime": 7,
-      "date": "2026-04-24",
-      "icon": "🏠",
-      "link": "/closing-costs-guide"
-    },
-    {
-      "id": 27,
-      "anchorTexts": "What Happens to Your Mortgage If You Lose Your Job",
-      "title": "What Happens to Your Mortgage If You Lose Your Job?",
-      "excerpt": "Losing your job can feel overwhelming, especially when you have a mortgage. Here’s what really happens, what options you have, and how to protect your home step by step.",
-      "content": "Losing your job is one of those moments that hits harder than expected. One day everything feels stable, next day you start thinking about bills, savings, and especially your mortgage. I remember thinking this could never happen to me, but honestly life doesn’t follow our plans.\n\nThe first question most people ask is simple. What happens to mortgage if you lose your job?\n\nThe reality is not very comforting, but it’s important to understand. Your mortgage does not stop automatically. The bank still expects your monthly payment. There is no automatic pause just because your income stopped.\n\nI used to think maybe banks give some kind of break instantly. But that’s not how it works. If you miss your payment, things start moving step by step.\n\nIn the first month, you’ll likely get a reminder or late notice. Nothing too serious yet, but it’s a warning. If you miss the second payment, now it becomes more serious. Your account may be marked as delinquent. By the third month, lenders usually start stronger action. This is where things can move toward foreclosure if nothing is done.\n\nThat sounds scary, and honestly it is. But here’s the part most people don’t realize. You actually have options. And if you act early, you can avoid the worst outcomes.\n\nThe biggest mistake I have seen, and even almost made myself, is doing nothing. When people lose income, they freeze. They avoid calls. They ignore emails. But lenders are actually more flexible when you communicate early.\n\nOne option is called forbearance. This basically means your lender allows you to pause or reduce payments for a limited time. It doesn’t mean the loan is gone. You still owe the money. But it gives you breathing room.\n\nFor example, you might get three to six months where payments are reduced or paused. During that time, you can focus on finding a job or stabilizing your situation. I noticed this option is more common than people think, but many don’t even ask.\n\nAnother option is loan modification. This is where the lender changes your loan terms to make payments more affordable. They might extend your loan period, reduce your interest rate slightly, or adjust the monthly amount.\n\nThis can be helpful if your income drops permanently or takes longer to recover. It’s not instant, and there is some paperwork involved, but it can make a big difference.\n\nRefinancing is another thing people talk about. But honestly, it’s not easy if you don’t have stable income. Banks usually require proof of income for refinancing. So this option works better before problems happen, not during.\n\nOne thing that helped me understand the situation better was breaking it into phases.\n\nFirst phase is panic. You worry about everything at once. Mortgage, bills, family. It feels overwhelming.\n\nSecond phase is reality. You start checking your savings and how long you can survive without income.\n\nThird phase is action. This is where things actually improve. You talk to your lender, adjust your spending, and create a short plan.\n\nIf you have savings, even small, try to use them wisely. Cover at least the essential payments like housing. Even partial payments help. It shows the lender you are trying.\n\nCutting expenses becomes important here. I’m not saying cut everything, but remove anything unnecessary. Subscriptions, eating out, extra shopping. These small changes buy you time.\n\nI also saw people doing creative things to survive this phase. Renting out a room, doing freelance work, taking short term gigs. It’s not perfect, but it helps bridge the gap.\n\nThe key thing is this. Losing your job does not mean you instantly lose your house. It only becomes dangerous if months pass without any action.\n\nAnother thing people forget is interest. Your mortgage keeps running in the background. Even if you pause payments, interest may still add depending on your agreement.\n\nThat’s why once your situation improves, it’s smart to think about recovery.\n\nWhat worked for me mentally was planning ahead. After things got stable, I started thinking about how to reduce long term interest and avoid future stress.\n\nThis is where strategies like extra payments come in. Even small extra amounts can help reduce the loan faster.\n\nYou can use a mortgage payoff calculator to see how much difference it makes. Just entering your numbers and adding small extra payments can show real savings.\n\nI didn’t realize how powerful that was until I saw the numbers myself. It kind of changed how I think about debt.\n\nAnother important lesson is emergency funds. I used to ignore this. But after seeing how fast things can change, having even 3 to 6 months of expenses saved makes a huge difference.\n\nIt doesn’t solve everything, but it gives you time to think clearly instead of reacting in panic.\n\nIf you are currently going through job loss, try to focus on small steps. Don’t try to solve everything in one day.\n\nFirst, understand your situation. How much savings you have. How long you can manage.\n\nSecond, contact your lender. Don’t delay this. Even if you feel uncomfortable, it helps.\n\nThird, reduce expenses and try to bring in some income, even if temporary.\n\nFourth, look at long term recovery once things stabilize.\n\nI know this topic feels heavy. But honestly, many people go through this at some point. And most of them recover.\n\nThe difference is not luck. It’s action.\n\nI used to think mortgage problems only happen to people who make bad decisions. But that’s not true. Sometimes it’s just life.\n\nWhat matters is how you respond.\n\nIf you understand what happens to mortgage if you lose your job and take early steps, you can protect your home and reduce stress.\n\nIt won’t be perfect, but it will be manageable.\n\nAnd once you get through it, you’ll probably handle money and planning in a much smarter way than before.",
-      "category": "Education",
-      "readTime": 9,
-      "date": "2026-04-24",
-      "icon": "⚠️",
-      "link": "/early-mortgage-payoff-calculator"
-    },
-    {
-      "id": 26,
-      "anchorTexts": "Use Your Tax Refund to Pay Off Mortgage Faster",
-      "title": "How a $500 Tax Refund Can Shave Years Off Your Mortgage",
-      "excerpt": "Most people spend their tax refund without thinking twice. But using even $500 toward your mortgage can quietly save you thousands in interest and help you become debt free faster.",
-      "content": "Most people treat their tax refund like bonus money. Spend a little here, upgrade something there, maybe a short trip. I used to do the same thing honestly. It felt like free cash.\n\nBut one year I tried something different. Instead of spending it, I used my tax refund to pay off my mortgage faster. Just a small amount. Around $500.\n\nAnd that small decision actually made a bigger difference than I expected.\n\nWhen you make a lump sum payment on your mortgage, especially early in the loan, it directly reduces your principal. That means less interest builds up over time.\n\nI didn’t realize this before. I used to think small amounts don’t really matter on big loans. But they do.\n\nLet’s say you have a 30 year mortgage. If you put $500 extra toward the principal in the early years, you’re not just saving $500. You’re saving interest on that $500 for the next 20 to 30 years.\n\nThat’s where the real impact comes in.\n\nImagine a $300,000 loan at around 6.5%.\n\nIf you use a tax refund to pay off mortgage early with a one time $500 payment, you can save hundreds or even thousands in interest and cut a few months off your loan.\n\nIt doesn’t sound huge at first, but if you do this every year, it adds up fast.\n\nWhat worked for me was doing this consistently. Not just once.\n\nThe earlier you make extra payments, the more you save.\n\nI noticed this after using a calculator. Paying extra in year 2 saves way more than paying the same amount in year 15.\n\nSo if you get your refund between January and March, that’s actually perfect timing.\n\nA lot of people think they need to pay extra every month. That’s not always realistic.\n\nBut a tax refund is money you didn’t plan for anyway. So it’s easier to use it smartly.\n\nEven one payment per year can help you pay off mortgage faster without changing your lifestyle too much.\n\nDon’t guess. Use a mortgage payoff calculator and enter your loan amount, interest rate, and a one time $500 extra payment.\n\nWhen I saw the numbers myself, it kind of changed how I looked at extra payments.\n\nYou don’t need big money to make progress.\n\nJust using your tax refund to pay off mortgage each year can slowly reduce your loan, save interest, and bring your payoff date closer.\n\nI still spend part of my refund sometimes. But now I always try to put at least some toward the mortgage.\n\nIt’s not exciting like buying something new. But long term, it feels like a smarter move.\n\nIf you’re wondering how to use tax refund to pay off mortgage, start small. You don’t need perfect timing or a big amount. Just take that first step.",
-      "category": "Planning",
-      "readTime": 5,
-      "date": "2026-04-24",
-      "icon": "💰",
-      "link": "/early-mortgage-payoff-calculator"
-    },
-    {
-      id: 25,
-      anchorTexts: 'Mortgage Prepayment Penalties and Opportunity Cost: What I Wish I Knew',
-      title: 'Mortgage Prepayment Penalties and Opportunity Cost: What I Wish I Knew',
-      excerpt: "Is paying off your home always the smartest move? Between prepayment penalties and opportunity costs, the math might surprise you. Learn when keeping your mortgage actually builds more wealth.",
-      content: `So here's something I didn't know when I first bought my house. Some lenders actually charge you a fee for paying off your mortgage early. Yeah, seems backwards, right?
+export const blogPosts: BlogPost[] = [
+  {
+    "id": 30,
+    "anchorTexts": "Calculate Your Early Payoff Date Free",
+    "title": "How to Calculate Your Mortgage Payoff Early (Step by Step)",
+    "excerpt": "You don't need a finance degree to figure out your early mortgage payoff date. Here's a simple step by step breakdown of how the calculation actually works and what to do with the result.",
+    "content": "Most people have no idea what their actual mortgage payoff date is.\n\nThey know the original loan term. 30 years. Or 15. But they don't know what happens to that date when they start paying a little extra.\n\nI didn't know either, until I sat down and worked through it properly.\n\nOnce I did, I realized the calculation isn't complicated. You just need to know what numbers to gather and what to do with them.\n\nSo here is the full process, step by step.\n\nStep one is knowing your current loan balance.\n\nThis is not the original amount you borrowed. It's what you still owe today.\n\nYou can find this on your monthly mortgage statement or by logging into your lender's online portal. It's usually listed as outstanding principal balance.\n\nThis number is your starting point. Everything else builds on this.\n\nStep two is finding your interest rate.\n\nThis is your annual interest rate, not monthly. For most people it's somewhere between 3% and 8% depending on when they got the loan.\n\nAgain, your mortgage statement will show this. It might say something like 6.5% fixed.\n\nIf you have an adjustable rate mortgage, the calculation gets a bit more complex because your rate changes over time. For simplicity, most people use their current rate as the baseline.\n\nStep three is knowing your remaining loan term.\n\nThis is how many months or years you have left on your mortgage as of today. Not the original term.\n\nIf you took a 30 year mortgage 4 years ago, your remaining term is roughly 26 years or 312 months.\n\nThis matters because the calculation uses remaining term, not original term.\n\nStep four is deciding your extra payment amount.\n\nThis is the number you actually have control over. It's the amount above your regular monthly payment that you want to put toward principal.\n\nEven $50 or $100 extra makes a difference. You don't need a large number to see meaningful results.\n\nNow here is what the calculation actually does with these four numbers.\n\nEvery month your lender takes your outstanding balance and multiplies it by your monthly interest rate. That gives them your interest charge for that month.\n\nYour regular monthly payment covers that interest charge first. Whatever is left over reduces your principal.\n\nWhen you add an extra payment on top, that full extra amount goes straight to your principal. There is no interest taken out of it.\n\nThis is the key part that most people miss.\n\nBecause your principal goes down faster, the interest charge next month is slightly smaller. And the month after that, even smaller.\n\nIt compounds in reverse. Every extra dollar you pay now saves you more than a dollar in total interest over time.\n\nLet me give you a real example to make this concrete.\n\nSay you have a $280,000 balance at 6.5% with 25 years remaining. Your monthly payment is around $1,893.\n\nIf you pay only the minimum, you will pay off the loan in exactly 25 years and pay roughly $288,000 in interest on top of the principal.\n\nNow add $250 extra every month.\n\nYour new payoff timeline drops to around 20 years. You shave off 5 full years. And your total interest paid drops by nearly $70,000.\n\nThat's the power of consistently paying a little more.\n\nNow let me explain how to actually run this calculation without doing the math yourself.\n\nThe simplest way is to use an early mortgage payoff calculator. You enter your balance, rate, remaining term, and extra payment. It handles everything instantly.\n\nBut if you want to understand what's happening under the hood, here is the formula that calculators use.\n\nFirst convert your annual rate to a monthly rate by dividing by 12. So 6.5% becomes 0.065 divided by 12 which is approximately 0.00542.\n\nThen the number of months to payoff is calculated using a standard loan formula that factors in your balance, monthly rate, and new total monthly payment including the extra amount.\n\nYou don't need to memorize this. The calculator does it. But knowing it exists helps you trust the result.\n\nOne thing to double check after you run the calculation is how your lender applies extra payments.\n\nSome lenders automatically apply extra payments to principal. Others hold them and apply to the next month's payment instead.\n\nIf your lender does the second thing, your calculation won't match reality. You need to specifically instruct your lender to apply any extra amount to principal only.\n\nMost online payment portals have this option. Look for a note field or a payment designation dropdown when submitting your payment.\n\nIf you're unsure, a quick call to your lender's customer service will clarify it.\n\nThe last thing I want to mention is what to do once you have your result.\n\nDon't just look at the payoff date and move on. Look at two numbers specifically.\n\nFirst, the total interest saved. This tells you the real financial benefit of your decision.\n\nSecond, the monthly commitment required. This tells you whether the plan is realistic for your budget.\n\nIf the numbers make sense for your life, set up the extra payment as an automatic transfer so you don't have to think about it each month.\n\nConsistency matters more than the amount. A smaller extra payment made every single month beats a larger one made occasionally.\n\nCalculating your early payoff date takes maybe five minutes. But acting on it can save you years of payments and tens of thousands of dollars.\n\nThat's a pretty good return on five minutes.",
+    "category": "How-To Guides",
+    "readTime": 8,
+    "date": "2026-05-09",
+    "icon": "📋",
+    "link": "/how-to-calculate-mortgage-payoff-early"
+  },
+  {
+    "id": 29,
+    "anchorTexts": "Try the Early Payoff Calculator Free",
+    "title": "Early Mortgage Payoff Calculator: How to Use It and What the Numbers Mean",
+    "excerpt": "An early mortgage payoff calculator shows you exactly how much time and money you save by paying extra. Here's how to use it the right way and what each number actually means.",
+    "content": "I remember the first time I put my loan details into a mortgage calculator. I was just curious. I typed in a small extra amount and hit calculate.\n\nThe result stopped me for a second.\n\nIt said I could pay off my mortgage four years early and save over $60,000 in interest. Just by adding a little extra each month.\n\nThat one moment changed how I thought about my mortgage completely.\n\nBut here's the thing. A lot of people open these calculators, enter a few numbers, and then close the tab without really understanding what they're looking at.\n\nSo let me walk you through it properly.\n\nAn early mortgage payoff calculator is a simple tool. You enter your current loan details and it shows you what happens when you pay more than the minimum each month.\n\nThe basic inputs are your loan balance, your interest rate, your remaining loan term, and the extra amount you want to pay.\n\nThat's it. Four numbers.\n\nBut the output is where it gets interesting.\n\nThe first number you'll see is your new payoff date. This tells you exactly when your loan will be fully paid if you stick to the extra payment plan.\n\nFor example, if you have 27 years left on a 30 year mortgage and you start paying an extra $200 a month, your payoff date might move up by 4 or 5 years. That's real time you get back.\n\nThe second number is total interest saved. This is the one that usually surprises people the most.\n\nOn a $300,000 loan at 6.5%, you'll pay around $382,000 in interest over 30 years if you only pay the minimum. That's more than the loan itself.\n\nBut if you add $300 extra every month, that interest number drops significantly. Sometimes by $80,000 or more.\n\nI used to think interest was just a small fee on top of what I borrowed. It's not. It's a very large number that quietly grows every month in the early years of your loan.\n\nThis connects to something called amortization.\n\nIn the beginning of your mortgage, most of your monthly payment goes toward interest and very little goes toward the actual loan balance. That's just how the math works.\n\nSo when you pay extra, that extra amount goes straight to your principal. And that reduces the base amount interest is calculated on next month.\n\nThis is why even small extra payments in the early years of your loan have a much bigger impact than the same payment made later.\n\nThe calculator captures all of this automatically. You don't need to do the math yourself.\n\nNow let me explain two types of extra payments you can model.\n\nThe first is a fixed monthly extra payment. This is where you add the same amount every single month on top of your regular payment. It's simple and predictable.\n\nThe second is a one time lump sum payment. This could be a tax refund, a bonus, or any large amount you put toward your mortgage once. The calculator shows how much that single payment changes your payoff timeline.\n\nBoth are powerful. But they work differently.\n\nA lump sum payment reduces your principal immediately and saves you a lot of interest over time. A monthly extra payment builds momentum slowly but consistently.\n\nMany people do both. They make a lump sum payment when they get a bonus and also pay a little extra every month.\n\nOne thing I want to mention is what these numbers do not tell you.\n\nThe calculator assumes you keep making the extra payment every single month. If you miss a month or reduce the amount, the actual payoff date will shift.\n\nAlso, some lenders require you to specify that your extra payment should go toward the principal. If you don't say this, some lenders apply it differently.\n\nAlways check with your lender and confirm how extra payments are applied. Usually there is a checkbox or a note section when you make a payment online.\n\nSo how should you use the calculator practically?\n\nStart with what you can actually afford. Don't enter $1,000 extra just to see a big number if that's not realistic for your budget.\n\nTry different amounts. What does $100 extra do? What about $250? How much does your payoff date change?\n\nThen look at the interest savings column and ask yourself if that number is worth the monthly commitment.\n\nFor most people the answer is yes. Even $100 extra a month adds up to a lot over a 25 or 30 year loan.\n\nI think the best part about using an early payoff calculator is that it makes the abstract feel real.\n\nYour mortgage can feel like this endless thing in the background. Always there, always the same.\n\nBut when you see a specific date and a specific dollar amount, it becomes a goal you can actually work toward.\n\nThat shift in perspective is worth a lot.",
+    "category": "Tools & Calculators",
+    "readTime": 8,
+    "date": "2026-05-09",
+    "icon": "🧮",
+    "link": "/early-mortgage-payoff-calculator-how-to-use"
+  },
+  {
+    "id": 28,
+    "anchorTexts": "Estimate Your Real Closing Costs Now",
+    "title": "Estimate Your Real Closing Costs Now",
+    "excerpt": "Closing costs can quietly add thousands to your home purchase. Learn what they include, how much to expect, and simple ways to reduce them before closing day.",
+    "content": "When I first started looking into buying a home, I thought the biggest challenge would be saving for the down payment. That’s what everyone talks about. But honestly, what caught me off guard later was closing costs.\n\nNo one really explains it properly in the beginning. You just hear a rough percentage and move on. But when you actually see the numbers, it feels very real.\n\nSo let’s break it down in a simple way.\n\nClosing costs are basically the extra fees you pay when your home purchase is finalized. It’s not just one charge. It’s a mix of different things like lender fees, property-related costs, and legal paperwork.\n\nI used to think it would be a small amount. But it adds up fast.\n\nIn most cases, closing costs fall somewhere between 2% to 5% of your loan amount. So if you're buying a home worth $250,000, you might end up paying anywhere from $5,000 to $12,500.\n\nThat’s not a small number, especially when you’re already paying a down payment.\n\nOne thing that helped me was understanding what exactly I’m paying for.\n\nSome common costs include loan processing fees, appraisal charges, title insurance, and prepaid expenses like property taxes and homeowner’s insurance. These are all bundled into closing costs.\n\nI noticed that many of these fees are fixed, but some can vary depending on your lender or location.\n\nThat’s why comparing lenders actually makes a difference. I didn’t realize this earlier, but even a small difference in fees can save you a good amount.\n\nAnother important thing is the documents you receive during the process.\n\nFirst is the Loan Estimate. You get this early after applying for a mortgage. It gives you a rough idea of your closing costs. I remember looking at mine and thinking okay, now this is getting serious.\n\nThen comes the Closing Disclosure, which you receive just a few days before closing. This one shows the final numbers. You should definitely review it carefully.\n\nI made the mistake of assuming everything would be the same as the estimate, but there were small changes. Nothing major, but enough to matter.\n\nNow let’s talk about who pays these costs.\n\nMost of the time, the buyer pays the majority of closing costs. But the seller can also contribute in some cases. This is known as seller concessions.\n\nI’ve seen people negotiate this, especially when the market is slow. If the seller wants to close the deal quickly, they might agree to cover part of your costs.\n\nBut in a hot market, it’s harder to ask for that.\n\nSomething else that confused me in the beginning was the difference between closing costs, earnest money, and down payment.\n\nThey are all different.\n\nEarnest money is what you pay upfront when making an offer. It shows you're serious. This amount usually goes toward your final payment if the deal goes through.\n\nDown payment is your share of the home price. It’s your actual investment.\n\nClosing costs are separate. These are the transaction-related expenses.\n\nUnderstanding this cleared up a lot of confusion for me.\n\nOne thing I learned the hard way is to always keep extra funds ready.\n\nEven if your estimate says one number, keep a buffer. Small fees or adjustments can show up at the last moment.\n\nWhat worked for me was setting aside a separate budget just for closing costs. That way I didn’t mix it with my down payment savings.\n\nAlso, I started planning early instead of waiting till the final stage.\n\nIf you’re trying to reduce closing costs, there are a few simple things you can try.\n\nYou can compare lenders and choose the one with lower fees. You can ask about no-closing-cost loans, although they usually come with higher interest rates.\n\nYou can also negotiate with the seller if the situation allows.\n\nAnd sometimes, you can roll certain costs into your loan, but that increases your monthly payment.\n\nSo it depends on what works best for you.\n\nI used to think closing costs are just part of the process and nothing can be done. But after going through it, I realized you do have some control.\n\nNot total control, but enough to make a difference.\n\nAt the end of the day, closing costs are unavoidable, but they don’t have to be stressful.\n\nIf you understand them early, plan your budget properly, and review your documents carefully, the whole process becomes much smoother.\n\nLooking back, I feel this is something every homebuyer should learn before reaching the final step.\n\nBecause closing day should feel exciting, not confusing.",
+    "category": "Education",
+    "readTime": 7,
+    "date": "2026-04-24",
+    "icon": "🏠",
+    "link": "/closing-costs-guide"
+  },
+  {
+    "id": 27,
+    "anchorTexts": "What Happens to Your Mortgage If You Lose Your Job",
+    "title": "What Happens to Your Mortgage If You Lose Your Job?",
+    "excerpt": "Losing your job can feel overwhelming, especially when you have a mortgage. Here’s what really happens, what options you have, and how to protect your home step by step.",
+    "content": "Losing your job is one of those moments that hits harder than expected. One day everything feels stable, next day you start thinking about bills, savings, and especially your mortgage. I remember thinking this could never happen to me, but honestly life doesn’t follow our plans.\n\nThe first question most people ask is simple. What happens to mortgage if you lose your job?\n\nThe reality is not very comforting, but it’s important to understand. Your mortgage does not stop automatically. The bank still expects your monthly payment. There is no automatic pause just because your income stopped.\n\nI used to think maybe banks give some kind of break instantly. But that’s not how it works. If you miss your payment, things start moving step by step.\n\nIn the first month, you’ll likely get a reminder or late notice. Nothing too serious yet, but it’s a warning. If you miss the second payment, now it becomes more serious. Your account may be marked as delinquent. By the third month, lenders usually start stronger action. This is where things can move toward foreclosure if nothing is done.\n\nThat sounds scary, and honestly it is. But here’s the part most people don’t realize. You actually have options. And if you act early, you can avoid the worst outcomes.\n\nThe biggest mistake I have seen, and even almost made myself, is doing nothing. When people lose income, they freeze. They avoid calls. They ignore emails. But lenders are actually more flexible when you communicate early.\n\nOne option is called forbearance. This basically means your lender allows you to pause or reduce payments for a limited time. It doesn’t mean the loan is gone. You still owe the money. But it gives you breathing room.\n\nFor example, you might get three to six months where payments are reduced or paused. During that time, you can focus on finding a job or stabilizing your situation. I noticed this option is more common than people think, but many don’t even ask.\n\nAnother option is loan modification. This is where the lender changes your loan terms to make payments more affordable. They might extend your loan period, reduce your interest rate slightly, or adjust the monthly amount.\n\nThis can be helpful if your income drops permanently or takes longer to recover. It’s not instant, and there is some paperwork involved, but it can make a big difference.\n\nRefinancing is another thing people talk about. But honestly, it’s not easy if you don’t have stable income. Banks usually require proof of income for refinancing. So this option works better before problems happen, not during.\n\nOne thing that helped me understand the situation better was breaking it into phases.\n\nFirst phase is panic. You worry about everything at once. Mortgage, bills, family. It feels overwhelming.\n\nSecond phase is reality. You start checking your savings and how long you can survive without income.\n\nThird phase is action. This is where things actually improve. You talk to your lender, adjust your spending, and create a short plan.\n\nIf you have savings, even small, try to use them wisely. Cover at least the essential payments like housing. Even partial payments help. It shows the lender you are trying.\n\nCutting expenses becomes important here. I’m not saying cut everything, but remove anything unnecessary. Subscriptions, eating out, extra shopping. These small changes buy you time.\n\nI also saw people doing creative things to survive this phase. Renting out a room, doing freelance work, taking short term gigs. It’s not perfect, but it helps bridge the gap.\n\nThe key thing is this. Losing your job does not mean you instantly lose your house. It only becomes dangerous if months pass without any action.\n\nAnother thing people forget is interest. Your mortgage keeps running in the background. Even if you pause payments, interest may still add depending on your agreement.\n\nThat’s why once your situation improves, it’s smart to think about recovery.\n\nWhat worked for me mentally was planning ahead. After things got stable, I started thinking about how to reduce long term interest and avoid future stress.\n\nThis is where strategies like extra payments come in. Even small extra amounts can help reduce the loan faster.\n\nYou can use a mortgage payoff calculator to see how much difference it makes. Just entering your numbers and adding small extra payments can show real savings.\n\nI didn’t realize how powerful that was until I saw the numbers myself. It kind of changed how I think about debt.\n\nAnother important lesson is emergency funds. I used to ignore this. But after seeing how fast things can change, having even 3 to 6 months of expenses saved makes a huge difference.\n\nIt doesn’t solve everything, but it gives you time to think clearly instead of reacting in panic.\n\nIf you are currently going through job loss, try to focus on small steps. Don’t try to solve everything in one day.\n\nFirst, understand your situation. How much savings you have. How long you can manage.\n\nSecond, contact your lender. Don’t delay this. Even if you feel uncomfortable, it helps.\n\nThird, reduce expenses and try to bring in some income, even if temporary.\n\nFourth, look at long term recovery once things stabilize.\n\nI know this topic feels heavy. But honestly, many people go through this at some point. And most of them recover.\n\nThe difference is not luck. It’s action.\n\nI used to think mortgage problems only happen to people who make bad decisions. But that’s not true. Sometimes it’s just life.\n\nWhat matters is how you respond.\n\nIf you understand what happens to mortgage if you lose your job and take early steps, you can protect your home and reduce stress.\n\nIt won’t be perfect, but it will be manageable.\n\nAnd once you get through it, you’ll probably handle money and planning in a much smarter way than before.",
+    "category": "Education",
+    "readTime": 9,
+    "date": "2026-04-24",
+    "icon": "⚠️",
+    "link": "/what-happens-mortgage-lose-job"
+  },
+  {
+    "id": 26,
+    "anchorTexts": "Use Your Tax Refund to Pay Off Mortgage Faster",
+    "title": "How a $500 Tax Refund Can Shave Years Off Your Mortgage",
+    "excerpt": "Most people spend their tax refund without thinking twice. But using even $500 toward your mortgage can quietly save you thousands in interest and help you become debt free faster.",
+    "content": "Most people treat their tax refund like bonus money. Spend a little here, upgrade something there, maybe a short trip. I used to do the same thing honestly. It felt like free cash.\n\nBut one year I tried something different. Instead of spending it, I used my tax refund to pay off my mortgage faster. Just a small amount. Around $500.\n\nAnd that small decision actually made a bigger difference than I expected.\n\nWhen you make a lump sum payment on your mortgage, especially early in the loan, it directly reduces your principal. That means less interest builds up over time.\n\nI didn’t realize this before. I used to think small amounts don’t really matter on big loans. But they do.\n\nLet’s say you have a 30 year mortgage. If you put $500 extra toward the principal in the early years, you’re not just saving $500. You’re saving interest on that $500 for the next 20 to 30 years.\n\nThat’s where the real impact comes in.\n\nImagine a $300,000 loan at around 6.5%.\n\nIf you use a tax refund to pay off mortgage early with a one time $500 payment, you can save hundreds or even thousands in interest and cut a few months off your loan.\n\nIt doesn’t sound huge at first, but if you do this every year, it adds up fast.\n\nWhat worked for me was doing this consistently. Not just once.\n\nThe earlier you make extra payments, the more you save.\n\nI noticed this after using a calculator. Paying extra in year 2 saves way more than paying the same amount in year 15.\n\nSo if you get your refund between January and March, that’s actually perfect timing.\n\nA lot of people think they need to pay extra every month. That’s not always realistic.\n\nBut a tax refund is money you didn’t plan for anyway. So it’s easier to use it smartly.\n\nEven one payment per year can help you pay off mortgage faster without changing your lifestyle too much.\n\nDon’t guess. Use a mortgage payoff calculator and enter your loan amount, interest rate, and a one time $500 extra payment.\n\nWhen I saw the numbers myself, it kind of changed how I looked at extra payments.\n\nYou don’t need big money to make progress.\n\nJust using your tax refund to pay off mortgage each year can slowly reduce your loan, save interest, and bring your payoff date closer.\n\nI still spend part of my refund sometimes. But now I always try to put at least some toward the mortgage.\n\nIt’s not exciting like buying something new. But long term, it feels like a smarter move.\n\nIf you’re wondering how to use tax refund to pay off mortgage, start small. You don’t need perfect timing or a big amount. Just take that first step.",
+    "category": "Planning",
+    "readTime": 5,
+    "date": "2026-04-24",
+    "icon": "💰",
+    "link": "/tax-refund-mortgage-payoff"
+  },
+  {
+    id: 25,
+    anchorTexts: 'Mortgage Prepayment Penalties and Opportunity Cost: What I Wish I Knew',
+    title: 'Mortgage Prepayment Penalties and Opportunity Cost: What I Wish I Knew',
+    excerpt: "Is paying off your home always the smartest move? Between prepayment penalties and opportunity costs, the math might surprise you. Learn when keeping your mortgage actually builds more wealth.",
+    content: `So here's something I didn't know when I first bought my house. Some lenders actually charge you a fee for paying off your mortgage early. Yeah, seems backwards, right?
 
 From the lender's point of view, I guess it makes sense. They gave you a 30-year loan expecting 30 years of interest payments. If you pay it off in 10 years, they lose all that future interest income. So they protect themselves with prepayment penalties.
 
@@ -142,18 +157,18 @@ But if you've handled all of that? If you're debt-free except for the mortgage, 
 Just make sure you're not paying prepayment penalties. And make sure you're actually making the decision that's best for your full financial picture, not just the one that sounds good on paper.
 
 Because at the end of the day, there's no one-size-fits-all lo. The right move for Christine isn't the same as the right move for Bob or Charles. And the right move for you might be completely different from all three.`,
-      category: 'Investing',
-      readTime: 6,
-      date: '2026-04-16',
-      icon: '💡',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 24,
-      anchorTexts: 'Bonus to Pay Off Mortgage',
-      title: 'Winning with Windfalls: Should You Use Your Bonus to Pay Off Your Mortgage?',
-      excerpt: 'A big check from work feels like a gift but where should it go? Learn why your bonus might be the key to thousands in mortgage savings.',
-      content: `I remember the first time I got a real bonus. It was 2018, and I had just finished a massive project at work. I opened my bank app and saw an extra $8,500 sitting there.
+    category: 'Investing',
+    readTime: 6,
+    date: '2026-04-16',
+    icon: '💡',
+    link: "/mortgage-prepayment-penalties-opportunity-cost"
+  },
+  {
+    id: 24,
+    anchorTexts: 'Bonus to Pay Off Mortgage',
+    title: 'Winning with Windfalls: Should You Use Your Bonus to Pay Off Your Mortgage?',
+    excerpt: 'A big check from work feels like a gift but where should it go? Learn why your bonus might be the key to thousands in mortgage savings.',
+    content: `I remember the first time I got a real bonus. It was 2018, and I had just finished a massive project at work. I opened my bank app and saw an extra $8,500 sitting there.
 
 My first thought? A vacation. Maybe a new car.
 
@@ -236,18 +251,18 @@ Every $1,000 bonus you put toward your principal could represent weeks or months
 If you’re curious about what your specific bonus could do, use an Early Mortgage Payoff Calculator. Plug in your bonus as a One-Time Payment and watch the total interest number drop.
 
 Seeing that number change is the best motivation you'll ever have to make that payment.`,
-      category: 'Strategy',
-      readTime: 5,
-      date: '2026-04-07',
-      icon: '🎁',
-      link: '/early-mortgage-payoff-calculator'
-    },
-    {
-      id: 23,
-      anchorTexts: 'Pay Off 30-Year Mortgage in 10 Years',
-      title: 'The 10-Year Challenge: How to Destroy a 30-Year Mortgage in One Decade',
-      excerpt: 'Think it is impossible to pay off a house in 10 years? It’s not. It just takes a specific system. Here is exactly how to do it.',
-      content: `I remember telling my neighbor, I'm going to pay off my 30-year mortgage in ten years.
+    category: 'Strategy',
+    readTime: 5,
+    date: '2026-04-07',
+    icon: '🎁',
+    link: "/use-bonus-to-pay-off-mortgage"
+  },
+  {
+    id: 23,
+    anchorTexts: 'Pay Off 30-Year Mortgage in 10 Years',
+    title: 'The 10-Year Challenge: How to Destroy a 30-Year Mortgage in One Decade',
+    excerpt: 'Think it is impossible to pay off a house in 10 years? It’s not. It just takes a specific system. Here is exactly how to do it.',
+    content: `I remember telling my neighbor, I'm going to pay off my 30-year mortgage in ten years.
 
 He laughed. He said, Good luck with that. Most people can't even pay it off in 30.
 
@@ -336,18 +351,18 @@ Paying off your house in 10 years is a marathon, not a sprint. It requires a fun
 But the day you walk into the bank for that final time—knowing you never have to pay for the roof over your head again—is the day you become truly free.
 
 If you’re ready to start, stop guessing. Use a Pay Off Mortgage Faster Calculator today and find your 10-year number. Then, take the first step.`,
-      category: 'Biweekly',
-      readTime: 6,
-      date: '2026-04-07',
-      icon: '🚀',
-      link: '/payoff-15-years'
-    },
-    {
-      id: 22,
-      anchorTexts: 'Taxes After Mortgage Paid Off',
-      title: 'The Surprise Tax Bill: What Happens When Your Mortgage is Paid Off?',
-      excerpt: 'You final payment feels like freedom—until tax season hits. Here is what happens to your taxes when the bank is gone.',
-      content: `I’ll never forget the feeling of writing that last check. It was for exactly $1,432.11. I drove it to the bank personally because I didn't want to trust the mail with something that important.
+    category: 'Biweekly',
+    readTime: 6,
+    date: '2026-04-07',
+    icon: '🚀',
+    link: "/pay-off-30-year-mortgage-in-10-years"
+  },
+  {
+    id: 22,
+    anchorTexts: 'Taxes After Mortgage Paid Off',
+    title: 'The Surprise Tax Bill: What Happens When Your Mortgage is Paid Off?',
+    excerpt: 'You final payment feels like freedom—until tax season hits. Here is what happens to your taxes when the bank is gone.',
+    content: `I’ll never forget the feeling of writing that last check. It was for exactly $1,432.11. I drove it to the bank personally because I didn't want to trust the mail with something that important.
 
 When the teller handed me back the receipt and said, "Congratulations, you're debt-free," I felt like I was floating. No more mortgage. No more bank. Just me and my house.
 
@@ -438,18 +453,18 @@ Paying off your mortgage IS a massive financial win, but it’s not the end of y
 Don't let the Surprise Tax Bill ruin your celebration. Plan for the lack of deduction, set up your own escrow account, and enjoy the true freedom of owning your dirt.
 
 If you aren't sure how a payoff will impact your specific tax bracket, use a Mortgage Calculator to see exactly how much interest you're currently paying. That's the amount of deduction you're about to lose.`,
-      category: 'Education',
-      readTime: 6,
-      date: '2026-04-07',
-      icon: '🏛️',
-      link: '/mortgage-calculator'
-    },
-    {
-      id: 21,
-      anchorTexts: 'Mortgage Payoff vs 401k',
-      title: 'Mortgage Payoff vs. Maxing Out 401(k): The Million Dollar Decision',
-      excerpt: 'Should you kill your debt or grow your nest egg? Let’s look at the math, the taxes, and the truth about opportunity cost.',
-      content: `I was at a backyard BBQ last summer when two of my friends got into a heated debate.
+    category: 'Education',
+    readTime: 6,
+    date: '2026-04-07',
+    icon: '🏛️',
+    link: "/taxes-after-mortgage-paid-off"
+  },
+  {
+    id: 21,
+    anchorTexts: 'Mortgage Payoff vs 401k',
+    title: 'Mortgage Payoff vs. Maxing Out 401(k): The Million Dollar Decision',
+    excerpt: 'Should you kill your debt or grow your nest egg? Let’s look at the math, the taxes, and the truth about opportunity cost.',
+    content: `I was at a backyard BBQ last summer when two of my friends got into a heated debate.
 
 Mark is a debt-is-evil guy. He puts every extra dollar into his mortgage. He wants to be debt-free by 45.
 Sarah is a math-is-king gal. She only pays the minimum on her 3.5% mortgage and pours everything else into her 401(k) and brokerage accounts.
@@ -538,18 +553,18 @@ Which one do you want to be?
 I've found that most people reach financial peace when they have a balance of both. Don't sacrifice your retirement for a paid-off house, but don't ignore the freedom that comes with owning your dirt free and clear.
 
 Use a **Mortgage Payoff Calculator** to see exactly how much you save by splitting your money. You might find that adding just $200 extra a month satisfies your debt-killer side while still allowing you to max out your retirement accounts.`,
-      category: 'Planning',
-      readTime: 5,
-      date: '2026-04-07',
-      icon: '⚖️',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 20,
-      anchorTexts: 'Pay Off Mortgage Before Retirement',
-      title: 'Should I Pay Off My Mortgage Before Retirement? (The Honest Truth)',
-      excerpt: 'Retiring with a mortgage can be a huge liability—but is paying it off always the right move? Let’s look at the math and the psychology.',
-      content: `I remember sitting across from my Uncle Joe about ten years ago. Joe was 63, just two years away from retirement, and he was stressed. He had about $90,000 left on his mortgage, and he was obsessed with one thing: getting that balance to zero before he stopped working.
+    category: 'Planning',
+    readTime: 5,
+    date: '2026-04-07',
+    icon: '⚖️',
+    link: "/mortgage-payoff-vs-401k"
+  },
+  {
+    id: 20,
+    anchorTexts: 'Pay Off Mortgage Before Retirement',
+    title: 'Should I Pay Off My Mortgage Before Retirement? (The Honest Truth)',
+    excerpt: 'Retiring with a mortgage can be a huge liability—but is paying it off always the right move? Let’s look at the math and the psychology.',
+    content: `I remember sitting across from my Uncle Joe about ten years ago. Joe was 63, just two years away from retirement, and he was stressed. He had about $90,000 left on his mortgage, and he was obsessed with one thing: getting that balance to zero before he stopped working.
 
 He told me, I just want the peace of mind. I don't want to be writing a check to the bank every month when I don't have a paycheck coming in.
 
@@ -651,18 +666,18 @@ Personally, I think the Hybrid Approach is the winner for most people. It gives 
 Whatever you do, don't guess. Use a Mortgage Payoff Calculator With Extra Payments to run YOUR numbers. See the actual impact on your interest savings and your timeline.
 
 Knowledge is power. Don't let emotion make the decision for you let the data help guide your heart.`,
-      category: 'Retirement',
-      readTime: 6,
-      date: '2026-04-07',
-      icon: '🛡️',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 19,
-      anchorTexts: 'RoundPoint Mortgage Review',
-      title: 'RoundPoint Mortgage Review (2026): Good or Bad? Read Before Paying',
-      excerpt: "If your mortgage was just transferred to RoundPoint, you're probably wondering: Is this company reliable… or should you be worried?",
-      content: `RoundPoint Mortgage Review (2026): Good or Bad? Read Before Paying
+    category: 'Retirement',
+    readTime: 6,
+    date: '2026-04-07',
+    icon: '🛡️',
+    link: "/pay-off-mortgage-before-retirement"
+  },
+  {
+    id: 19,
+    anchorTexts: 'RoundPoint Mortgage Review',
+    title: 'RoundPoint Mortgage Review (2026): Good or Bad? Read Before Paying',
+    excerpt: "If your mortgage was just transferred to RoundPoint, you're probably wondering: Is this company reliable… or should you be worried?",
+    content: `RoundPoint Mortgage Review (2026): Good or Bad? Read Before Paying
 
 If your mortgage was just transferred to RoundPoint, you're probably wondering:
 
@@ -897,18 +912,18 @@ Your mortgage cost is.
 
 Fix that and you win.
 `,
-      category: 'Strategy',
-      readTime: 5,
-      date: '2026-04-07',
-      icon: '📈',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 18,
-      anchorTexts: 'Early Mortgage Payoff Calculator',
-      title: 'Early Mortgage Payoff: The 2026 Strategy Nobody Talks About',
-      excerpt: "With higher rates in 2026, payoff strategies are changing. Here’s what smart homeowners are doing now.",
-      content: `I used to think paying off your mortgage as fast as possible was always the best move. Just throw extra money at it and finish early. Simple.
+    category: 'Strategy',
+    readTime: 5,
+    date: '2026-04-07',
+    icon: '📈',
+    link: "/roundpoint-mortgage-review"
+  },
+  {
+    id: 18,
+    anchorTexts: 'Early Mortgage Payoff Calculator',
+    title: 'Early Mortgage Payoff: The 2026 Strategy Nobody Talks About',
+    excerpt: "With higher rates in 2026, payoff strategies are changing. Here’s what smart homeowners are doing now.",
+    content: `I used to think paying off your mortgage as fast as possible was always the best move. Just throw extra money at it and finish early. Simple.
 
 But things have changed.
 
@@ -1055,18 +1070,18 @@ In 2026, the smartest homeowners are not the fastest ones. They are the most con
 Pay extra when you can. Pause when you need to.
 
 That’s how you stay in control.`,
-      category: 'Strategy',
-      readTime: 5,
-      date: '2026-03-23',
-      icon: '📈',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 17,
-      anchorTexts: 'Mortgage Payoff Calculator',
-      title: 'Mortgage Extra Payment Calculator: When It’s NOT Worth It',
-      excerpt: 'Paying off early isn’t always the best move. Here’s when to avoid it.',
-      content: `I used to be that person who thought all debt was bad. Like, any mortgage balance sitting there meant I was losing money and the faster I got rid of it the better. That was my whole mindset for years.
+    category: 'Strategy',
+    readTime: 5,
+    date: '2026-03-23',
+    icon: '📈',
+    link: "/early-mortgage-payoff-strategy-2026"
+  },
+  {
+    id: 17,
+    anchorTexts: 'Mortgage Payoff Calculator',
+    title: 'Mortgage Extra Payment Calculator: When It’s NOT Worth It',
+    excerpt: 'Paying off early isn’t always the best move. Here’s when to avoid it.',
+    content: `I used to be that person who thought all debt was bad. Like, any mortgage balance sitting there meant I was losing money and the faster I got rid of it the better. That was my whole mindset for years.
 
 Then I actually did the math. And honestly, it changed how I think about extra mortgage payments completely.
 
@@ -1139,18 +1154,18 @@ If the answer to any of those is no, fix that first. Then come back and start ma
 I know this is not the advice most people want to hear. Everyone wants the simple answer that paying extra is always right. But the truth is more complicated. And making the wrong call here can actually cost you money instead of saving it.
 
 So take a step back. Look at the whole picture. Use a mortgage extra payment calculator to compare your options. Then decide. That is the smartest thing you can do.`,
-      category: 'Planning',
-      readTime: 5,
-      date: '2026-03-22',
-      icon: '⚖️',
-      link: '/refinance-vs-payoff'
-    },
-    {
-      id: 16,
-      anchorTexts: 'Mortgage Calculator With Extra Payments',
-      title: 'How to Pay Off Your Home Loan Early Using Just $100 Extra',
-      excerpt: 'Think $100 isn’t enough? Here’s how it can save you tens of thousands.',
-      content: `When I first heard someone say that $100 extra a month could make a real difference on a mortgage, I honestly did not believe it. One hundred dollars? On a loan that is hundreds of thousands? That felt like throwing a cup of water at a house fire.
+    category: 'Planning',
+    readTime: 5,
+    date: '2026-03-22',
+    icon: '⚖️',
+    link: "/when-extra-mortgage-payment-not-worth-it"
+  },
+  {
+    id: 16,
+    anchorTexts: 'Mortgage Calculator With Extra Payments',
+    title: 'How to Pay Off Your Home Loan Early Using Just $100 Extra',
+    excerpt: 'Think $100 isn’t enough? Here’s how it can save you tens of thousands.',
+    content: `When I first heard someone say that $100 extra a month could make a real difference on a mortgage, I honestly did not believe it. One hundred dollars? On a loan that is hundreds of thousands? That felt like throwing a cup of water at a house fire.
 
 But I was wrong about this. And once I actually ran the numbers through a mortgage calculator with extra payments, I could not believe what I was looking at.
 
@@ -1225,18 +1240,18 @@ But it all starts with that first $100. Do not overthink it. Do not wait until y
 The bottom line is simple. Small extra payments on your mortgage are not small at all. They just feel small. In reality, they are doing heavy lifting behind the scenes, every single month. And the sooner you start, the more they save you.
 
 So if you are sitting there thinking a hundred bucks will not make a difference, go run your numbers. Pull up a mortgage calculator with extra payments and see for yourself. I think you will be just as surprised as I was.`,
-      category: 'Strategy',
-      readTime: 4,
-      date: '2026-03-20',
-      icon: '🏠',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 15,
-      anchorTexts: 'Pay Off Mortgage Faster Calculator',
-      title: 'Mortgage Calculator With Extra Payments: Hidden Savings Most People Miss',
-      excerpt: 'This simple calculator reveals hidden savings most homeowners never realize.',
-      content: `For the longest time, I only ever looked at one number on my mortgage statement. The monthly payment. That was my whole focus. Can I afford this payment every month? Yes? Good. Move on.
+    category: 'Strategy',
+    readTime: 4,
+    date: '2026-03-20',
+    icon: '🏠',
+    link: "/pay-off-mortgage-100-dollars-extra"
+  },
+  {
+    id: 15,
+    anchorTexts: 'Pay Off Mortgage Faster Calculator',
+    title: 'Mortgage Calculator With Extra Payments: Hidden Savings Most People Miss',
+    excerpt: 'This simple calculator reveals hidden savings most homeowners never realize.',
+    content: `For the longest time, I only ever looked at one number on my mortgage statement. The monthly payment. That was my whole focus. Can I afford this payment every month? Yes? Good. Move on.
 
 I never really stopped to think about the total cost. And when I finally did, it honestly shocked me. Like genuinely made me uncomfortable.
 
@@ -1303,18 +1318,18 @@ When you use a mortgage calculator with extra payments, pay close attention to t
 Once you see those numbers laid out clearly, I promise your whole perspective shifts. Mine definitely did. And it completely changed how I approach my mortgage going forward.
 
 So yeah, the hidden savings are very real. They are just hiding behind a number that nobody tells you to look at. Pull up a mortgage calculator with extra payments, run your own numbers, and see the full picture for yourself. I have a feeling you will be just as surprised as I was.`,
-      category: 'Education',
-      readTime: 5,
-      date: '2026-03-18',
-      icon: '💡',
-      link: '/early-mortgage-payoff-calculator'
-    },
-    {
-      id: 14,
-      anchorTexts: 'See How Much You Can Saver',
-      title: 'Pay Off Mortgage Faster Calculator: 3 Scenarios That Change Everything',
-      excerpt: 'Not all payoff strategies are equal. Here are 3 real scenarios using a pay off mortgage faster calculator.',
-      content: `I remember the first time I tried to figure out the best way to pay off my mortgage faster. I just picked one strategy and went with it. Did not compare anything. Did not think about whether it actually fit my situation.
+    category: 'Education',
+    readTime: 5,
+    date: '2026-03-18',
+    icon: '💡',
+    link: "/mortgage-calculator-extra-payments-hidden-savings"
+  },
+  {
+    id: 14,
+    anchorTexts: 'See How Much You Can Saver',
+    title: 'Pay Off Mortgage Faster Calculator: 3 Scenarios That Change Everything',
+    excerpt: 'Not all payoff strategies are equal. Here are 3 real scenarios using a pay off mortgage faster calculator.',
+    content: `I remember the first time I tried to figure out the best way to pay off my mortgage faster. I just picked one strategy and went with it. Did not compare anything. Did not think about whether it actually fit my situation.
 
 Looking back, that was kind of dumb. Because not all payoff strategies are equal. And what works for someone with a stable salary might be completely wrong for someone with freelance income or irregular bonuses.
 
@@ -1377,18 +1392,18 @@ I spent way too long just guessing about which approach would save me the most. 
 You should do the same thing. Plug in your numbers, test each scenario, and see which one fits your budget and lifestyle. The fastest path to being mortgage free is not about picking the most aggressive strategy. It is about picking the strategy you will actually stick with for years.
 
 So yeah. Test your scenarios. Pick your path. And start.`,
-      category: 'Biweekly',
-      readTime: 5,
-      date: '2026-03-16',
-      icon: '🚀',
-      link: '/biweekly-vs-monthly'
-    },
-    {
-      id: 13,
-      anchorTexts: 'Calculate Your Savings Instantly',
-      title: 'Early Mortgage Payoff Calculator: Why Most People Use It Wrong',
-      excerpt: 'Using an early mortgage payoff calculator is powerful—but most people get misleading results. Here’s how to use it correctly.',
-      content: `An early mortgage payoff calculator is one of the most useful tools I have found online. Seriously. When I first discovered it, I spent probably two hours just plugging in different numbers and watching the results change.
+    category: 'Biweekly',
+    readTime: 5,
+    date: '2026-03-16',
+    icon: '🚀',
+    link: "/mortgage-payoff-faster-scenarios"
+  },
+  {
+    id: 13,
+    anchorTexts: "Use the Calculator the Right Way",
+    title: 'Early Mortgage Payoff Calculator: Why Most People Use It Wrong',
+    excerpt: 'Using an early mortgage payoff calculator is powerful—but most people get misleading results. Here’s how to use it correctly.',
+    content: `An early mortgage payoff calculator is one of the most useful tools I have found online. Seriously. When I first discovered it, I spent probably two hours just plugging in different numbers and watching the results change.
 
 But here is the thing. Most people use it wrong. And I was one of them at first.
 
@@ -1463,18 +1478,18 @@ Look at the total interest saved for each one. Look at the years saved. Then pic
 You can always adjust later. Start at the safe level if you need to. Then bump it up when you feel comfortable. The important thing is to start and to keep going.
 
 The calculator is only as powerful as how honestly you use it. Give it real numbers, and it will give you a real plan.`,
-      category: 'Strategy',
-      readTime: 6,
-      date: '2026-03-16',
-      icon: '⚡',
-      link: '/early-mortgage-payoff-calculator'
-    },
-    {
-      id: 12,
-      anchorTexts: 'Check Your Mortgage Savings',
-      title: 'How to Calculate Mortgage Payoff Amount (Step-by-Step Guide 2026)',
-      excerpt: 'Want to know exactly how much you owe and when you’ll be done? Here’s how to calculate your mortgage payoff amount the right way.',
-      content: `Most homeowners don’t actually know their true mortgage payoff amount.
+    category: 'Strategy',
+    readTime: 6,
+    date: '2026-03-16',
+    icon: '⚡',
+    link: "/early-mortgage-payoff-calculator-mistakes"
+  },
+  {
+    id: 12,
+    anchorTexts: 'Check Your Mortgage Savings',
+    title: 'How to Calculate Mortgage Payoff Amount (Step-by-Step Guide 2026)',
+    excerpt: 'Want to know exactly how much you owe and when you’ll be done? Here’s how to calculate your mortgage payoff amount the right way.',
+    content: `Most homeowners don’t actually know their true mortgage payoff amount.
 
 Your remaining balance is NOT your payoff amount.
 
@@ -1514,18 +1529,18 @@ Always double-check with your lender before making a lump-sum payment.
 ## Bottom Line
 
 Knowing your payoff amount gives you control. Most people avoid this step — smart homeowners don’t.`,
-      category: 'Education',
-      readTime: 5,
-      date: '2026-03-14',
-      icon: '🧮',
-      link: '/mortgage-calculator'
-    },
-    {
-      id: 11,
-      anchorTexts: 'Run Your Payoff Numbers',
-      title: 'Mortgage Payoff Calculator With Extra Payments: Real Results That Shock Homeowners',
-      excerpt: 'Most homeowners underestimate how much extra payments can save. Here’s a real breakdown using a mortgage payoff calculator with extra payments.',
-      content: `Most people think adding $100 extra to their mortgage won’t make a big difference.
+    category: 'Education',
+    readTime: 5,
+    date: '2026-03-14',
+    icon: '🧮',
+    link: "/how-to-calculate-mortgage-payoff-amount"
+  },
+  {
+    id: 11,
+    anchorTexts: "See Real Extra Payment Results",
+    title: 'Mortgage Payoff Calculator With Extra Payments: Real Results That Shock Homeowners',
+    excerpt: 'Most homeowners underestimate how much extra payments can save. Here’s a real breakdown using a mortgage payoff calculator with extra payments.',
+    content: `Most people think adding $100 extra to their mortgage won’t make a big difference.
 
 They’re wrong.
 
@@ -1569,18 +1584,18 @@ You’ll quickly see which strategy fits your budget.
 ## Bottom Line
 
 The difference between doing nothing and adding small extra payments can literally be 5–10 years of your life and $100K+ in savings.`,
-      category: 'Strategy',
-      readTime: 6,
-      date: '2026-03-12',
-      icon: '📊',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 10,
-      anchorTexts: 'Save $50K+ On Your Mortgage',
-      title: 'Pay Off Mortgage 10 Years Early: Step-by-Step Plan',
-      excerpt: 'Learn exactly how to cut 10 years off your mortgage using simple strategies like extra payments and biweekly plans.',
-      content: `Paying off your mortgage 10 years early is more achievable than you think.
+    category: 'Strategy',
+    readTime: 6,
+    date: '2026-03-12',
+    icon: '📊',
+    link: "/mortgage-payoff-calculator-extra-payments-results"
+  },
+  {
+    id: 10,
+    anchorTexts: 'Save $50K+ On Your Mortgage',
+    title: 'Pay Off Mortgage 10 Years Early: Step-by-Step Plan',
+    excerpt: 'Learn exactly how to cut 10 years off your mortgage using simple strategies like extra payments and biweekly plans.',
+    content: `Paying off your mortgage 10 years early is more achievable than you think.
 
 Here’s a simple plan:
 
@@ -1593,18 +1608,18 @@ On a $400,000 loan at 6.5%, this can save over $150,000.
 Use a mortgage payoff calculator to track your progress and adjust strategies.
 
 The earlier you start, the more you save.`,
-      category: 'Strategy',
-      readTime: 6,
-      date: '2026-03-09',
-      icon: '🏠',
-      link: '/payoff-15-years'
-    },
-    {
-      id: 9,
-      anchorTexts: 'Cut 10 Years Off Your Loan',
-      title: '$200 Extra Mortgage Payment: How Much Can You Save?',
-      excerpt: 'See how paying just $200 extra per month can save you $80,000+ in interest and cut years off your mortgage.',
-      content: `Most homeowners underestimate how powerful a small extra payment can be.
+    category: 'Strategy',
+    readTime: 6,
+    date: '2026-03-09',
+    icon: '🏠',
+    link: '/payoff-15-years'
+  },
+  {
+    id: 9,
+    anchorTexts: "Build Your 10-Year Payoff Plan",
+    title: '$200 Extra Mortgage Payment: How Much Can You Save?',
+    excerpt: 'See how paying just $200 extra per month can save you $80,000+ in interest and cut years off your mortgage.',
+    content: `Most homeowners underestimate how powerful a small extra payment can be.
 
 Let’s say you have a $300,000 mortgage at 6.5%. By adding just $200/month:
 
@@ -1618,18 +1633,18 @@ Try different scenarios using an early mortgage payoff calculator to see your ex
 Even increasing to $300/month can push savings past $120,000.
 
 The key is consistency. Start small, automate it, and let time do the work.`,
-      category: 'Strategy',
-      readTime: 5,
-      date: '2026-03-09',
-      icon: '💸',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 8,
-      anchorTexts: 'See Your Real Savings',
-      title: 'How I Saved $127,000 on My Mortgage Using This Early Payoff Calculator',
-      excerpt: 'I discovered I was wasting $127,000 in interest. Here\'s exactly how I used an early mortgage payoff calculator to save six figures and pay off my house 8 years early.',
-      content: `I'll never forget the day I discovered I was about to waste $127,000.
+    category: 'Strategy',
+    readTime: 5,
+    date: '2026-03-09',
+    icon: '💸',
+    link: "/pay-off-mortgage-10-years-early-plan"
+  },
+  {
+    id: 8,
+    anchorTexts: "Calculate Your $200 Extra Payment Savings",
+    title: 'How I Saved $127,000 on My Mortgage Using This Early Payoff Calculator',
+    excerpt: 'I discovered I was wasting $127,000 in interest. Here\'s exactly how I used an early mortgage payoff calculator to save six figures and pay off my house 8 years early.',
+    content: `I'll never forget the day I discovered I was about to waste $127,000.
 
 It was a Tuesday morning in March 2023. I was sitting at my kitchen table in Denver, drinking coffee, when my friend texted me: "Dude, have you ever calculated how much interest you're paying on your mortgage?"
 
@@ -1762,18 +1777,18 @@ I sat at my kitchen table that Tuesday morning and made one decision: to take co
 You have that exact same choice right now. The difference is literally one afternoon to gather your information, use a calculator, and set up automatic payments.
 
 Don't wait. Your future self is asking you to make this decision today.`,
-      category: 'Strategy',
-      readTime: 15,
-      date: '2026-03-08',
-      icon: '💰',
-      link: '/early-mortgage-payoff-calculator'
-    },
-    {
-      id: 7,
-      anchorTexts: 'Stop Overpaying Interest',
-      title: 'How to Pay Off Your Mortgage Early in 2026',
-      excerpt: 'Discover practical strategies to accelerate your mortgage payoff and save hundreds of thousands in interest, even with rising costs.',
-      content: `If you bought a home in the last few years, you've probably felt it — rising taxes, increasing insurance costs, and higher overall monthly payments. Many homeowners are now asking: Is there a smart way to pay off a mortgage early without feeling house-poor?
+    category: 'Strategy',
+    readTime: 15,
+    date: '2026-03-08',
+    icon: '💰',
+    link: "/200-extra-mortgage-payment-savings"
+  },
+  {
+    id: 7,
+    anchorTexts: "See How Much Interest You Can Save",
+    title: 'How to Pay Off Your Mortgage Early in 2026',
+    excerpt: 'Discover practical strategies to accelerate your mortgage payoff and save hundreds of thousands in interest, even with rising costs.',
+    content: `If you bought a home in the last few years, you've probably felt it — rising taxes, increasing insurance costs, and higher overall monthly payments. Many homeowners are now asking: Is there a smart way to pay off a mortgage early without feeling house-poor?
 
 The good news: yes. And even small extra payments can make a huge difference over time.
 
@@ -1823,18 +1838,18 @@ For many homeowners in 2026, the strategy is: Build savings first → then accel
 Homeownership feels heavier than it used to. Costs keep rising. But having a plan makes it manageable.
 
 You don't need to double your payment. Even small, consistent extra payments can create massive long-term savings. If you're serious about reducing interest and gaining financial freedom sooner, start by running your numbers and building a payoff plan today.`,
-      category: 'Strategy',
-      readTime: 5,
-      date: '2026-02-25',
-      icon: '💪',
-      link: '/mortgage-payoff-with-extra-payments'
-    },
-    {
-      id: 1,
-      anchorTexts: 'Find Your Payoff Timeline',
-      title: 'How to Pay Off Your Mortgage 10 Years Early',
-      excerpt: 'Discover proven strategies that thousands of Americans use to accelerate their mortgage payoff and save big on interest.',
-      content: `Paying off your mortgage 10 years early is more achievable than you think. It doesn't always require a six-figure income or major life changes. Instead, it's about smart strategy and consistent action.
+    category: 'Strategy',
+    readTime: 5,
+    date: '2026-02-25',
+    icon: '💪',
+    link: "/how-i-saved-127000-mortgage-early-payoff"
+  },
+  {
+    id: 6,
+    anchorTexts: 'Find Your Payoff Timeline',
+    title: 'How to Pay Off Your Mortgage 10 Years Early',
+    excerpt: 'Discover proven strategies that thousands of Americans use to accelerate their mortgage payoff and save big on interest.',
+    content: `Paying off your mortgage 10 years early is more achievable than you think. It doesn't always require a six-figure income or major life changes. Instead, it's about smart strategy and consistent action.
 
 ## The Bi-Weekly Payment Strategy
 The simplest way to shave years off your mortgage is bi-weekly payments. Instead of making one monthly payment of $1,500, split it into two $750 payments every two weeks. Over a year, you'll make 26 bi-weekly payments, which equals 13 monthly payments. That's one extra full payment every year!
@@ -1851,18 +1866,18 @@ When you get a tax refund, bonus, or inheritance, consider putting some or all o
 If mortgage rates drop, you might refinance from a 30-year to a 15-year mortgage. Your payment will be higher, but you'll save dramatically on interest. Our calculator can help you compare options.
 
 The key is consistency. Even small extra payments work because of compound interest working in your favor.`,
-      category: 'Strategy',
-      readTime: 5,
-      date: '2024-02-10',
-      icon: '🚀',
-      link: '/payoff-15-years'
-    },
-    {
-      id: 2,
-      anchorTexts: 'Check How Fast You Can Be Debt Free',
-      title: 'Mortgage Payoff vs. Investing: Which Is Right for You?',
-      excerpt: 'A detailed comparison to help you decide whether early mortgage payoff or investing is the better choice for your financial goals.',
-      content: `One of the biggest financial decisions homeowners face is whether to aggressively pay down their mortgage or invest extra money in stocks, bonds, or retirement accounts. The answer depends on several factors.
+    category: 'Strategy',
+    readTime: 5,
+    date: '2024-02-10',
+    icon: '🚀',
+    link: "/how-to-pay-off-mortgage-early-2026"
+  },
+  {
+    id: 5,
+    anchorTexts: 'Check How Fast You Can Be Debt Free',
+    title: 'Mortgage Payoff vs. Investing: Which Is Right for You?',
+    excerpt: 'A detailed comparison to help you decide whether early mortgage payoff or investing is the better choice for your financial goals.',
+    content: `One of the biggest financial decisions homeowners face is whether to aggressively pay down their mortgage or invest extra money in stocks, bonds, or retirement accounts. The answer depends on several factors.
 
 ## Compare Interest Rates
 The primary consideration is your mortgage rate versus expected investment returns. If your mortgage rate is 6.5% and you believe you can reliably earn 8%+ in the stock market, investing might yield better returns mathematically.
@@ -1879,18 +1894,18 @@ If you're risk-averse and sleep better knowing your home will be paid off sooner
 Many successful Americans use a balanced strategy: automate mortgage extra payments at a comfortable level while still contributing to retirement accounts to capture employer matches and tax benefits. This provides both security and growth.
 
 Our calculator helps you see exactly how much you'll save with mortgage payoff so you can make an informed comparison.`,
-      category: 'Planning',
-      readTime: 6,
-      date: '2024-02-08',
-      icon: '⚖️',
-      link: '/early-mortgage-payoff-calculator'
-    },
-    {
-      id: 3,
-      anchorTexts: 'Check How Fast You Can Be Debt Free',
-      title: 'The True Cost of Your 30-Year Mortgage (You Might Be Shocked)',
-      excerpt: 'Learn how much interest you actually pay over 30 years and what it could mean for your financial future.',
-      content: `When you sign up for a 30-year mortgage, you often focus on the monthly payment. But the total interest can be shocking once you do the math.
+    category: 'Planning',
+    readTime: 6,
+    date: '2024-02-08',
+    icon: '⚖️',
+    link: '/early-mortgage-payoff-calculator'
+  },
+  {
+    id: 4,
+    anchorTexts: 'Check How Fast You Can Be Debt Free',
+    title: 'The True Cost of Your 30-Year Mortgage (You Might Be Shocked)',
+    excerpt: 'Learn how much interest you actually pay over 30 years and what it could mean for your financial future.',
+    content: `When you sign up for a 30-year mortgage, you often focus on the monthly payment. But the total interest can be shocking once you do the math.
 
 ## Real Numbers
 On a $300,000 mortgage at 6.5%, your monthly payment is about $1,896. Over 360 payments, you'll pay nearly $682,000 total—which means paying $382,000 just in interest. That's more than the original house price!
@@ -1904,18 +1919,18 @@ If you paid just $100 extra per month on that 6.5% mortgage, you'd pay off the l
 Consider where you'll be in 30 years. Imagine being able to retire with no mortgage payment. Imagine having that money available for travel, family, grandchildren, or charitable giving instead of sending it to a lender.
 
 This is why understanding the true cost is motivating. Our calculator shows not just the monthly payment, but the complete financial picture, helping you make an informed decision about early payoff.`,
-      category: 'Education',
-      readTime: 4,
-      date: '2024-02-05',
-      icon: '💸',
-      link: '/mortgage-calculator'
-    },
-    {
-      id: 4,
-      anchorTexts: 'See Your Real Savings',
-      title: 'Bi-Weekly Mortgages: The Secret Strategy More Americans Should Know',
-      excerpt: 'Explore how switching to bi-weekly payments can accelerate your mortgage payoff without major budget changes.',
-      content: `One of the simplest yet most effective ways to accelerate your mortgage payoff is switching from monthly to bi-weekly payments. Yet many homeowners have never heard of this strategy.
+    category: 'Education',
+    readTime: 4,
+    date: '2024-02-05',
+    icon: '💸',
+    link: '/mortgage-calculator'
+  },
+  {
+    id: 3,
+    anchorTexts: 'See Your Real Savings',
+    title: 'Bi-Weekly Mortgages: The Secret Strategy More Americans Should Know',
+    excerpt: 'Explore how switching to bi-weekly payments can accelerate your mortgage payoff without major budget changes.',
+    content: `One of the simplest yet most effective ways to accelerate your mortgage payoff is switching from monthly to bi-weekly payments. Yet many homeowners have never heard of this strategy.
 
 ## How It Works
 With monthly payments, you make 12 payments per year. With bi-weekly payments, you make 26 payments over the year—which equals 13 full monthly payments. That one extra payment each year compounds significantly over 30 years.
@@ -1937,18 +1952,18 @@ You have a few options:
 This strategy requires no major lifestyle changes. You're not making bigger payments—you're just making them more frequently. The extra payment comes from the natural rhythm of earning every other week.
 
 If you get paid bi-weekly, this aligns perfectly with your income, making it even easier to stick to.`,
-      category: 'Strategy',
-      readTime: 4,
-      date: '2024-01-28',
-      icon: '📅',
-      link: '/biweekly-vs-monthly'
-    },
-    {
-      id: 5,
-      anchorTexts: 'Save $50K+ On Your Mortgage',
-      title: 'Taxes and Mortgage Interest: What You Need to Know',
-      excerpt: 'Understand how mortgage interest deductions work and how to maximize tax benefits while paying off your mortgage early.',
-      content: `Many homeowners don't realize that mortgage interest is tax-deductible—but this benefit has changed in recent years, and not everyone benefits equally.
+    category: 'Strategy',
+    readTime: 4,
+    date: '2024-01-28',
+    icon: '📅',
+    link: '/biweekly-vs-monthly'
+  },
+  {
+    id: 2,
+    anchorTexts: 'Save $50K+ On Your Mortgage',
+    title: 'Taxes and Mortgage Interest: What You Need to Know',
+    excerpt: 'Understand how mortgage interest deductions work and how to maximize tax benefits while paying off your mortgage early.',
+    content: `Many homeowners don't realize that mortgage interest is tax-deductible—but this benefit has changed in recent years, and not everyone benefits equally.
 
 ## The Deduction Limit
 After 2017 tax law changes, you can only deduct mortgage interest on the first $750,000 of principal (couples filing jointly) or $375,000 (single). This means high-value homes have reduced tax benefits, and lower-value homes might not benefit at all.
@@ -1967,18 +1982,18 @@ This is actually good news for early payoff strategies: since most homeowners ca
 - The guaranteed return (your interest rate) often beats uncertain tax savings
 
 Our calculator focuses on the raw numbers, helping you see the true financial benefit of early payoff regardless of tax considerations.`,
-      category: 'Education',
-      readTime: 5,
-      date: '2024-01-20',
-      icon: '📊',
-      link: '/early-mortgage-payoff-calculator'
-    },
-    {
-      id: 6,
-      anchorTexts: 'Pay Off Mortgage Faster Calculator',
-      title: 'Refinancing Your Mortgage: When It Makes Sense',
-      excerpt: 'Learn when refinancing is a smart move and how it can accelerate your path to becoming mortgage-free.',
-      content: `Refinancing isn't just about getting a lower interest rate. Strategic refinancing can be a powerful tool for accelerating mortgage payoff while potentially saving money in the process.
+    category: 'Education',
+    readTime: 5,
+    date: '2024-01-20',
+    icon: '📊',
+    link: '/early-mortgage-payoff-calculator'
+  },
+  {
+    id: 1,
+    anchorTexts: 'Pay Off Mortgage Faster Calculator',
+    title: 'Refinancing Your Mortgage: When It Makes Sense',
+    excerpt: 'Learn when refinancing is a smart move and how it can accelerate your path to becoming mortgage-free.',
+    content: `Refinancing isn't just about getting a lower interest rate. Strategic refinancing can be a powerful tool for accelerating mortgage payoff while potentially saving money in the process.
 
 ## When Refinancing Makes Sense
 Refinancing typically makes sense when:
@@ -2005,14 +2020,25 @@ Some lenders offer no-cost refinancing where they cover closing costs in exchang
 Our early payoff calculator can help you see the impact of refinancing strategies. Experiment with different interest rates and monthly payment amounts to find your optimal path to becoming mortgage-free.
 
 The key decision: Is saving on interest worth the upfront cost and effort of refinancing?`,
-      category: 'Strategy',
-      readTime: 6,
-      date: '2024-01-15',
-      icon: '🔄',
-      link: '/refinance-calculator'
-    }
-  ];
+    category: 'Strategy',
+    readTime: 6,
+    date: '2024-01-15',
+    icon: '🔄',
+    link: '/refinance-calculator'
+  }
+];
 
+
+@Component({
+  selector: 'app-blog-resources',
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+  templateUrl: './blog-resources.component.html',
+  styleUrl: './blog-resources.component.scss',
+})
+export class BlogResourcesComponent implements OnInit {
+  private seoService = inject(SeoService);
+  blogPosts = blogPosts;
   selectedPost: BlogPost | null = null;
   selectedCategory: string = 'All';
 

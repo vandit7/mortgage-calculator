@@ -54,7 +54,8 @@
 
           <p style="margin-top:2rem"><strong>Try this calculator</strong></p>
 
-          <a class="strategy-btn" [routerLink]="selectedPost.link" [title]="selectedPost.anchorTexts"
+          <a class="strategy-btn" [routerLink]="selectedPost.link || '/early-mortgage-payoff-calculator'"
+            [title]="selectedPost.anchorTexts"
             style="display: inline-block; margin-top: 1rem; background: #667eea; color: white; padding: 0.75rem 1.5rem; border-radius: 6px; font-weight: 600; text-decoration: none;">
             {{ selectedPost.anchorTexts }} →
           </a>
@@ -215,7 +216,10 @@
 
       <!-- BLOG POSTS GRID -->
       <div class="blog-grid">
-        <article *ngFor="let post of filteredPosts" (click)="selectPost(post)" class="blog-card">
+        <a *ngFor="let post of filteredPosts"
+           [routerLink]="post.link ? ['/blog', post.link.replace('/', '')] : '/blog-resources'"
+           class="blog-card blog-card-link"
+           [attr.aria-label]="'Read article: ' + post.title">
 
           <div class="blog-card-content">
             <div class="blog-card-icon">{{ post.icon }}</div>
@@ -237,13 +241,9 @@
               <span>⏱️ {{ post.readTime }} min</span>
             </div>
 
-            <!-- <button style="width: 100%; margin-top: 1rem; padding: 0.75rem; background: #667eea; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background 0.3s;"
-              (mouseenter)="($event.currentTarget as HTMLElement).style.background = '#764ba2'"
-              (mouseleave)="($event.currentTarget as HTMLElement).style.background = '#667eea'">
-              Read More →
-            </button> -->
+            <div class="blog-card-read-more">Read Article →</div>
           </div>
-        </article>
+        </a>
       </div>
     </div>
 
